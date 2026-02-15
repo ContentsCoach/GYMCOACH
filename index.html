@@ -3,58 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>콘텐츠 코치 진단</title>
+    <title>형이마케터</title>
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
-        /* 기본 설정 */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: #ffffff; color: #111; line-height: 1.4; }
-        a { text-decoration: none; color: inherit; display: block; }
+        body { background-color: #ffffff; color: #111; line-height: 1.4; letter-spacing: -0.05em; word-break: keep-all; }
+        a { text-decoration: none; color: inherit; cursor: pointer; }
 
         .wrapper {
-            max-width: 480px; margin: 0 auto; min-height: 100dvh;
-            display: flex; flex-direction: column; padding: 50px 24px 30px;
+            max-width: 800px; 
+            margin: 0 auto; 
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 24px;
+            text-align: center; 
         }
 
-        /* 헤더 섹션: 위계 정리 */
-        .header { text-align: center; margin-bottom: 40px; }
-        .sub-top { font-size: 16px; font-weight: 600; color: #888; margin-bottom: 6px; }
+        /* [핵심] 절제된 형광펜 효과 */
+        .highlight {
+            background: linear-gradient(to top, rgba(255, 235, 59, 0.5) 45%, transparent 45%);
+            padding: 0 2px;
+            display: inline;
+        }
+
+        .header { margin-bottom: 60px; }
+        .sub-top { 
+            font-size: 18px; 
+            font-weight: 500; 
+            color: #444; 
+            margin-bottom: 12px; 
+            display: block; 
+        }
         .target { 
-            display: inline-block; background: #FFF9E5; color: #D9A500; 
-            padding: 4px 10px; border-radius: 6px; font-size: 17px; 
-            font-weight: 700; margin-bottom: 20px; 
+            font-size: 20px; 
+            font-weight: 800; 
+            color: #000; 
+            margin-bottom: 24px; 
+            display: block; 
         }
-        .main-title { font-size: 34px; font-weight: 800; line-height: 1.25; letter-spacing: -1.2px; color: #000; }
-        .guide-text { font-size: 17px; color: #999; margin-top: 15px; font-weight: 400; }
+        .main-title { 
+            font-size: 42px; 
+            font-weight: 900; 
+            line-height: 1.35; 
+            color: #000; 
+            letter-spacing: -1.8px; 
+        }
+        .guide-text { 
+            font-size: 18px; 
+            color: #777; 
+            margin-top: 28px; 
+            font-weight: 500; 
+            display: block; 
+        }
 
-        /* 카드 섹션: 리필 스타일의 넓은 터치 영역 */
-        .card-container { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-        
+        /* 카드 섹션 */
+        .card-container { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 20px; 
+            margin-bottom: 80px; 
+        }
+
         .card {
-            border-radius: 28px; padding: 35px 24px;
-            transition: all 0.2s ease; border: 1px solid rgba(0,0,0,0.03);
-            cursor: pointer;
+            border-radius: 20px; 
+            padding: 55px 20px;
+            transition: all 0.2s ease; 
+            border: 1px solid #eee;
+            background-color: #fff; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        .card:active { transform: scale(0.97); opacity: 0.9; }
+        .card:hover { border-color: #ccc; transform: translateY(-4px); }
         
-        /* 마케팅 카드 (소프트 블루) */
-        .card.marketing { background-color: #F2F5FF; }
-        .card.marketing .label { color: #4A5CFF; font-weight: 800; font-size: 18px; margin-bottom: 8px; display: block; }
-        
-        /* 브랜딩 카드 (소프트 옐로우) */
-        .card.branding { background-color: #FFF9EB; }
-        .card.branding .label { color: #E5A500; font-weight: 800; font-size: 18px; margin-bottom: 8px; display: block; }
+        .card .label { font-weight: 800; font-size: 16px; margin-bottom: 14px; display: block; letter-spacing: 0.05em; }
+        .card.marketing .label { color: #3e5eff; } 
+        .card.branding .label { color: #f2a900; }
 
-        .card .status { font-size: 26px; font-weight: 800; margin-bottom: 12px; color: #111; }
-        .card .detail { font-size: 17px; color: #555; font-weight: 500; line-height: 1.5; word-break: keep-all; }
+        .card .status { font-size: 28px; font-weight: 800; margin-bottom: 18px; color: #000; }
+        .card .detail { 
+            font-size: 16px; 
+            color: #555; 
+            font-weight: 500; 
+            line-height: 1.7; 
+        }
 
-        /* 하단 CTA 버튼 */
-        .cta-button {
-            margin-top: auto; width: 100%; height: 72px;
-            background: #FFD700; color: #000; border-radius: 20px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 20px; font-weight: 800;
-            box-shadow: 0 8px 16px rgba(255, 215, 0, 0.25);
+        /* 투명 언더라인 CTA */
+        .cta-wrap { 
+            margin-top: auto; 
+            display: flex; 
+            justify-content: center; 
+            padding-bottom: 40px;
+        }
+        .main-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 4px;
+            background: transparent;
+            color: #000; 
+            font-size: 26px; 
+            font-weight: 800; 
+            border-bottom: 4px solid #000; 
+            transition: all 0.3s ease;
+        }
+        .main-btn:active { opacity: 0.6; }
+        .main-btn .arrow { font-size: 32px; font-weight: 300; line-height: 1; }
+
+        @media (max-width: 768px) {
+            .wrapper { padding: 60px 20px; }
+            .main-title { font-size: 34px; }
+            .card-container { grid-template-columns: 1fr; gap: 16px; }
+            .card { padding: 45px 20px; }
+            .main-btn { font-size: 22px; }
         }
     </style>
 </head>
@@ -62,27 +125,36 @@
 
 <div class="wrapper">
     <header class="header">
-        <p class="sub-top">매출이 안 늘어 고민인</p>
-        <span class="target">헬스장·PT숍·필라테스 사장님</span>
-        <h1 class="main-title">지금 필요한 건<br>마케팅입니까,<br>브랜딩입니까?</h1>
-        <p class="guide-text">현재 상황에 맞는 항목을 선택하세요.</p>
+        <span class="sub-top"><span class="highlight">매출이 안 늘어 고민인</span></span>
+        <span class="target">헬스장·PT샵·필라테스 사장님</span>
+        <h1 class="main-title">
+            지금 필요한 건<br>
+            <span class="highlight">마케팅</span>입니까,<br>
+            <span class="highlight">브랜딩</span>입니까?
+        </h1>
+        <span class="guide-text">현재 상황에 맞는 항목을 선택하세요.</span>
     </header>
 
     <div class="card-container">
         <a href="https://naver.me/FVSQeTYD" class="card marketing">
-            <span class="label">마케팅</span>
+            <span class="label">MARKETING</span>
             <h2 class="status">노출 부족</h2>
-            <p class="detail">검색이 안 되고 노출이 적고<br>문의 자체가 거의 없는 상태</p>
+            <p class="detail">검색이 안 되고<br>노출이 적고<br>문의 자체가<br>거의 없는 상태</p>
         </a>
 
         <a href="https://naver.me/FVSQeTYD" class="card branding">
-            <span class="label">브랜딩</span>
+            <span class="label">BRANDING</span>
             <h2 class="status">전환 문제</h2>
-            <p class="detail">방문자는 있지만 문의가 적거나<br>상담 후 등록이 안 되는 상태</p>
+            <p class="detail">방문자는 있지만<br>문의가 적거나<br>상담 후 등록이<br>안 되는 상태</p>
         </a>
     </div>
 
-    <a href="https://naver.me/FVSQeTYD" class="cta-button">무료 진단 신청하기</a>
+    <div class="cta-wrap">
+        <a href="https://naver.me/FVSQeTYD" class="main-btn">
+            <span>내 센터 솔루션 진단받기</span>
+            <span class="arrow">→</span>
+        </a>
+    </div>
 </div>
 
 </body>
