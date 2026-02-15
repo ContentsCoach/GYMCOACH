@@ -2,60 +2,72 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>형이야마케터</title>
 
 <style>
+/* 폰트 및 기본 리셋 */
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Pretendard', sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
-body {
+html, body {
+    height: 100%;
     background: #000;
     color: #fff;
+    overflow: hidden; /* 한 페이지에 고정하기 위해 스크롤 방지 */
 }
 
-/* 전체 컨테이너 */
+/* 전체 컨테이너를 화면 중앙에 배치 */
 .container {
     max-width: 480px;
+    height: 100%;
     margin: 0 auto;
-    padding: 20px 18px 30px;
+    padding: 0 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 세로 중앙 정렬 */
 }
 
-/* 섹션 간격 통일 */
+/* 섹션 간격 최적화 */
 section {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-/* 상단 */
+/* 상단 영역 */
 .hero {
     text-align: center;
+    margin-bottom: 40px;
 }
 
 .target {
-    font-size: 14px;
+    font-size: 15px;
     color: #FFD400;
     font-weight: 600;
     line-height: 1.5;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .hero h1 {
-    font-size: 24px;
-    line-height: 1.4;
-    font-weight: 700;
-    margin-bottom: 8px;
+    font-size: 28px;
+    line-height: 1.3;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -0.5px;
 }
 
 .hero p {
     font-size: 15px;
-    color: #aaa;
+    color: #888;
 }
 
-/* 구조 영역 */
+/* 카드 영역 */
 .structure-grid {
     display: flex;
     gap: 12px;
@@ -64,40 +76,38 @@ section {
 .structure-card {
     flex: 1;
     background: #111;
-    border-radius: 14px;
-    padding: 16px 12px;
+    border-radius: 16px;
+    padding: 24px 10px;
     border: 1px solid #222;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: 130px;
 }
 
 .structure-card h3 {
-    font-size: 16px;
-    margin-bottom: 6px;
+    font-size: 18px;
+    margin-bottom: 8px;
+    font-weight: 700;
 }
 
 .structure-core {
-    font-size: 14px;
+    font-size: 16px;
     color: #FFD400;
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 12px;
 }
 
 .structure-desc {
     font-size: 13px;
-    color: #bbb;
-    line-height: 1.5;
+    color: #aaa;
+    line-height: 1.6;
+    word-break: keep-all;
 }
 
-/* CTA (기본: PC에서는 일반 위치) */
+/* 하단 버튼 영역 */
 .cta {
+    width: 100%;
     max-width: 480px;
     margin: 0 auto;
-    padding: 20px 18px 30px;
-    background: #000;
+    padding: 20px 18px 40px; /* 하단 여백 확보 */
 }
 
 .cta a {
@@ -106,26 +116,23 @@ section {
     background: #FFD400;
     color: #000;
     text-align: center;
-    padding: 14px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 700;
+    padding: 18px;
+    border-radius: 14px;
+    font-size: 18px;
+    font-weight: 800;
     text-decoration: none;
+    transition: background 0.2s;
 }
 
-/* 모바일에서만 하단 고정 */
-@media (max-width: 480px) {
-    .cta {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 10px 18px 14px;
-    }
+.cta a:active {
+    background: #e6bf00;
+}
 
-    .container {
-        padding-bottom: 80px; /* CTA 가림 방지 */
-    }
+/* 모바일 전용 하단 고정 해제 및 비율 조정 */
+@media (max-height: 700px) {
+    .hero h1 { font-size: 24px; }
+    section { margin-bottom: 20px; }
+    .structure-card { padding: 15px 10px; }
 }
 </style>
 </head>
@@ -134,7 +141,6 @@ section {
 
 <div class="container">
 
-    <!-- 상단 -->
     <section class="hero">
         <div class="target">
             매출이 안 늘어 고민인<br>
@@ -150,7 +156,6 @@ section {
         <p>현재 상황에 맞는 항목을 선택하세요.</p>
     </section>
 
-    <!-- 구조 설명 -->
     <section class="structure">
         <div class="structure-grid">
 
@@ -177,13 +182,12 @@ section {
         </div>
     </section>
 
-</div>
+    <div class="cta">
+        <a href="https://naver.me/FVSQeTYD" target="_blank">
+            무료 진단 신청하기
+        </a>
+    </div>
 
-<!-- CTA -->
-<div class="cta">
-    <a href="https://naver.me/FVSQeTYD" target="_blank">
-        무료 진단 신청하기
-    </a>
 </div>
 
 </body>
