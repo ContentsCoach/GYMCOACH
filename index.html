@@ -22,10 +22,10 @@
             text-align: center; 
         }
 
-        /* [수정] 요청에 따라 highlight 배경 제거 */
+        /* [수정] 요청에 따라 특정 부분만 형광펜 효과 적용 */
         .highlight {
-            background: none; 
-            padding: 0;
+            background: linear-gradient(to top, rgba(255, 235, 59, 0.5) 45%, transparent 45%);
+            padding: 0 2px;
             display: inline;
         }
 
@@ -37,6 +37,9 @@
             margin-bottom: 8px; 
             display: block; 
         }
+        /* 대상 텍스트는 형광펜 제외 */
+        .sub-top .highlight { background: none; padding: 0; }
+
         .target { 
             font-size: 20px; 
             font-weight: 800; 
