@@ -21,7 +21,7 @@ html, body {
     height: 100%;
     background: #000;
     color: #fff;
-    overflow: hidden; /* 한 페이지에 고정하기 위해 스크롤 방지 */
+    overflow: hidden; /* 한 페이지에 고정 */
 }
 
 /* 전체 컨테이너를 화면 중앙에 배치 */
@@ -32,7 +32,7 @@ html, body {
     padding: 0 18px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* 세로 중앙 정렬 */
+    justify-content: center;
 }
 
 /* 섹션 간격 최적화 */
@@ -43,7 +43,7 @@ section {
 /* 상단 영역 */
 .hero {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .target {
@@ -67,7 +67,7 @@ section {
     color: #888;
 }
 
-/* 카드 영역 */
+/* 카드 영역 (클릭 가능하도록 수정) */
 .structure-grid {
     display: flex;
     gap: 12px;
@@ -80,6 +80,17 @@ section {
     padding: 24px 10px;
     border: 1px solid #222;
     text-align: center;
+    text-decoration: none; /* 링크 밑줄 제거 */
+    color: inherit;
+    display: block;
+    transition: all 0.2s ease;
+}
+
+/* 카드 클릭/호버 효과 */
+.structure-card:active {
+    transform: scale(0.96);
+    background: #1a1a1a;
+    border-color: #444;
 }
 
 .structure-card h3 {
@@ -107,7 +118,7 @@ section {
     width: 100%;
     max-width: 480px;
     margin: 0 auto;
-    padding: 20px 18px 40px; /* 하단 여백 확보 */
+    padding: 20px 0 40px; 
 }
 
 .cta a {
@@ -128,11 +139,12 @@ section {
     background: #e6bf00;
 }
 
-/* 모바일 전용 하단 고정 해제 및 비율 조정 */
+/* 기기 높이가 낮을 경우 대응 */
 @media (max-height: 700px) {
     .hero h1 { font-size: 24px; }
     section { margin-bottom: 20px; }
-    .structure-card { padding: 15px 10px; }
+    .structure-card { padding: 18px 10px; }
+    .hero { margin-bottom: 20px; }
 }
 </style>
 </head>
@@ -159,7 +171,7 @@ section {
     <section class="structure">
         <div class="structure-grid">
 
-            <div class="structure-card">
+            <a href="https://naver.me/FVSQeTYD" target="_blank" class="structure-card">
                 <h3>마케팅</h3>
                 <div class="structure-core">노출 부족</div>
                 <div class="structure-desc">
@@ -167,9 +179,9 @@ section {
                     노출이 적고<br>
                     문의 자체가 거의 없는 상태
                 </div>
-            </div>
+            </a>
 
-            <div class="structure-card">
+            <a href="https://naver.me/FVSQeTYD" target="_blank" class="structure-card">
                 <h3>브랜딩</h3>
                 <div class="structure-core">전환 문제</div>
                 <div class="structure-desc">
@@ -177,7 +189,7 @@ section {
                     문의가 적거나<br>
                     상담 후 등록이 안 되는 상태
                 </div>
-            </div>
+            </a>
 
         </div>
     </section>
