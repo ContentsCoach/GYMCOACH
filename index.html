@@ -5,124 +5,128 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>진단 랜딩페이지</title>
     <style>
-        /* 기본 설정: 화면 꽉 채우기 */
+        /* 기본 설정: 스크롤 없이 화면에 딱 맞춤 */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', -apple-system, sans-serif; }
         html, body { height: 100%; background-color: #000; color: #fff; overflow: hidden; }
 
-        .wrapper {
+        .container {
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* 상하 균등 배분 */
-            height: 100dvh; /* 모바일 브라우저 툴바 제외 높이 */
-            padding: 60px 24px 40px;
+            justify-content: space-between;
+            height: 100dvh; /* 모바일 브라우저 주소창 제외 실제 높이 */
+            padding: 12% 6%; /* 상하좌우 여백 최적화 */
             text-align: center;
         }
 
-        /* 상단 헤더 섹션 */
-        .header-group { margin-bottom: 20px; }
-        .sub-title { 
+        /* 1. 상단 헤더: 대상과 핵심 질문 강조 */
+        .header-section { margin-bottom: 20px; }
+        .target-text { 
             color: #FFD700; 
-            font-size: 1.1rem; 
-            font-weight: 600; 
+            font-size: clamp(1rem, 4.5vw, 1.2rem); 
+            font-weight: 700; 
             line-height: 1.5;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
-        .main-title { 
-            font-size: 2.2rem; 
-            font-weight: 800; 
+        .main-question { 
+            font-size: clamp(1.8rem, 8vw, 2.4rem); 
+            font-weight: 900; 
             line-height: 1.3; 
-            letter-spacing: -0.5px;
-            margin-bottom: 20px;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
         }
-        .description { 
-            color: #999; 
+        .guide-text { 
+            color: #888; 
             font-size: 1.1rem; 
             font-weight: 400; 
         }
 
-        /* 중앙 카드 섹션 */
-        .card-container {
+        /* 2. 중앙 카드: 크기 키우고 위계 명확화 */
+        .card-group {
             display: flex;
             gap: 12px;
-            width: 100%;
-            margin: 30px 0;
+            flex: 1;
+            align-items: center; /* 중앙 정렬 */
+            margin: 20px 0;
         }
         .card {
             flex: 1;
-            background: #1a1a1a;
-            border-radius: 20px;
-            padding: 35px 10px;
+            background: #151515;
+            border-radius: 24px;
+            padding: 40px 10px;
             border: 1px solid #333;
+            height: 100%;
+            max-height: 350px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            justify-content: center;
         }
-        .card h2 { 
-            font-size: 1.4rem; 
-            margin-bottom: 10px; 
+        .card .type { 
+            font-size: 1.5rem; 
             font-weight: 700;
+            margin-bottom: 12px;
         }
-        .card .highlight { 
+        .card .status { 
             color: #FFD700; 
-            font-size: 1.25rem; 
+            font-size: 1.3rem; 
             font-weight: 800; 
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-        .card p { 
-            font-size: 0.95rem; 
-            color: #ccc; 
+        .card .detail { 
+            font-size: 1rem; 
+            color: #bbb; 
             line-height: 1.6; 
             word-break: keep-all;
         }
 
-        /* 하단 버튼 섹션 */
-        .cta-button {
+        /* 3. 하단 버튼: 압도적인 크기로 클릭 유도 */
+        .cta-area { width: 100%; }
+        .submit-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            height: 70px; /* 버튼 크기 확대 */
+            height: 80px; /* 버튼 크기 대폭 확대 */
             background-color: #FFD700;
             color: #000;
             text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: 800;
-            border-radius: 16px;
-            margin-top: auto;
+            font-size: 1.5rem;
+            font-weight: 900;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.2);
         }
 
-        /* 아이폰 노치 대응 */
+        /* 아이폰 하단 홈 바 영역 대응 */
         @supports (padding: env(safe-area-inset-bottom)) {
-            .wrapper {
-                padding-bottom: calc(20px + env(safe-area-inset-bottom));
-            }
+            .container { padding-bottom: calc(30px + env(safe-area-inset-bottom)); }
         }
     </style>
 </head>
 <body>
 
-<div class="wrapper">
-    <div class="header-group">
-        <p class="sub-title">매출이 안 늘어 고민인<br>헬스장·PT숍·필라테스 사장님</p>
-        <h1 class="main-title">지금 필요한 건<br>마케팅입니까, 브랜딩입니까?</h1>
-        <p class="description">현재 상황에 맞는 항목을 선택하세요.</p>
+<div class="container">
+    <div class="header-section">
+        <p class="target-text">매출이 안 늘어 고민인<br>헬스장·PT샵·필라테스 사장님</p>
+        <h1 class="main-question">지금 필요한 건<br>마케팅입니까?<br>브랜딩입니까?</h1>
+        <p class="guide-text">현재 상황에 맞는 항목을 선택하세요.</p>
     </div>
 
-    <div class="card-container">
+    <div class="card-group">
         <div class="card">
-            <h2>마케팅</h2>
-            <span class="highlight">노출 부족</span>
-            <p>검색이 안 되고<br>노출이 적고<br>문의 자체가 거의 없는 상태</p>
+            <div class="type">마케팅</div>
+            <div class="status">노출 부족</div>
+            <p class="detail">검색이 안 되고<br>노출이 적고<br>문의 자체가 거의 없는 상태</p>
         </div>
 
         <div class="card">
-            <h2>브랜딩</h2>
-            <span class="highlight">전환 문제</span>
-            <p>방문자는 있지만<br>문의가 적거나<br>상담 후 등록이 안 되는 상태</p>
+            <div class="type">브랜딩</div>
+            <div class="status">전환 문제</div>
+            <p class="detail">방문자는 있지만<br>문의가 적거나<br>상담 후 등록이 안 되는 상태</p>
         </div>
     </div>
 
-    <a href="#" class="cta-button">무료 진단 신청하기</a>
+    <div class="cta-area">
+        <a href="#" class="submit-btn">무료 진단 신청하기</a>
+    </div>
 </div>
 
 </body>
