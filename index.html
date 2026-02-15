@@ -1,205 +1,128 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>형이야마케터</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>진단 랜딩페이지</title>
+    <style>
+        /* 기본 설정: 화면 꽉 채우기 */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', -apple-system, sans-serif; }
+        html, body { height: 100%; background-color: #000; color: #fff; overflow: hidden; }
 
-<style>
-/* 폰트 및 기본 리셋 */
-@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css');
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* 상하 균등 배분 */
+            height: 100dvh; /* 모바일 브라우저 툴바 제외 높이 */
+            padding: 60px 24px 40px;
+            text-align: center;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Pretendard', sans-serif;
-    -webkit-tap-highlight-color: transparent;
-}
+        /* 상단 헤더 섹션 */
+        .header-group { margin-bottom: 20px; }
+        .sub-title { 
+            color: #FFD700; 
+            font-size: 1.1rem; 
+            font-weight: 600; 
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .main-title { 
+            font-size: 2.2rem; 
+            font-weight: 800; 
+            line-height: 1.3; 
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+        .description { 
+            color: #999; 
+            font-size: 1.1rem; 
+            font-weight: 400; 
+        }
 
-html, body {
-    height: 100%;
-    background: #000;
-    color: #fff;
-    overflow: hidden; /* 한 페이지에 고정 */
-}
+        /* 중앙 카드 섹션 */
+        .card-container {
+            display: flex;
+            gap: 12px;
+            width: 100%;
+            margin: 30px 0;
+        }
+        .card {
+            flex: 1;
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 35px 10px;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .card h2 { 
+            font-size: 1.4rem; 
+            margin-bottom: 10px; 
+            font-weight: 700;
+        }
+        .card .highlight { 
+            color: #FFD700; 
+            font-size: 1.25rem; 
+            font-weight: 800; 
+            margin-bottom: 15px;
+        }
+        .card p { 
+            font-size: 0.95rem; 
+            color: #ccc; 
+            line-height: 1.6; 
+            word-break: keep-all;
+        }
 
-/* 전체 컨테이너를 화면 중앙에 배치 */
-.container {
-    max-width: 480px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0 18px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+        /* 하단 버튼 섹션 */
+        .cta-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 70px; /* 버튼 크기 확대 */
+            background-color: #FFD700;
+            color: #000;
+            text-decoration: none;
+            font-size: 1.3rem;
+            font-weight: 800;
+            border-radius: 16px;
+            margin-top: auto;
+        }
 
-/* 섹션 간격 최적화 */
-section {
-    margin-bottom: 30px;
-}
-
-/* 상단 영역 */
-.hero {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.target {
-    font-size: 15px;
-    color: #FFD400;
-    font-weight: 600;
-    line-height: 1.5;
-    margin-bottom: 12px;
-}
-
-.hero h1 {
-    font-size: 28px;
-    line-height: 1.3;
-    font-weight: 800;
-    margin-bottom: 15px;
-    letter-spacing: -0.5px;
-}
-
-.hero p {
-    font-size: 15px;
-    color: #888;
-}
-
-/* 카드 영역 (클릭 가능하도록 수정) */
-.structure-grid {
-    display: flex;
-    gap: 12px;
-}
-
-.structure-card {
-    flex: 1;
-    background: #111;
-    border-radius: 16px;
-    padding: 24px 10px;
-    border: 1px solid #222;
-    text-align: center;
-    text-decoration: none; /* 링크 밑줄 제거 */
-    color: inherit;
-    display: block;
-    transition: all 0.2s ease;
-}
-
-/* 카드 클릭/호버 효과 */
-.structure-card:active {
-    transform: scale(0.96);
-    background: #1a1a1a;
-    border-color: #444;
-}
-
-.structure-card h3 {
-    font-size: 18px;
-    margin-bottom: 8px;
-    font-weight: 700;
-}
-
-.structure-core {
-    font-size: 16px;
-    color: #FFD400;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
-
-.structure-desc {
-    font-size: 13px;
-    color: #aaa;
-    line-height: 1.6;
-    word-break: keep-all;
-}
-
-/* 하단 버튼 영역 */
-.cta {
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 20px 0 40px; 
-}
-
-.cta a {
-    display: block;
-    width: 100%;
-    background: #FFD400;
-    color: #000;
-    text-align: center;
-    padding: 18px;
-    border-radius: 14px;
-    font-size: 18px;
-    font-weight: 800;
-    text-decoration: none;
-    transition: background 0.2s;
-}
-
-.cta a:active {
-    background: #e6bf00;
-}
-
-/* 기기 높이가 낮을 경우 대응 */
-@media (max-height: 700px) {
-    .hero h1 { font-size: 24px; }
-    section { margin-bottom: 20px; }
-    .structure-card { padding: 18px 10px; }
-    .hero { margin-bottom: 20px; }
-}
-</style>
+        /* 아이폰 노치 대응 */
+        @supports (padding: env(safe-area-inset-bottom)) {
+            .wrapper {
+                padding-bottom: calc(20px + env(safe-area-inset-bottom));
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-
-    <section class="hero">
-        <div class="target">
-            매출이 안 늘어 고민인<br>
-            헬스장·PT샵·필라테스 사장님
-        </div>
-
-        <h1>
-            지금 필요한 건<br>
-            마케팅입니까,<br>
-            브랜딩입니까?
-        </h1>
-
-        <p>현재 상황에 맞는 항목을 선택하세요.</p>
-    </section>
-
-    <section class="structure">
-        <div class="structure-grid">
-
-            <a href="https://naver.me/FVSQeTYD" target="_blank" class="structure-card">
-                <h3>마케팅</h3>
-                <div class="structure-core">노출 부족</div>
-                <div class="structure-desc">
-                    검색이 안 되고<br>
-                    노출이 적고<br>
-                    문의 자체가 거의 없는 상태
-                </div>
-            </a>
-
-            <a href="https://naver.me/FVSQeTYD" target="_blank" class="structure-card">
-                <h3>브랜딩</h3>
-                <div class="structure-core">전환 문제</div>
-                <div class="structure-desc">
-                    방문자는 있지만<br>
-                    문의가 적거나<br>
-                    상담 후 등록이 안 되는 상태
-                </div>
-            </a>
-
-        </div>
-    </section>
-
-    <div class="cta">
-        <a href="https://naver.me/FVSQeTYD" target="_blank">
-            무료 진단 신청하기
-        </a>
+<div class="wrapper">
+    <div class="header-group">
+        <p class="sub-title">매출이 안 늘어 고민인<br>헬스장·PT숍·필라테스 사장님</p>
+        <h1 class="main-title">지금 필요한 건<br>마케팅입니까, 브랜딩입니까?</h1>
+        <p class="description">현재 상황에 맞는 항목을 선택하세요.</p>
     </div>
 
+    <div class="card-container">
+        <div class="card">
+            <h2>마케팅</h2>
+            <span class="highlight">노출 부족</span>
+            <p>검색이 안 되고<br>노출이 적고<br>문의 자체가 거의 없는 상태</p>
+        </div>
+
+        <div class="card">
+            <h2>브랜딩</h2>
+            <span class="highlight">전환 문제</span>
+            <p>방문자는 있지만<br>문의가 적거나<br>상담 후 등록이 안 되는 상태</p>
+        </div>
+    </div>
+
+    <a href="#" class="cta-button">무료 진단 신청하기</a>
 </div>
 
 </body>
