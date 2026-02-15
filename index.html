@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>형이야마케터</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard', sans-serif;
+}
+
+body {
+    background: #000;
+    color: #fff;
+}
+
+/* 전체 컨테이너 */
+.container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 18px 30px;
+}
+
+/* 섹션 간격 통일 */
+section {
+    margin-bottom: 20px;
+}
+
+/* 상단 */
+.hero {
+    text-align: center;
+}
+
+.target {
+    font-size: 14px;
+    color: #FFD400;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+
+.hero h1 {
+    font-size: 24px;
+    line-height: 1.4;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.hero p {
+    font-size: 15px;
+    color: #aaa;
+}
+
+/* 구조 영역 */
+.structure-grid {
+    display: flex;
+    gap: 12px;
+}
+
+.structure-card {
+    flex: 1;
+    background: #111;
+    border-radius: 14px;
+    padding: 16px 12px;
+    border: 1px solid #222;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 130px;
+}
+
+.structure-card h3 {
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+.structure-core {
+    font-size: 14px;
+    color: #FFD400;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.structure-desc {
+    font-size: 13px;
+    color: #bbb;
+    line-height: 1.5;
+}
+
+/* CTA (기본: PC에서는 일반 위치) */
+.cta {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 18px 30px;
+    background: #000;
+}
+
+.cta a {
+    display: block;
+    width: 100%;
+    background: #FFD400;
+    color: #000;
+    text-align: center;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+/* 모바일에서만 하단 고정 */
+@media (max-width: 480px) {
+    .cta {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 10px 18px 14px;
+    }
+
+    .container {
+        padding-bottom: 80px; /* CTA 가림 방지 */
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- 상단 -->
+    <section class="hero">
+        <div class="target">
+            매출이 안 늘어 고민인<br>
+            헬스장·PT샵·필라테스 사장님
+        </div>
+
+        <h1>
+            지금 필요한 건<br>
+            마케팅입니까,<br>
+            브랜딩입니까?
+        </h1>
+
+        <p>현재 상황에 맞는 항목을 선택하세요.</p>
+    </section>
+
+    <!-- 구조 설명 -->
+    <section class="structure">
+        <div class="structure-grid">
+
+            <div class="structure-card">
+                <h3>마케팅</h3>
+                <div class="structure-core">노출 부족</div>
+                <div class="structure-desc">
+                    검색이 안 되고<br>
+                    노출이 적고<br>
+                    문의 자체가 거의 없는 상태
+                </div>
+            </div>
+
+            <div class="structure-card">
+                <h3>브랜딩</h3>
+                <div class="structure-core">전환 문제</div>
+                <div class="structure-desc">
+                    방문자는 있지만<br>
+                    문의가 적거나<br>
+                    상담 후 등록이 안 되는 상태
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<!-- CTA -->
+<div class="cta">
+    <a href="https://naver.me/FVSQeTYD" target="_blank">
+        무료 진단 신청하기
+    </a>
+</div>
+
+</body>
+</html>
