@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마케팅 칼럼 리스트</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <style>
+        body { font-family: 'Pretendard', sans-serif; background: #fff; padding: 40px 24px; color: #111; }
+        .container { max-width: 600px; margin: 0 auto; }
+        h1 { font-size: 32px; font-weight: 900; margin-bottom: 40px; text-align: center; letter-spacing: -0.05em; }
+        .column-card { border: 1px solid #eee; padding: 30px 20px; border-radius: 20px; margin-bottom: 15px; cursor: pointer; transition: 0.2s; }
+        .column-card:active { background: #f9f9f9; transform: scale(0.98); }
+        .tag { font-weight: 800; color: #3e5eff; font-size: 14px; margin-bottom: 8px; display: block; }
+        h3 { font-size: 20px; font-weight: 800; line-height: 1.4; word-break: keep-all; }
+        .desc { color: #666; font-size: 14px; margin-top: 10px; line-height: 1.5; }
+        .back-btn { display: block; text-align: center; margin-top: 40px; color: #888; text-decoration: none; font-weight: 700; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>마케팅 칼럼 리스트</h1>
+    
+    <div class="column-card" onclick="openColumn('marketing-01', '1234')">
+        <span class="tag">PAGE 1</span>
+        <h3>플레이스 순위보다 중요한 '클릭률(CTR)'의 비밀</h3>
+        <p class="desc">노출은 숫자에 불과합니다. 진짜 유입을 만드는 0.5초의 승부.</p>
+    </div>
+
+    <a href="index.html" class="back-btn">← 메인으로 돌아가기</a>
+</div>
+
+<script>
+function openColumn(file, pwd) {
+    const input = prompt("비공개 코드를 입력하세요.");
+    if (input === pwd) {
+        location.href = file + ".html";
+    } else if (input !== null) {
+        alert("코드가 올바르지 않습니다.");
+    }
+}
+</script>
+</body>
+</html>
