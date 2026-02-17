@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>플레이스 유입의 기술</title>
+    <title>플레이스 1페이지인데 문의가 없는 센터, 실제로 있습니다</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
         body { font-family: 'Pretendard', sans-serif; line-height: 1.8; padding: 40px 20px; max-width: 500px; margin: 0 auto; color: #111; background-color: #fff; word-break: keep-all; }
-        .category { color: #3e5eff; font-weight: 800; font-size: 14px; margin-bottom: 10px; display: block; text-transform: uppercase; }
         h1 { font-size: 26px; font-weight: 900; line-height: 1.35; margin-bottom: 40px; color: #000; letter-spacing: -1px; }
         h2 { font-size: 21px; font-weight: 900; margin: 50px 0 20px; color: #000; }
         p { margin-bottom: 25px; font-size: 17px; color: #333; }
@@ -16,35 +15,29 @@
         .emp { font-weight: 800; color: #000; }
         hr { border: 0; border-top: 1px solid #f2f2f2; margin: 40px 0; }
 
-        /* [모든 표 공통 스타일] 사장님이 보내주신 이미지 기반 디자인 */
+        /* 모든 표 디자인 통일 (라운드 카드 스타일) */
         .card-container { background: #f8faff; border-radius: 25px; padding: 35px 20px; margin: 35px 0; }
         .data-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-        
-        /* 헤더 스타일 */
         .data-table thead th { padding-bottom: 20px; font-size: 16px; font-weight: 800; text-align: center; border-bottom: 1px solid #eef2f8; }
-        .bad-title { color: #999; } /* Before에 대응 */
-        .good-title { color: #3e5eff; } /* After에 대응 */
-
-        /* 셀 스타일 - 가운데 정렬 필수 */
+        .bad-title { color: #999; }
+        .good-title { color: #3e5eff; }
         .data-table th.row-label { width: 30%; color: #444; font-weight: 700; text-align: center; }
         .data-table td { padding: 18px 5px; font-size: 15.5px; text-align: center; vertical-align: middle; border-bottom: 1px solid #eef2f8; }
         .data-table tr:last-child td, .data-table tr:last-child th { border-bottom: none; }
 
-        /* Before/After 색상 포인트 */
         .before-val { color: #999; }
         .after-val { color: #3e5eff; font-weight: 800; }
 
-        /* 체크리스트 카드 */
+        /* 체크리스트 */
         .chk-card { border: 2.5px solid #3e5eff; border-radius: 25px; padding: 35px 25px; margin: 50px 0; }
         .chk-title { font-weight: 900; font-size: 20px; color: #3e5eff; margin-bottom: 25px; display: block; }
-        .chk-item { display: flex; align-items: center; margin-bottom: 18px; font-weight: 700; font-size: 16.5px; }
-        .chk-item input { width: 22px; height: 22px; margin-right: 12px; cursor: pointer; }
+        .chk-item { display: flex; align-items: flex-start; margin-bottom: 18px; font-weight: 700; font-size: 16px; }
+        .chk-item input { width: 20px; height: 20px; margin-right: 12px; margin-top: 4px; cursor: pointer; }
 
-        .btn { display: block; text-align: center; background: #3e5eff; color: #fff; font-weight: 800; text-decoration: none; padding: 20px; border-radius: 15px; margin-top: 60px; font-size: 18px; box-shadow: 0 4px 15px rgba(62, 94, 255, 0.3); }
+        .btn { display: block; text-align: center; background: #3e5eff; color: #fff; font-weight: 800; text-decoration: none; padding: 20px; border-radius: 15px; margin-top: 60px; font-size: 18px; }
     </style>
 </head>
 <body>
-    <span class="category">Marketing Column</span>
     <h1>플레이스 1페이지인데 문의가 없는 센터, 실제로 있습니다</h1>
 
     <p>작년에 컨설팅했던 강남 필라테스 센터예요. 플레이스 1페이지 안에 있었는데 한 달 문의가 3건이었습니다. 플레이스 통계를 열어봤더니 월 노출 1,200회에 클릭 48번 — <span class="highlight">클릭률 4%</span>였어요.</p>
@@ -111,14 +104,16 @@
     </div>
 
     <div class="chk-card">
-        <span class="chk-title">플레이스 CTR 자가진단</span>
-        <div class="chk-item"><input type="checkbox"> 대표 이미지에 사람이 있는가?</div>
-        <div class="chk-item"><input type="checkbox"> 이름에 지역명+키워드가 있는가?</div>
-        <div class="chk-item"><input type="checkbox"> 소개글 첫 4줄에 결과가 있는가?</div>
-        <div class="chk-item"><input type="checkbox"> <span class="emp">경쟁업체</span>보다 내 사진이 압도적인가?</div>
+        <span class="chk-title">플레이스 CTR 자가진단 체크리스트</span>
+        <div class="chk-item"><input type="checkbox"> 대표 이미지에 사람이 있나요?</div>
+        <div class="chk-item"><input type="checkbox"> 기구/인테리어 사진이 첫 번째에 있진 않나요?</div>
+        <div class="chk-item"><input type="checkbox"> 플레이스 이름에 지역명 + 핵심 키워드가 들어가 있나요?</div>
+        <div class="chk-item"><input type="checkbox"> 소개글 첫 4줄에 고객이 얻는 결과가 적혀있나요?</div>
+        <div class="chk-item"><input type="checkbox"> 플레이스 통계에서 노출 대비 클릭률을 확인해본 적 있나요?</div>
+        <div class="chk-item"><input type="checkbox"> 경쟁업체 5곳과 내 사진을 나란히 놓고 비교해봤나요?</div>
     </div>
 
-    <p>체크가 부족하다면, 지금 이 순간에도 잠재 고객을 <span class="emp">경쟁업체</span>에 상납하고 있는 겁니다.</p>
+    <p>체크가 3개 이하라면, 지금 이 순간에도 잠재 고객을 <span class="emp">경쟁업체</span>에 넘기고 있는 겁니다.</p>
 
     <a href="marketing-list.html" class="btn">다른 마케팅 칼럼 더보기</a>
 </body>
