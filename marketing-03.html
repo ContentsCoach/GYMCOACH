@@ -3,34 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마케팅 칼럼: 순위 하락의 진실</title>
+    <title>방문자 월 500명인데 문의 2건, 체류시간 하나 바꿨더니 9건 됐습니다</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
-        body { font-family: 'Pretendard', sans-serif; line-height: 1.8; padding: 60px 24px; max-width: 750px; margin: 0 auto; color: #111; background-color: #fff; }
-        .category { color: #3e5eff; font-weight: 800; font-size: 14px; margin-bottom: 10px; display: block; }
-        h1 { font-size: clamp(24px, 5vw, 32px); font-weight: 900; line-height: 1.4; margin-bottom: 40px; word-break: keep-all; }
-        p { margin-bottom: 25px; font-size: 17px; color: #333; text-align: justify; }
-        strong { font-weight: 700; background: linear-gradient(to top, rgba(255, 235, 59, 0.5) 45%, transparent 45%); }
-        .quote-box { background: #f8faff; padding: 30px; border-left: 5px solid #3e5eff; margin: 40px 0; border-radius: 0 15px 15px 0; }
-        .back-link { display: block; text-align: center; margin-top: 80px; font-weight: 800; color: #3e5eff; text-decoration: none; border: 1px solid #3e5eff; padding: 15px; border-radius: 10px; }
+        body { font-family: 'Pretendard', sans-serif; line-height: 1.8; padding: 40px 20px; max-width: 500px; margin: 0 auto; color: #111; background-color: #fff; word-break: keep-all; }
+        h1 { font-size: 26px; font-weight: 900; line-height: 1.35; margin-bottom: 40px; color: #000; letter-spacing: -1px; }
+        .category { display: inline-block; font-size: 13px; font-weight: 800; color: #3e5eff; letter-spacing: 1.5px; margin-bottom: 16px; }
+        h2 { font-size: 21px; font-weight: 900; margin: 50px 0 20px; color: #000; }
+        p { margin-bottom: 25px; font-size: 17px; color: #333; }
+
+        .highlight { font-weight: 800; background: linear-gradient(to top, #fff382 40%, transparent 40%); padding: 0 2px; }
+        .emp { font-weight: 800; color: #000; }
+        hr { display: none; }
+
+        /* 카드 표 */
+        .card-container { background: #f8faff; border-radius: 25px; padding: 35px 20px; margin: 35px 0; }
+        .data-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+        .data-table thead th { padding-bottom: 20px; font-size: 16px; font-weight: 800; text-align: center; border-bottom: 1px solid #eef2f8; }
+        .bad-title { color: #999; }
+        .good-title { color: #3e5eff; }
+        .data-table th.row-label { width: 30%; color: #444; font-weight: 700; text-align: center; }
+        .data-table td { padding: 18px 5px; font-size: 15.5px; text-align: center; vertical-align: middle; border-bottom: 1px solid #eef2f8; }
+        .data-table tr:last-child td, .data-table tr:last-child th { border-bottom: none; }
+        .before-val { color: #999; }
+        .after-val { color: #3e5eff; font-weight: 800; }
+
+        /* 체크리스트 */
+        .chk-card { border: 2.5px solid #3e5eff; border-radius: 25px; padding: 35px 25px; margin: 50px 0; }
+        .chk-title { font-weight: 900; font-size: 20px; color: #3e5eff; margin-bottom: 25px; display: block; }
+        .chk-item { display: flex; align-items: flex-start; margin-bottom: 18px; font-weight: 700; font-size: 16px; }
+        .chk-item input { width: 20px; height: 20px; margin-right: 12px; margin-top: 4px; cursor: pointer; }
+
+        .btn { display: block; text-align: center; background: #fff; color: #3e5eff; font-weight: 800; text-decoration: none; padding: 22px 20px; border-radius: 18px; margin-top: 60px; font-size: 18px; border: 2px solid #3e5eff; }
+
+        /* 나쁜예/좋은예 */
+        .example-block { margin: 20px 0; }
+        .example-label { font-size: 14px; font-weight: 800; margin-bottom: 8px; }
+        .example-label.bad { color: #999; }
+        .example-label.good { color: #3e5eff; }
+        .example-text { font-size: 15.5px; color: #333; background: #f8faff; border-radius: 12px; padding: 14px 18px; margin-bottom: 8px; }
+        .example-text.good { background: #eef2ff; }
     </style>
 </head>
 <body>
-    <span class="category">MARKETING COLUMN</span>
-    <h1>플레이스 순위가 뒤로 밀리는 건 경기 탓이 아닙니다</h1>
+    <span class="category">MARKETING INSIGHT</span>
+    <h1>방문자 월 500명인데 문의 2건, 체류시간 하나 바꿨더니 9건 됐습니다</h1>
 
-    <p>공들여 올려놓은 내 가게 플레이스 순위가 어느 순간부터 조금씩 뒤로 밀리는 경험을 해보셨을 겁니다. 이럴 때 대부분의 사장님은 <strong>“요즘 경기가 안 좋아서 그런가?”</strong> 혹은 “장사가 전반적으로 안 되네”라는 생각부터 떠올립니다. 매출이 떨어지고 유입이 줄어드는 원인을 단순히 외부의 운이나 시장 상황 탓으로 돌리며 스스로를 위안하곤 하죠. 하지만 냉정하게 현실을 들여다봐야 합니다. 네이버 플레이스는 한 번 자리를 잡으면 영원히 유지되는 고여있는 물이 아닙니다. 당신이 안주하고 있는 이 순간에도, 플레이스 알고리즘이라는 거대한 흐름은 <strong>멈춰있는 가게를 가차 없이 아래로 밀어내고 있습니다.</strong></p>
+    <p>작년에 컨설팅했던 은평구 필라테스 센터예요. 블로그 방문자가 한 달에 500명이 넘었는데 문의가 2건이었습니다. 통계를 열어봤더니 평균 체류시간이 <span class="highlight">8초</span>였어요.</p>
 
-    <p>주변 가게들을 보십시오. 그들은 지금 이 순간에도 살아남기 위해 처절하게 움직이고 있습니다. 메인 사진을 더 매력적인 것으로 교체하고, 최신 리뷰를 부지런히 쌓으며, 소식란을 통해 끊임없이 생존 신고를 합니다. 고객의 눈높이는 매일같이 높아지고 있는데, 1년 전 사진과 똑같은 소개글을 걸어놓은 가게가 여전히 상위권을 유지하길 바라는 것은 오만입니다. <strong>멈춰있는 가게가 뒤로 밀리는 것은 전혀 이상한 일이 아니라, 지극히 정상적인 시장의 생리입니다.</strong> 시스템은 '관리되지 않는 매장'을 '인기 없는 매장'으로 간주하며, 이는 곧 노출 지수의 하락으로 직결됩니다.</p>
+    <p>8초면 제목 읽고 나간 거예요. 글을 읽은 게 아닙니다.</p>
 
-    <div class="quote-box">
-        결론은 하나입니다. 지금 당장 '사장님의 눈'부터 바꿔야 합니다. 내 가게라고 애정 섞인 눈으로 보지 말고, 생판 남이 되어 냉정하게 첫 화면을 보십시오. <strong>"나라면 1년 전 사진이 그대로인 이 가게에 내 소중한 돈과 시간을 쓸까?"</strong> 이 질문에 1초 만에 "YES"가 나오지 않는다면, 순위가 밀리는 건 경기 탓이 아니라 사장님의 게으름 탓입니다.
+    <p>포스팅 구조 하나 바꿨습니다. 한 달 뒤 평균 체류시간이 <span class="highlight">2분 40초</span>로 올라갔고, 문의는 월 9건이 됐어요. 방문자 수는 그대로였습니다.</p>
+
+    <hr>
+
+    <h2>네이버는 방문자 수보다 체류시간을 봅니다</h2>
+
+    <p>네이버 입장에서 생각해보면 단순해요. 검색한 사람이 글을 클릭하고 바로 나가면 — "이 글이 검색 의도에 안 맞네"라고 판단합니다. 반대로 오래 머물면 — "이 글이 도움이 됐구나"라고 판단하고 더 많이 노출시켜줘요.</p>
+
+    <p>체류시간이 짧은 블로그는 시간이 지날수록 검색 순위가 떨어집니다. <span class="highlight">포스팅을 계속 올려도 상위권에 안 올라오는 이유가 여기 있어요.</span></p>
+
+    <hr>
+
+    <h2>왜 사람들이 글을 읽지 않고 나갈까요</h2>
+
+    <p>첫 문단을 보면 바로 알 수 있어요.</p>
+
+    <div class="example-block">
+        <div class="example-label bad">❌ 대부분의 블로그 첫 문장</div>
+        <div class="example-text">"안녕하세요, OO 필라테스입니다. 저희 센터는 체계적인 관리로 회원님들의 건강을 책임집니다."</div>
     </div>
 
-    <p>많은 사장님이 "바빠서 관리할 시간이 없다"고 핑계를 댑니다. 하지만 마케팅은 시간이 남을 때 하는 부업이 아니라, 장사의 본질입니다. 플레이스 첫 화면은 사장님의 매장으로 들어오는 '대문'입니다. 대문에 거미줄이 치고 먼지가 쌓여있는데 손님이 제발로 걸어 들어오길 바랍니까? 최신성이 결여된 정보는 고객에게 신뢰가 아닌 의구심을 줍니다. "여기는 아직도 영업을 하나?"라는 의문이 생기는 순간, 고객은 이미 경쟁 업체의 페이지로 넘어가 있습니다. <strong>클릭률(CTR)과 체류 시간이라는 정교한 데이터들이 사장님의 방치를 기록하고 순위에 반영하고 있는 것입니다.</strong></p>
+    <p>이 문장을 읽는 순간 고객은 이렇게 생각해요. "어, 이거 내 얘기 아닌데." 그리고 나갑니다.</p>
 
-    <p>지금 당장 내 플레이스를 남의 시선으로 훑어보십시오. 주변 업체들에 비해 우리 매장의 첫인상이 낡아 보이지는 않습니까? 고객은 변화하지 않는 매장에 매력을 느끼지 못합니다. 순위가 밀리는 것을 한탄하기 전에, 내가 오늘 고객에게 어떤 '새로운 가치'를 시각적으로 전달했인지 자문해 보십시오. 지표는 정직합니다. 사장님이 매장을 돌보는 정성이 멈추는 순간, 매출의 흐름도 함께 멈춘다는 사실을 명심하십시오. <strong>게으름을 경계하고 끊임없이 움직이는 것, 그것이 플레이스 상위권을 지키는 유일한 마케팅 전략입니다.</strong></p>
+    <p>고객은 자기 문제를 해결하러 검색했어요. 센터 소개가 보고 싶어서 온 게 아닙니다. <span class="highlight">첫 문장이 고객의 고민으로 시작하지 않으면 2초 안에 나갑니다.</span></p>
 
-    <a href="marketing-list.html" class="back-link">← 다른 마케팅 칼럼 더보기</a>
+    <hr>
+
+    <h2>체류시간 짧은 글 vs 긴 글</h2>
+
+    <div class="card-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th class="row-label">항목</th>
+                    <th class="bad-title">❌ 체류시간 짧음</th>
+                    <th class="good-title">✅ 체류시간 긺</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><th class="row-label">첫 문장</th><td class="before-val">센터 소개로 시작</td><td class="after-val">고객 고민으로 시작</td></tr>
+                <tr><th class="row-label">사진</th><td class="before-val">글 끝에 몰아서</td><td class="after-val">300자마다 한 장</td></tr>
+                <tr><th class="row-label">소제목</th><td class="before-val">없음</td><td class="after-val">3~4개</td></tr>
+                <tr><th class="row-label">마무리</th><td class="before-val">그냥 끝</td><td class="after-val">문의 유도 문장</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <hr>
+
+    <h2>실전 체류시간 올리는 가이드</h2>
+
+    <p><span class="emp">① 첫 문단을 고객 고민으로 시작하세요</span></p>
+    <div class="example-block">
+        <div class="example-label bad">❌ 나쁜 예</div>
+        <div class="example-text">"안녕하세요, 강남 OO 필라테스입니다."</div>
+        <div class="example-label good">✅ 좋은 예</div>
+        <div class="example-text good">"허리 디스크 때문에 운동을 시작하려는데 뭐가 맞는지 모르겠다는 분들 많으시죠?"</div>
+    </div>
+
+    <p><span class="emp">② 사진은 300자마다 한 장씩</span><br>
+    텍스트만 가득한 글은 모바일에서 읽기 힘들어요. 수업 사진, 회원 후기 캡처, 비포애프터 — 중간중간 끊어줘야 스크롤을 내립니다.</p>
+
+    <p><span class="emp">③ 소제목으로 구간을 나눠주세요</span><br>
+    소제목이 있어야 "다음 내용이 뭔지" 궁금해서 계속 읽습니다. 소제목 없는 글은 어디까지 읽었는지도 모르고 나가요.</p>
+
+    <p><span class="emp">④ 마지막에 문의 유도 문장을 넣으세요</span><br>
+    글 끝에 아무것도 없으면 읽고 그냥 나가요. <span class="highlight">"지금 문의하시면 ~해드립니다"</span> 한 줄이 없어서 문의를 못 받는 블로그가 생각보다 많습니다.</p>
+
+    <hr>
+
+    <h2>Before / After 한눈에 보기</h2>
+
+    <div class="card-container">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th class="row-label">항목</th>
+                    <th class="bad-title">Before</th>
+                    <th class="good-title">After</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><th class="row-label">첫 문장</th><td class="before-val">센터 소개</td><td class="after-val">고객 고민으로 시작</td></tr>
+                <tr><th class="row-label">사진 배치</th><td class="before-val">글 끝에 몰아서</td><td class="after-val">300자마다 한 장</td></tr>
+                <tr><th class="row-label">평균 체류시간</th><td class="before-val">8초</td><td class="after-val">2분 40초</td></tr>
+                <tr><th class="row-label">월 방문자</th><td class="before-val">500명</td><td class="after-val">500명</td></tr>
+                <tr><th class="row-label">월 문의</th><td class="before-val">2건</td><td class="after-val">9건</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <p>방문자는 그대로인데 문의가 늘었어요. <span class="highlight">트래픽 문제가 아니라 콘텐츠 구조 문제였던 겁니다.</span></p>
+
+    <div class="chk-card">
+        <span class="chk-title">블로그 체류시간 자가진단 체크리스트</span>
+        <div class="chk-item"><input type="checkbox"> 네이버 블로그 통계에서 평균 체류시간을 확인해봤나요?</div>
+        <div class="chk-item"><input type="checkbox"> 포스팅 첫 문단이 고객 고민으로 시작하나요?</div>
+        <div class="chk-item"><input type="checkbox"> 사진이 글 중간중간에 배치되어 있나요?</div>
+        <div class="chk-item"><input type="checkbox"> 소제목이 3개 이상 있나요?</div>
+        <div class="chk-item"><input type="checkbox"> 글 마지막에 문의 유도 문장이 있나요?</div>
+        <div class="chk-item"><input type="checkbox"> 모바일로 내 블로그 포스팅을 직접 읽어본 적 있나요?</div>
+    </div>
+
+    <p>체크가 3개 이하라면, 지금 방문자들이 <span class="emp">글 읽지 않고 나가고</span> 있는 겁니다.</p>
+
+    <a href="marketing-list.html" class="btn">← 다른 마케팅 칼럼 더보기</a>
 </body>
 </html>
