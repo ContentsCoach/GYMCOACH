@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>플레이스 1페이지인데 문의가 없는 센터, 실제로 있습니다</title>
+    <title>플레이스 유입의 기술</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
         body { font-family: 'Pretendard', sans-serif; line-height: 1.8; padding: 40px 20px; max-width: 500px; margin: 0 auto; color: #111; background-color: #fff; word-break: keep-all; }
-        .category { color: #3e5eff; font-weight: 800; font-size: 14px; margin-bottom: 10px; display: block; }
+        .category { color: #3e5eff; font-weight: 800; font-size: 14px; margin-bottom: 10px; display: block; text-transform: uppercase; }
         h1 { font-size: 26px; font-weight: 900; line-height: 1.35; margin-bottom: 40px; color: #000; letter-spacing: -1px; }
         h2 { font-size: 21px; font-weight: 900; margin: 50px 0 20px; color: #000; }
         p { margin-bottom: 25px; font-size: 17px; color: #333; }
@@ -16,130 +16,109 @@
         .emp { font-weight: 800; color: #000; }
         hr { border: 0; border-top: 1px solid #f2f2f2; margin: 40px 0; }
 
-        /* [표 1] 클릭 안 되는 사진 vs 클릭 되는 사진 - 모든 글자 가운데 정렬 */
-        .vs-card { border: 1px solid #eee; border-radius: 15px; overflow: hidden; margin: 30px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
-        .vs-table { width: 100%; border-collapse: collapse; font-size: 14px; table-layout: fixed; }
-        .vs-table th { background: #111; color: #fff; padding: 15px 5px; font-weight: 800; text-align: center; }
-        .vs-table th.bad { color: #ff5e5e; }
-        .vs-table th.good { color: #00ffaa; }
-        .vs-table td { padding: 15px 8px; border-bottom: 1px solid #f8f8f8; text-align: center; vertical-align: middle; line-height: 1.4; }
-        .vs-table td:first-child { background: #fbfbfb; font-weight: 700; width: 22%; color: #666; border-right: 1px solid #f2f2f2; }
+        /* [모든 표 공통 스타일] 사장님이 보내주신 이미지 기반 디자인 */
+        .card-container { background: #f8faff; border-radius: 25px; padding: 35px 20px; margin: 35px 0; }
+        .data-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+        
+        /* 헤더 스타일 */
+        .data-table thead th { padding-bottom: 20px; font-size: 16px; font-weight: 800; text-align: center; border-bottom: 1px solid #eef2f8; }
+        .bad-title { color: #999; } /* Before에 대응 */
+        .good-title { color: #3e5eff; } /* After에 대응 */
 
-        /* [표 2] Before / After - 모든 글자 가운데 정렬 */
-        .res-box { background: #f8faff; border-radius: 20px; padding: 30px 20px; margin: 40px 0; }
-        .res-table { width: 100%; border-collapse: collapse; }
-        .res-table th, .res-table td { padding: 15px 5px; border-bottom: 1px solid #eef2f8; text-align: center; font-size: 15px; vertical-align: middle; }
-        .res-table tr:last-child th, .res-table tr:last-child td { border-bottom: none; }
-        .res-table th { font-weight: 700; color: #555; width: 25%; }
-        .res-table td:nth-child(2) { color: #999; }
-        .res-table td:last-child { font-weight: 800; color: #3e5eff; }
+        /* 셀 스타일 - 가운데 정렬 필수 */
+        .data-table th.row-label { width: 30%; color: #444; font-weight: 700; text-align: center; }
+        .data-table td { padding: 18px 5px; font-size: 15.5px; text-align: center; vertical-align: middle; border-bottom: 1px solid #eef2f8; }
+        .data-table tr:last-child td, .data-table tr:last-child th { border-bottom: none; }
 
-        /* [체크리스트] 사장님 원문 100% 반영 */
-        .chk-card { border: 2px solid #3e5eff; border-radius: 20px; padding: 30px 25px; margin: 50px 0; }
-        .chk-title { font-weight: 900; font-size: 18px; color: #3e5eff; margin-bottom: 20px; display: block; line-height: 1.4; }
-        .chk-item { display: flex; align-items: flex-start; margin-bottom: 15px; font-weight: 700; font-size: 16px; color: #222; }
-        .chk-item input { width: 18px; height: 18px; margin-right: 12px; margin-top: 5px; cursor: pointer; flex-shrink: 0; }
+        /* Before/After 색상 포인트 */
+        .before-val { color: #999; }
+        .after-val { color: #3e5eff; font-weight: 800; }
 
-        .btn { display: block; text-align: center; background: #3e5eff; color: #fff; font-weight: 800; text-decoration: none; padding: 18px; border-radius: 12px; margin-top: 60px; font-size: 17px; }
+        /* 체크리스트 카드 */
+        .chk-card { border: 2.5px solid #3e5eff; border-radius: 25px; padding: 35px 25px; margin: 50px 0; }
+        .chk-title { font-weight: 900; font-size: 20px; color: #3e5eff; margin-bottom: 25px; display: block; }
+        .chk-item { display: flex; align-items: center; margin-bottom: 18px; font-weight: 700; font-size: 16.5px; }
+        .chk-item input { width: 22px; height: 22px; margin-right: 12px; cursor: pointer; }
+
+        .btn { display: block; text-align: center; background: #3e5eff; color: #fff; font-weight: 800; text-decoration: none; padding: 20px; border-radius: 15px; margin-top: 60px; font-size: 18px; box-shadow: 0 4px 15px rgba(62, 94, 255, 0.3); }
     </style>
 </head>
 <body>
-    <span class="category">MARKETING COLUMN</span>
+    <span class="category">Marketing Column</span>
     <h1>플레이스 1페이지인데 문의가 없는 센터, 실제로 있습니다</h1>
 
     <p>작년에 컨설팅했던 강남 필라테스 센터예요. 플레이스 1페이지 안에 있었는데 한 달 문의가 3건이었습니다. 플레이스 통계를 열어봤더니 월 노출 1,200회에 클릭 48번 — <span class="highlight">클릭률 4%</span>였어요.</p>
 
     <p>노출은 되고 있었던 거예요. 근데 아무도 안 누른 거죠.</p>
 
-    <p>대표 이미지 하나 바꾸고, 플레이스 이름 구조 하나 손봤습니다. 두 달 뒤 <span class="highlight">클릭률 9%</span>로 올라갔고, 문의는 월 17건이 됐어요. 광고비는 그대로였습니다.</p>
+    <p>대표 이미지 하나 바꾸고 이름 구조만 손봤는데, 두 달 뒤 <span class="highlight">클릭률 9%</span>로 올라갔고 문의는 월 17건이 됐습니다. 광고비는 그대로였습니다.</p>
 
     <hr>
 
     <h2>고객은 검색 결과에서 2초 안에 판단합니다</h2>
-    <p>고객이 "강남 필라테스"를 검색하고 나서 실제로 하는 행동을 보면요.</p>
+    <p>고객이 검색 결과에서 실제로 하는 행동은 아주 단순합니다.</p>
 
     <p>
-        <span class="emp">1단계 (0~0.5초)</span> — 이미지를 훑는다. 텍스트는 안 읽어요. 눈에 꽂히는 사진 있으면 멈추고, 없으면 스크롤.<br>
-        <span class="emp">2단계 (0.5~1.5초)</span> — 업체명을 읽는다. 내가 찾는 키워드가 이름 안에 있으면 클릭 확률 올라가요.<br>
+        <span class="emp">1단계 (0.5초)</span> — 이미지를 훑는다. 눈에 꽂히는 사진이 없으면 바로 스크롤합니다.<br>
+        <span class="emp">2단계 (1.5초)</span> — 업체명을 읽는다. 찾는 키워드가 이름에 있으면 클릭 확률이 올라갑니다.<br>
         <span class="emp">3단계 (2초)</span> — 클릭하거나 넘어가거나.
     </p>
 
-    <p>여기서 핵심은 이미지가 마음에 안 들면 2단계로 넘어가지도 않는다는 거예요. 상세 페이지의 <span class="highlight">리뷰나 정성스러운 소개글도 — 이미지에서 걸러지면 아무 소용이 없습니다.</span></p>
+    <p>이미지가 마음에 안 들면 업체명을 읽지도 않습니다. <span class="highlight">이미지에서 걸러지면 상세 페이지의 리뷰나 소개글은 보여줄 기회조차 없습니다.</span></p>
 
-    <div class="vs-card">
-        <table class="vs-table">
+    <div class="card-container">
+        <table class="data-table">
             <thead>
                 <tr>
-                    <th>구분</th>
-                    <th class="bad">❌ 클릭 안 되는 이미지</th>
-                    <th class="good">✅ 클릭 되는 이미지</th>
+                    <th class="row-label">항목</th>
+                    <th class="bad-title">X 클릭 안 됨</th>
+                    <th class="good-title">O 클릭 됨</th>
                 </tr>
             </thead>
             <tbody>
-                <tr><td>주제</td><td>기구, 인테리어 사진, 시설 전경</td><td>실제 수업 장면, 회원 변화</td></tr>
-                <tr><td>고객 반응</td><td>"어디나 다 똑같네"</td><td>"저거 나한테 하는 말인데?"</td></tr>
-                <tr><td>심리</td><td>정보가 아닌 광고로 인식</td><td>내 문제를 해결해줄 것 같은 느낌</td></tr>
-                <tr><td>결과</td><td>무의식적으로 스크롤</td><td>손가락이 멈춤</td></tr>
+                <tr><th class="row-label">주제</th><td class="before-val">기구, 인테리어</td><td class="after-val">수업 장면, 변화</td></tr>
+                <tr><th class="row-label">반응</th><td class="before-val">"어디나 똑같네"</td><td class="after-val">"이건 내 이야기?"</td></tr>
+                <tr><th class="row-label">심리</th><td class="before-val">광고로 인식</td><td class="after-val">해결책으로 인식</td></tr>
+                <tr><th class="row-label">결과</th><td class="before-val">스크롤 패스</td><td class="after-val">손가락이 멈춤</td></tr>
             </tbody>
         </table>
     </div>
 
-    <p><span class="emp">PT샵 나쁜 예</span> — 깔끔한 센터 전경 사진, 최신 기구 클로즈업, 대표원장 자격증 액자<br>
-       <span class="emp">PT샵 좋은 예</span> — 회원이 데드리프트 자세 교정받는 장면, 3개월 전후 체형 변화 사진, 원장이 회원 옆에서 함께 있는 사진</p>
-
-    <p><span class="emp">필라테스 나쁜 예</span> — 리폼머 기구 사진, 넓고 깔끔한 스튜디오 전경, 인테리어 사진<br>
-       <span class="emp">필라테스 좋은 예</span> — 회원이 동작하는 순간, 원장이 직접 교정해주는 장면, "3개월 만에 굽은 등 펴진 실제 회원" 텍스트 들어간 사진</p>
-
     <hr>
 
     <h2>실전 세팅 가이드</h2>
-    <p><span class="emp">① 대표 이미지</span><br>첫 번째 사진이 전부예요. 검색 결과에서 보이는 건 딱 하나거든요.</p>
-    <p>
-        * 인테리어 사진은 2번째 이후로 내리세요<br>
-        * 첫 번째는 반드시 "사람이 있는 사진"으로<br>
-        * 가능하면 변화가 느껴지는 장면 — 교정, 운동 중인 회원, 비포애프터<br>
-        * 텍스트 넣는다면 고객이 얻는 결과로 ("굽은 등 → 바른 자세", "체지방 -8kg")
-    </p>
+    <p><span class="emp">① 대표 이미지</span>: 첫 번째는 무조건 <span class="emp">"사람이 있는 사진"</span>이어야 합니다. 인테리어 사진은 두 번째 이후로 내리세요.</p>
+    <p><span class="emp">② 플레이스 이름</span>: <span class="highlight">[지역명 + 핵심 키워드 + 상호명]</span> 순서가 정석입니다.</p>
+    <p><span class="emp">③ 소개글 첫 4줄</span>: 뻔한 말은 지우고, 고객이 얻을 <span class="highlight">결과(수치)</span>를 4줄 안에 박으세요.</p>
 
-    <p><span class="emp">② 플레이스 이름</span><br>고객이 치는 키워드가 이름 안에 있으면 클릭률이 올라요.</p>
-    <p>
-        * 나쁜 예: "OO 필라테스"<br>
-        * 좋은 예: "강남역 체형교정 필라테스 OO"<br>
-        * 지역명 + 핵심 키워드 + 상호명 순서로
-    </p>
-
-    <p><span class="emp">③ 소개글 첫 4줄</span><br>플레이스 소개글은 '더보기' 클릭 전까지 4줄만 보여요. 더보기 클릭률은 15~20% 수준입니다. 즉, 4줄 안에 승부를 내야 해요.</p>
-    <p>
-        * 나쁜 예: "체계적인 관리와 전문적인 트레이닝을 제공합니다"<br>
-        * 좋은 예: "허리 통증으로 병원 다니다 필라테스로 해결한 회원이 83%입니다"
-    </p>
-
-    <div class="res-box">
-        <table class="res-table">
+    <div class="card-container">
+        <table class="data-table">
             <thead>
-                <tr><th>항목</th><td>Before</td><td>After</td></tr>
+                <tr>
+                    <th class="row-label">항목</th>
+                    <th class="bad-title">Before</th>
+                    <th class="good-title">After</th>
+                </tr>
             </thead>
             <tbody>
-                <tr><th>대표 이미지</th><td>인테리어 사진</td><td>수업 중인 회원 사진</td></tr>
-                <tr><th>플레이스 이름</th><td>OO 필라테스 강남점</td><td>강남역 체형교정 필라테스 OO</td></tr>
-                <tr><th>소개글 첫 줄</th><td>체계적인 관리 제공</td><td>"허리 통증 회원 83% 개선"</td></tr>
-                <tr><th>월 클릭률</th><td>4%</td><td>9%</td></tr>
-                <tr><th>월 문의</th><td>3건</td><td>17건</td></tr>
+                <tr><th class="row-label">대표 이미지</th><td class="before-val">인테리어 사진</td><td class="after-val">수업 중인 회원 사진</td></tr>
+                <tr><th class="row-label">플레이스 이름</th><td class="before-val">OO 필라테스 강남점</td><td class="after-val">강남역 체형교정 필라테스 OO</td></tr>
+                <tr><th class="row-label">소개글 첫 줄</th><td class="before-val">체계적인 관리</td><td class="after-val">"허리 통증 83% 개선"</td></tr>
+                <tr><th class="row-label">월 클릭률</th><td class="before-val">4%</td><td class="after-val">9%</td></tr>
+                <tr><th class="row-label">월 문의</th><td class="before-val">3건</td><td class="after-val">17건</td></tr>
             </tbody>
         </table>
     </div>
 
     <div class="chk-card">
-        <span class="chk-title">지금 바로 체크해보세요<br>플레이스 CTR 자가진단 체크리스트</span>
-        <div class="chk-item"><input type="checkbox"> 대표 이미지에 사람이 있나요?</div>
-        <div class="chk-item"><input type="checkbox"> 기구/인테리어 사진이 첫 번째에 있진 않나요?</div>
-        <div class="chk-item"><input type="checkbox"> 플레이스 이름에 지역명 + 핵심 키워드가 들어가 있나요?</div>
-        <div class="chk-item"><input type="checkbox"> 소개글 첫 4줄에 고객이 얻는 결과가 적혀있나요?</div>
-        <div class="chk-item"><input type="checkbox"> 플레이스 통계에서 노출 대비 클릭률을 확인해본 적 있나요?</div>
-        <div class="chk-item"><input type="checkbox"> <span class="emp">경쟁업체</span> 5곳과 내 사진을 나란히 놓고 비교해봤나요?</div>
+        <span class="chk-title">플레이스 CTR 자가진단</span>
+        <div class="chk-item"><input type="checkbox"> 대표 이미지에 사람이 있는가?</div>
+        <div class="chk-item"><input type="checkbox"> 이름에 지역명+키워드가 있는가?</div>
+        <div class="chk-item"><input type="checkbox"> 소개글 첫 4줄에 결과가 있는가?</div>
+        <div class="chk-item"><input type="checkbox"> <span class="emp">경쟁업체</span>보다 내 사진이 압도적인가?</div>
     </div>
 
-    <p>체크가 3개 이하라면, 지금 이 순간에도 잠재 고객을 <span class="emp">경쟁업체</span>에 넘기고 있는 겁니다.</p>
+    <p>체크가 부족하다면, 지금 이 순간에도 잠재 고객을 <span class="emp">경쟁업체</span>에 상납하고 있는 겁니다.</p>
 
     <a href="marketing-list.html" class="btn">다른 마케팅 칼럼 더보기</a>
 </body>
