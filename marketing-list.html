@@ -9,42 +9,47 @@
         body { font-family: 'Pretendard', sans-serif; background: #fff; padding: 40px 24px; color: #111; }
         .container { max-width: 600px; margin: 0 auto; }
         h1 { font-size: 32px; font-weight: 900; margin-bottom: 40px; text-align: center; letter-spacing: -0.05em; }
-        .column-card { border: 1px solid #eee; padding: 30px 20px; border-radius: 20px; margin-bottom: 15px; cursor: pointer; transition: 0.2s; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .column-card { border: 1px solid #eee; padding: 22px 16px; border-radius: 20px; cursor: pointer; transition: 0.2s; }
         .column-card:active { background: #f9f9f9; transform: scale(0.98); }
-        .tag { font-weight: 800; color: #3e5eff; font-size: 14px; margin-bottom: 8px; display: block; }
-        h3 { font-size: 20px; font-weight: 800; line-height: 1.4; word-break: keep-all; }
-        .desc { color: #666; font-size: 14px; margin-top: 10px; line-height: 1.5; }
+        .tag { font-weight: 800; color: #3e5eff; font-size: 13px; margin-bottom: 8px; display: block; }
+        h3 { font-size: 16px; font-weight: 800; line-height: 1.4; word-break: keep-all; }
+        .desc { color: #666; font-size: 13px; margin-top: 10px; line-height: 1.5; }
         .back-btn { display: block; text-align: center; margin-top: 40px; color: #888; text-decoration: none; font-weight: 700; }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>마케팅 칼럼 리스트</h1>
-    
-    <div class="column-card" onclick="openColumn('marketing-01', '1234')">
-        <span class="tag">PAGE 1</span>
-        <h3>플레이스 순위보다 중요한 '클릭률(CTR)'의 비밀</h3>
-        <p class="desc">노출은 숫자에 불과합니다. 진짜 유입을 만드는 0.5초의 승부.</p>
+    <h1>마케팅 인사이트</h1>
+
+    <div class="grid">
+        <div class="column-card" onclick="openColumn('marketing1', '1234')">
+            <span class="tag">MARKETING 01</span>
+            <h3>플레이스 1페이지인데 문의가 없는 센터, 실제로 있습니다</h3>
+            <p class="desc">노출은 되고 있었어요. 근데 아무도 안 눌렀습니다. 클릭률 4%를 9%로 올린 방법.</p>
+        </div>
+
+        <div class="column-card" onclick="openColumn('marketing2', '2234')">
+            <span class="tag">MARKETING 02</span>
+            <h3>포스팅 20개 올렸는데 문의 3건, 10개로 줄였더니 11건 됐습니다</h3>
+            <p class="desc">많이 오는 게 아니라 맞는 사람이 와야 해요. 키워드 하나가 문의 고객의 질을 바꿉니다.</p>
+        </div>
+
+        <div class="column-card" onclick="openColumn('marketing3', '3234')">
+            <span class="tag">MARKETING 03</span>
+            <h3>방문자 월 500명인데 문의 2건, 체류시간 하나 바꿨더니 9건 됐습니다</h3>
+            <p class="desc">트래픽 문제가 아니었어요. 글 구조 문제였습니다. 방문자 수는 그대로인데 문의가 늘어난 이유.</p>
+        </div>
+
+        <div class="column-card" onclick="openColumn('marketing4', '4234')">
+            <span class="tag">MARKETING 04</span>
+            <h3>플레이스 사진 순서에 공식이 있습니다</h3>
+            <p class="desc">사진을 새로 찍지 않았어요. 순서만 바꿨더니 월 저장수 8회에서 31회, 문의 4건에서 13건.</p>
+        </div>
     </div>
-    <div class="column-card" onclick="openColumn('marketing-02', '2234')">
-    <span class="tag">PAGE 3</span>
-    <h3>시각적 서열과 매출의 상관관계</h3>
-    <p class="desc">사진 100장을 올려도 문의가 0건인 사장님들이 놓치고 있는 '배치의 잔혹한 진실'.</p>
-</div>
-    <div class="column-card" onclick="openColumn('marketing-03', '3234')">
-    <span class="tag">PAGE 5</span>
-    <h3>플레이스 순위 하락의 잔혹한 진실</h3>
-    <p class="desc">순위가 밀리는 건 경기 탓이 아니라 사장님의 게으름 탓입니다. 멈춰있는 가게가 도태되는 마케팅의 생리.</p>
-</div>
-   <div class="column-card" onclick="openColumn('marketing-04', '4234')">
-    <span class="tag">PAGE 6</span>
-    <h3>경쟁업체보다 순위가 낮은 건 실력이 부족해서가 아닙니다</h3>
-    <p class="desc">실력을 쌓는 것보다 중요한 것은 그 실력을 화면에서 제대로 보여주는 일입니다. 고객의 시선을 0.5초 만에 훔치는 배치의 전략.</p>
-</div>
-    
+
     <a href="index.html" class="back-btn">← 메인으로 돌아가기</a>
 </div>
-
 <script>
 function openColumn(file, pwd) {
     const input = prompt("비공개 코드를 입력하세요.");
