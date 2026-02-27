@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>형이마케터</title>
-    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+    <title>형이야마케터</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: #ffffff; color: #111; line-height: 1.4; letter-spacing: -0.05em; word-break: keep-all; overflow: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: #ffffff; color: #111; line-height: 1.4; letter-spacing: -0.02em; word-break: keep-all; overflow: hidden; }
         a { text-decoration: none; color: inherit; cursor: pointer; }
 
         .wrapper {
@@ -29,7 +31,7 @@
 
         .header { margin-bottom: 20px; }
         .sub-top {
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 500;
             color: #444;
             margin-bottom: 8px;
@@ -38,8 +40,8 @@
         .sub-top .highlight { background: none; padding: 0; }
 
         .target {
-            font-size: 20px;
-            font-weight: 800;
+            font-size: 19px;
+            font-weight: 700;
             color: #000;
             margin-bottom: 16px;
             display: block;
@@ -49,13 +51,13 @@
             font-weight: 900;
             line-height: 1.3;
             color: #000;
-            letter-spacing: -1.8px;
+            letter-spacing: -0.03em;
         }
         .guide-text {
-            font-size: 16px;
+            font-size: 15px;
             color: #777;
             margin-top: 15px;
-            font-weight: 500;
+            font-weight: 400;
             display: block;
         }
 
@@ -70,7 +72,7 @@
 
         .card {
             border-radius: 20px;
-            padding: 30px 10px;
+            padding: 30px 16px;
             height: 100%;
             max-height: 280px;
             transition: all 0.2s ease;
@@ -83,16 +85,33 @@
         }
         .card:active { transform: scale(0.98); border-color: #ccc; }
 
-        .card .label { font-weight: 800; font-size: 14px; margin-bottom: 10px; display: block; letter-spacing: 0.05em; }
-        .card.marketing .label { color: #3e5eff; }
-        .card.branding .label { color: #27ae60; }
+        .card .label { 
+            font-weight: 700; 
+            font-size: 15px; 
+            margin-bottom: 12px; 
+            display: block; 
+            letter-spacing: 0.08em; 
+        }
+        .card.operator .label { color: #3e5eff; }
+        .card.user .label { color: #27ae60; }
 
-        .card .status { font-size: 22px; font-weight: 800; margin-bottom: 12px; color: #000; }
+        .card .status { 
+            font-size: 20px; 
+            font-weight: 700; 
+            color: #000; 
+            margin-bottom: 14px;
+            letter-spacing: -0.02em; 
+        }
+        
+        .card.user .status {
+            letter-spacing: 0.15em;
+        }
+        
         .card .detail {
             font-size: 14px;
             color: #555;
-            font-weight: 500;
-            line-height: 1.5;
+            font-weight: 400;
+            line-height: 1.6;
         }
 
         .cta-wrap {
@@ -107,18 +126,19 @@
             padding: 8px 4px;
             background: transparent;
             color: #000;
-            font-size: 24px;
-            font-weight: 800;
+            font-size: 22px;
+            font-weight: 700;
             border-bottom: 4px solid #000;
             transition: all 0.3s ease;
         }
-        .main-btn .arrow { font-size: 28px; font-weight: 300; line-height: 1; }
+        .main-btn .arrow { font-size: 26px; font-weight: 300; line-height: 1; }
 
         @media (max-width: 400px) {
             .main-title { font-size: 26px; }
+            .card .label { font-size: 13px; }
             .card .status { font-size: 18px; }
             .card .detail { font-size: 13px; }
-            .main-btn { font-size: 20px; }
+            .main-btn { font-size: 18px; }
         }
     </style>
 </head>
@@ -126,33 +146,33 @@
 
 <div class="wrapper">
     <header class="header">
-        <span class="sub-top"><span class="highlight">매출이 안 늘어 고민인</span></span>
-        <span class="target">헬스장·PT샵·필라테스 사장님</span>
+        <span class="sub-top"><span class="highlight">헬스장·PT샵·필라테스</span></span>
+        <span class="target">업계 15년이 알려주는 인사이트</span>
         <h1 class="main-title">
-            지금 필요한 건<br>
-            <span class="highlight">마케팅</span>입니까,<br>
-            <span class="highlight">브랜딩</span>입니까?
+            당신은<br>
+            <span class="highlight">운영자</span>입니까,<br>
+            <span class="highlight">회원</span>입니까?
         </h1>
-        <span class="guide-text">현재 상황에 맞는 항목을 선택하세요.</span>
+        <span class="guide-text">해당하는 항목을 선택하세요.</span>
     </header>
 
     <div class="card-container">
-        <a href="marketing-list.html" class="card marketing">
-            <span class="label">MARKETING</span>
-            <h2 class="status">노출/유입 문제</h2>
-            <p class="detail">검색이 안 되고<br>노출이 적고<br>문의 자체가<br>거의 없는 상태</p>
+        <a href="operator-list.html" class="card operator">
+            <span class="label">운영자</span>
+            <h2 class="status">매출 잘 나오는 센터의 비밀</h2>
+            <p class="detail">마케팅부터<br>브랜딩까지<br>센터 운영에<br>필요한 모든 것</p>
         </a>
 
-        <a href="branding-list.html" class="card branding">
-            <span class="label">BRANDING</span>
-            <h2 class="status">신뢰/전환 문제</h2>
-            <p class="detail">방문자는 있지만<br>문의가 적거나<br>상담 후 등록이<br>안 되는 상태</p>
+        <a href="user-list.html" class="card user">
+            <span class="label">회원</span>
+            <h2 class="status">현직이 폭로하는 진실</h2>
+            <p class="detail">무자격 트레이너<br>양아치 센터<br>환불 거부<br>절대 당하지 마세요</p>
         </a>
     </div>
 
     <div class="cta-wrap">
-        <a href="https://naver.me/FVSQeTYD" class="main-btn">
-            <span>내 센터 솔루션 진단받기</span>
+        <a href="https://www.instagram.com/bromarketer?igsh=MTlhbWt3dmh4Y3V6bw%3D%3D&utm_source=qr" class="main-btn">
+            <span>릴스에서 무료 코드 받기</span>
             <span class="arrow">→</span>
         </a>
     </div>
