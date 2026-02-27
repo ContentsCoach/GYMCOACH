@@ -72,5 +72,15 @@
 
     <a href="operator-list.html" class="btn">← 다른 운영 인사이트 더보기</a>
 
+
+<script>
+(function() {
+    const params = new URLSearchParams(window.location.search);
+    const pw = params.get("pw");
+    if (pw && pw !== "2234") {
+        document.body.innerHTML = "<p style=\"text-align:center;margin-top:100px;font-size:18px;font-family:sans-serif;\">접근 권한이 없습니다.</p>";
+    }
+})();
+</script>
 </body>
 </html>
