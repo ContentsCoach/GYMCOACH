@@ -2,177 +2,111 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>형이야마케터</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 인사이트</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: #ffffff; color: #111; line-height: 1.4; letter-spacing: -0.02em; word-break: keep-all; overflow: hidden; }
-        a { text-decoration: none; color: inherit; cursor: pointer; }
-
-        .wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            height: 100dvh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 40px 24px;
-            text-align: center;
-        }
-
-        .highlight {
-            background: linear-gradient(to top, rgba(255, 235, 59, 0.5) 45%, transparent 45%);
-            padding: 0 2px;
-            display: inline;
-        }
-
-        .header { margin-bottom: 20px; }
-        .sub-top {
-            font-size: 17px;
-            font-weight: 500;
-            color: #444;
-            margin-bottom: 8px;
-            display: block;
-        }
-        .sub-top .highlight { background: none; padding: 0; }
-
-        .target {
-            font-size: 19px;
-            font-weight: 700;
-            color: #000;
-            margin-bottom: 16px;
-            display: block;
-        }
-        .main-title {
-            font-size: clamp(28px, 8vw, 42px);
-            font-weight: 900;
-            line-height: 1.3;
-            color: #000;
-            letter-spacing: -0.03em;
-        }
-        .guide-text {
-            font-size: 15px;
-            color: #777;
-            margin-top: 15px;
-            font-weight: 400;
-            display: block;
-        }
-
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            flex: 1;
-            align-items: center;
-            margin: 20px 0;
-        }
-
-        .card {
-            border-radius: 20px;
-            padding: 30px 16px;
-            height: 100%;
-            max-height: 280px;
-            transition: all 0.2s ease;
-            border: 1px solid #eee;
-            background-color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .card:active { transform: scale(0.98); border-color: #ccc; }
-
-        .card .label { 
-            font-weight: 700; 
-            font-size: 15px; 
-            margin-bottom: 12px; 
-            display: block; 
-            letter-spacing: 0.08em; 
-        }
-        .card.operator .label { color: #3e5eff; }
-        .card.user .label { color: #27ae60; }
-
-        .card .status { 
-            font-size: 20px; 
-            font-weight: 700; 
-            color: #000; 
-            margin-bottom: 14px;
-            letter-spacing: -0.02em; 
-        }
-        
-        .card .detail {
-            font-size: 14px;
-            color: #555;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
-        .cta-wrap {
-            display: flex;
-            justify-content: center;
-            padding-bottom: 20px;
-        }
-        .main-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 4px;
-            background: transparent;
-            color: #000;
-            font-size: 22px;
-            font-weight: 700;
-            border-bottom: 4px solid #000;
-            transition: all 0.3s ease;
-        }
-        .main-btn .arrow { font-size: 26px; font-weight: 300; line-height: 1; }
-
-        @media (max-width: 400px) {
-            .main-title { font-size: 26px; }
-            .card .label { font-size: 13px; }
-            .card .status { font-size: 18px; }
-            .card .detail { font-size: 13px; }
-            .main-btn { font-size: 18px; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans KR', -apple-system, sans-serif; background: #fafafa; color: #111; padding: 0; }
+        .header { background: #fff; padding: 20px 24px; border-bottom: 1px solid #eee; }
+        .header h1 { font-size: 20px; font-weight: 700; text-align: center; }
+        .container { max-width: 720px; margin: 0 auto; padding: 20px 24px 80px; }
+        .item { background: #fff; border-bottom: 1px solid #eee; padding: 20px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: 0.2s; }
+        .item:active { background: #f8f8f8; }
+        .number { flex-shrink: 0; font-size: 36px; font-weight: 300; color: #27ae60; line-height: 1; width: 50px; text-align: center; }
+        .content { flex: 1; min-width: 0; }
+        .title { font-size: 16px; font-weight: 700; line-height: 1.3; margin-bottom: 4px; color: #111; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .subtitle { font-size: 12px; color: #666; line-height: 1.3; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+        .tag { font-size: 10px; color: #999; background: #f5f5f5; padding: 3px 8px; border-radius: 10px; font-weight: 500; }
+        .back-btn { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #fff; color: #111; text-decoration: none; padding: 14px 28px; border-radius: 24px; font-weight: 700; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
+<div class="header">
+    <h1>현직이 폭로하는 진실</h1>
+</div>
 
-<div class="wrapper">
-    <header class="header">
-        <span class="sub-top"><span class="highlight">헬스장·PT샵·필라테스</span></span>
-        <span class="target">업계 15년이 알려주는 인사이트</span>
-        <h1 class="main-title">
-            당신은<br>
-            <span class="highlight">운영자</span>입니까,<br>
-            <span class="highlight">회원</span>입니까?
-        </h1>
-        <span class="guide-text">해당하는 항목을 선택하세요.</span>
-    </header>
-
-    <div class="card-container">
-        <a href="operator-list.html" class="card operator">
-            <span class="label">운영자</span>
-            <h2 class="status">매출 잘 나오는 센터의 비밀</h2>
-            <p class="detail">마케팅부터<br>브랜딩까지<br>센터 운영에<br>필요한 모든 것</p>
-        </a>
-
-        <a href="user-list.html" class="card user">
-            <span class="label">회원</span>
-            <h2 class="status">현직이 폭로하는 진실</h2>
-            <p class="detail">양아치 트레이너<br>무자격 센터<br>환불 거부<br>절대 당하지 마세요</p>
-        </a>
+<div class="container">
+    <div class="item" onclick="openColumn('user1', '1234')">
+        <div class="number">01</div>
+        <div class="content">
+            <div class="title">무자격 트레이너 걸러내는 법</div>
+            <div class="subtitle">자격증도 없이 가르치는 트레이너, 이렇게 구별합니다</div>
+            <div class="tags"><span class="tag">트레이너</span><span class="tag">자격증</span><span class="tag">피해예방</span></div>
+        </div>
     </div>
-
-    <div class="cta-wrap">
-        <a href="https://www.instagram.com/bromarketer?igsh=MTlhbWt3dmh4Y3V6bw%3D%3D&utm_source=qr" class="main-btn">
-            <span>릴스에서 무료 코드 받기</span>
-            <span class="arrow">→</span>
-        </a>
+    <div class="item" onclick="openColumn('user2', '2234')">
+        <div class="number">02</div>
+        <div class="content">
+            <div class="title">환불 거부하는 센터, 이렇게 대응하세요</div>
+            <div class="subtitle">환불 안 해준다고? 법적으로 받아낼 수 있습니다</div>
+            <div class="tags"><span class="tag">환불</span><span class="tag">소비자권리</span><span class="tag">대응법</span></div>
+        </div>
+    </div>
+    <div class="item" onclick="openColumn('user3', '3234')">
+        <div class="number">03</div>
+        <div class="content">
+            <div class="title">PT 등록 전 반드시 확인할 것 5가지</div>
+            <div class="subtitle">이 5가지 모르고 등록하면 수십만 원 날립니다</div>
+            <div class="tags"><span class="tag">PT등록</span><span class="tag">계약</span><span class="tag">체크리스트</span></div>
+        </div>
+    </div>
+    <div class="item" onclick="openColumn('user4', '4234')">
+        <div class="number">04</div>
+        <div class="content">
+            <div class="title">3개월 다녔는데 왜 몸이 안 바뀔까요</div>
+            <div class="subtitle">센터 문제인지, 내 문제인지 구별하는 기준</div>
+            <div class="tags"><span class="tag">효과없음</span><span class="tag">운동효과</span><span class="tag">원인분석</span></div>
+        </div>
+    </div>
+    <div class="item" onclick="openColumn('user5', '5234')">
+        <div class="number">05</div>
+        <div class="content">
+            <div class="title">양아치 센터를 알아보는 법</div>
+            <div class="subtitle">처음 방문했을 때 이것만 봐도 알 수 있습니다</div>
+            <div class="tags"><span class="tag">센터선택</span><span class="tag">주의사항</span><span class="tag">피해예방</span></div>
+        </div>
+    </div>
+    <div class="item" onclick="openColumn('user6', '6234')">
+        <div class="number">06</div>
+        <div class="content">
+            <div class="title">PT 가격, 비싸다고 좋은 게 아닙니다</div>
+            <div class="subtitle">가격이 아니라 이걸 보고 센터를 골라야 합니다</div>
+            <div class="tags"><span class="tag">가격비교</span><span class="tag">센터선택</span></div>
+        </div>
+    </div>
+    <div class="item" onclick="openColumn('user7', '7234')">
+        <div class="number">07</div>
+        <div class="content">
+            <div class="title">부상 입었을 때 센터에 책임 물을 수 있나요</div>
+            <div class="subtitle">운동 중 부상, 센터에 책임 물을 수 있는 조건이 있습니다</div>
+            <div class="tags"><span class="tag">부상</span><span class="tag">책임</span><span class="tag">대응법</span></div>
+        </div>
+    </div>
+    <div class="item" onclick="openColumn('user8', '8234')">
+        <div class="number">08</div>
+        <div class="content">
+            <div class="title">헬스장 직원이 절대 말 안 해주는 것들</div>
+            <div class="subtitle">현직이 알려주는 센터의 진짜 속사정</div>
+            <div class="tags"><span class="tag">내부폭로</span><span class="tag">현직</span><span class="tag">진실</span></div>
+        </div>
     </div>
 </div>
 
+<a href="index.html" class="back-btn">← 뒤로 가기</a>
+
+<script>
+function openColumn(fileName, password) {
+    const input = prompt("비공개 코드를 입력하세요.");
+    if (input === password) {
+        location.href = fileName + ".html";
+    } else if (input !== null) {
+        alert("코드가 올바르지 않습니다.");
+    }
+}
+</script>
 </body>
 </html>
