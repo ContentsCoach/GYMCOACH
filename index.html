@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -9,154 +8,237 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Noto Sans KR', -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; }
-        body { background-color: #f2f1ed; color: #111; line-height: 1.4; letter-spacing: -0.02em; word-break: keep-all; overflow: hidden; }
-        a { text-decoration: none; color: inherit; cursor: pointer; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', -apple-system, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-```
-    .wrapper {
-        max-width: 800px;
-        margin: 0 auto;
-        height: 100dvh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 52px 24px 52px;
-        text-align: center;
-    }
+        body {
+            background-color: #ffffff;
+            color: #111;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+            word-break: keep-all;
+            overflow: hidden;
+        }
 
-    .highlight { background: linear-gradient(to top, rgba(255, 235, 59, 0.5) 45%, transparent 45%); padding: 0 2px; display: inline; }
-    .sub-top { font-size: 16px; font-weight: 500; color: #999; letter-spacing: 0.06em; margin-bottom: 10px; display: block; }
-    .mid-copy { font-size: 18px; font-weight: 700; color: #555; margin-bottom: 12px; display: block; line-height: 1.5; }
-    .main-title { font-size: clamp(28px, 8.5vw, 46px); font-weight: 900; line-height: 1.2; color: #000; letter-spacing: -0.03em; }
+        a {
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
 
-    .card-guide {
-        text-align: center;
-        margin-bottom: 10px;
-    }
-    .guide-text { font-size: 15px; color: #444; font-weight: 400; display: block; margin-bottom: 6px; }
-    .down-arrow { font-size: 20px; color: #444; }
+        .wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 52px 24px;
+            text-align: center;
+        }
 
-    .card-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
+        .highlight {
+            background: linear-gradient(to top, rgba(255, 235, 59, 0.5) 45%, transparent 45%);
+            padding: 0 2px;
+            display: inline;
+        }
 
-    .card {
-        border-radius: 24px;
-        padding: 20px 18px;
-        height: 48vw;
-        max-height: 340px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        transition: transform 0.2s ease;
-    }
-    .card:active { transform: scale(0.97); }
-    .card.operator { background-color: #3e5eff; }
-    .card.user { background-color: #27ae60; }
+        .sub-top {
+            font-size: 16px;
+            font-weight: 500;
+            color: #999;
+            letter-spacing: 0.06em;
+            margin-bottom: 10px;
+            display: block;
+        }
 
-    .dot {
-        width: 9px;
-        height: 9px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.35);
-        align-self: flex-start;
-    }
+        .mid-copy {
+            font-size: 18px;
+            font-weight: 700;
+            color: #555;
+            margin-bottom: 12px;
+            display: block;
+            line-height: 1.5;
+        }
 
-    .card-bottom {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
-    }
+        .main-title {
+            font-size: clamp(28px, 8.5vw, 46px);
+            font-weight: 900;
+            line-height: 1.2;
+            color: #000;
+            letter-spacing: -0.03em;
+        }
 
-    .card-title {
-        font-size: clamp(18px, 5vw, 24px);
-        font-weight: 900;
-        color: #fff;
-        line-height: 1.3;
-        letter-spacing: -0.03em;
-        text-align: left;
-    }
+        .card-guide {
+            text-align: center;
+            margin-bottom: 10px;
+        }
 
-    .card-sub {
-        font-size: 13px;
-        color: rgba(255,255,255,0.75);
-        font-weight: 400;
-        line-height: 1.5;
-        text-align: left;
-        margin-top: 6px;
-    }
+        .guide-text {
+            font-size: 15px;
+            color: #444;
+            font-weight: 400;
+            display: block;
+            margin-bottom: 6px;
+        }
 
-    .tag {
-        display: inline-block;
-        padding: 6px 14px;
-        border-radius: 20px;
-        font-size: 12px;
-        font-weight: 600;
-        background: rgba(0,0,0,0.18);
-        color: rgba(255,255,255,0.9);
-    }
+        .down-arrow {
+            font-size: 20px;
+            color: #444;
+        }
 
-    .cta-wrap { display: flex; justify-content: center; }
-    .main-btn { display: inline-flex; align-items: center; gap: 12px; padding: 8px 4px; background: transparent; color: #000; font-size: 20px; font-weight: 700; border-bottom: 4px solid #000; }
-    .main-btn .arrow { font-size: 24px; font-weight: 300; line-height: 1; }
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
 
-    @media (max-width: 400px) { .main-title { font-size: 26px; } .card-title { font-size: 17px; } .main-btn { font-size: 17px; } }
-</style>
-```
+        .card {
+            border-radius: 24px;
+            padding: 20px 18px;
+            height: 48vw;
+            max-height: 340px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease;
+        }
 
+        .card:active {
+            transform: scale(0.97);
+        }
+
+        .card.operator {
+            background-color: #3e5eff;
+        }
+
+        .card.user {
+            background-color: #27ae60;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.35);
+            align-self: flex-start;
+        }
+
+        .card-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .card-title {
+            font-size: clamp(18px, 5vw, 24px);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.3;
+            letter-spacing: -0.03em;
+            text-align: left;
+        }
+
+        .card-sub {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.75);
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: left;
+            margin-top: 6px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.18);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-wrap {
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 4px;
+            background: transparent;
+            color: #000;
+            font-size: 20px;
+            font-weight: 700;
+            border-bottom: 4px solid #000;
+        }
+
+        .main-btn .arrow {
+            font-size: 24px;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        @media (max-width: 400px) {
+            .main-title { font-size: 26px; }
+            .card-title { font-size: 17px; }
+            .main-btn { font-size: 17px; }
+        }
+    </style>
 </head>
 <body>
-<div class="wrapper">
-    <header>
-        <span class="sub-top">헬스장 · PT샵 · 필라테스</span>
-        <span class="mid-copy">회원은 지키고, 운영자는 돕습니다</span>
-        <h1 class="main-title">
-            <span class="highlight">운영자</span>와 <span class="highlight">회원</span>,<br>
-            <span style="white-space:nowrap">당신은 어느 쪽입니까?</span>
-        </h1>
-    </header>
+    <div class="wrapper">
+        <header>
+            <span class="sub-top">헬스장 · PT샵 · 필라테스</span>
+            <span class="mid-copy">회원은 지키고, 운영자는 돕습니다</span>
+            <h1 class="main-title">
+                <span class="highlight">운영자</span>와 <span class="highlight">회원</span>,<br>
+                <span style="white-space: nowrap;">당신은 어느 쪽입니까?</span>
+            </h1>
+        </header>
 
-```
-<div class="card-guide">
-    <span class="guide-text">해당하는 항목을 선택하세요.</span>
-    <div class="down-arrow">↓</div>
-</div>
-
-<div class="card-container">
-    <a href="operator-list.html" class="card operator">
-        <div class="dot"></div>
-        <div class="card-bottom">
-            <div>
-                <p class="card-title">매출 안 늘어<br>고민이세요?</p>
-                <p class="card-sub">문의가 없다면<br>반드시 알아야 할 것들</p>
-            </div>
-            <span class="tag">운영자 전용</span>
+        <div class="card-guide">
+            <span class="guide-text">해당하는 항목을 선택하세요.</span>
+            <div class="down-arrow">↓</div>
         </div>
-    </a>
-    <a href="user-list.html" class="card user">
-        <div class="dot"></div>
-        <div class="card-bottom">
-            <div>
-                <p class="card-title">피해볼까<br>걱정되세요?</p>
-                <p class="card-sub">등록 전에<br>반드시 알아야 할 것들</p>
-            </div>
-            <span class="tag">회원 전용</span>
+
+        <div class="card-container">
+            <a href="operator-list.html" class="card operator">
+                <div class="dot"></div>
+                <div class="card-bottom">
+                    <div>
+                        <p class="card-title">매출 안 늘어<br>고민이세요?</p>
+                        <p class="card-sub">문의가 없다면<br>반드시 알아야 할 것들</p>
+                    </div>
+                    <span class="tag">운영자 전용</span>
+                </div>
+            </a>
+            <a href="user-list.html" class="card user">
+                <div class="dot"></div>
+                <div class="card-bottom">
+                    <div>
+                        <p class="card-title">피해볼까<br>걱정되세요?</p>
+                        <p class="card-sub">등록 전에<br>반드시 알아야 할 것들</p>
+                    </div>
+                    <span class="tag">회원 전용</span>
+                </div>
+            </a>
         </div>
-    </a>
-</div>
 
-<div class="cta-wrap">
-    <a href="https://www.instagram.com/bromarketer?igsh=MTlhbWt3dmh4Y3V6bw%3D%3D&utm_source=qr" class="main-btn">
-        <span>릴스에서 무료 코드 받기</span>
-        <span class="arrow">→</span>
-    </a>
-</div>
-```
-
-</div>
+        <div class="cta-wrap">
+            <a href="https://www.instagram.com/bromarketer?igsh=MTlhbWt3dmh4Y3V6bw%3D%3D&utm_source=qr" class="main-btn">
+                <span>릴스에서 무료 코드 받기</span>
+                <span class="arrow">→</span>
+            </a>
+        </div>
+    </div>
 </body>
 </html>
