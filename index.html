@@ -2,243 +2,238 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>형이야마케터</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RE:GYM</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Noto Sans KR', -apple-system, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background-color: #ffffff;
-            color: #111;
-            line-height: 1.4;
-            letter-spacing: -0.02em;
+            font-family: 'Pretendard', sans-serif;
+            background: #F2F0EB;
+            color: #1a1a1a;
             word-break: keep-all;
-            overflow: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-            cursor: pointer;
-        }
-
-        .wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            height: 100dvh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            padding: 52px 24px;
-            text-align: center;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px;
         }
 
-        .highlight {
-            background: linear-gradient(to top, rgba(255, 235, 59, 0.5) 45%, transparent 45%);
-            padding: 0 2px;
-            display: inline;
+        .wrap {
+            max-width: 420px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .sub-top {
-            font-size: 16px;
+        .category {
+            font-size: 12px;
             font-weight: 500;
             color: #999;
-            letter-spacing: 0.06em;
-            margin-bottom: 10px;
-            display: block;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
         }
 
-        .mid-copy {
-            font-size: 18px;
-            font-weight: 700;
-            color: #555;
-            margin-bottom: 12px;
-            display: block;
-            line-height: 1.5;
+        .sub {
+            font-size: 15px;
+            font-weight: 500;
+            color: #666;
+            margin-bottom: 14px;
         }
 
-        .main-title {
-            font-size: clamp(28px, 8.5vw, 46px);
+        .title {
+            font-size: 40px;
             font-weight: 900;
             line-height: 1.2;
-            color: #000;
-            letter-spacing: -0.03em;
-        }
-
-        .card-guide {
             text-align: center;
-            margin-bottom: 10px;
+            letter-spacing: -2px;
+            margin-bottom: 48px;
         }
 
-        .guide-text {
-            font-size: 15px;
-            color: #444;
-            font-weight: 400;
-            display: block;
-            margin-bottom: 6px;
+        .title em {
+            font-style: normal;
+            position: relative;
         }
 
-        .down-arrow {
-            font-size: 20px;
-            color: #444;
+        .title em::after {
+            content: '';
+            position: absolute;
+            bottom: 3px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: #E2D4B8;
+            z-index: -1;
+            border-radius: 2px;
         }
 
-        .card-container {
+        .divider {
+            width: 1px;
+            height: 40px;
+            background: #d0cdc8;
+            margin-bottom: 20px;
+        }
+
+        .guide {
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 32px;
+        }
+
+        /* 카드 */
+        .cards {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 12px;
+            width: 100%;
+            margin-bottom: 44px;
         }
 
         .card {
-            border-radius: 24px;
-            padding: 20px 18px;
-            height: 48vw;
-            max-height: 340px;
+            border-radius: 20px;
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+            background: #fff;
+        }
+
+        .card:active { transform: scale(0.98); }
+
+        .card-top {
+            aspect-ratio: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s ease;
+            padding: 18px;
+            position: relative;
+            overflow: hidden;
         }
 
-        .card:active {
-            transform: scale(0.97);
+        /* 운영자: 다크 그라데이션 */
+        .card-operator .card-top {
+            background: radial-gradient(ellipse at 70% 20%, #3a3530 0%, #1a1815 100%);
         }
 
-        .card.operator {
-            background-color: #3e5eff;
+        /* 회원: 탄 베이지 */
+        .card-member .card-top {
+            background: #BFB090;
         }
 
-        .card.user {
-            background-color: #27ae60;
+        .card-en {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            color: rgba(255,255,255,0.35);
         }
 
-        .dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.35);
-            align-self: flex-start;
-        }
-
-        .card-bottom {
+        .card-bottom-area {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 12px;
+            gap: 10px;
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.75);
+            width: fit-content;
+            letter-spacing: 0.3px;
         }
 
         .card-title {
-            font-size: clamp(18px, 5vw, 24px);
+            font-size: 24px;
             font-weight: 900;
             color: #fff;
-            line-height: 1.3;
-            letter-spacing: -0.03em;
-            text-align: left;
+            line-height: 1.2;
+            letter-spacing: -1px;
         }
 
-        .card-sub {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.75);
-            font-weight: 400;
-            line-height: 1.5;
-            text-align: left;
-            margin-top: 6px;
-        }
-
-        .tag {
-            display: inline-block;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            background: rgba(0, 0, 0, 0.18);
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .cta-wrap {
+        .card-body {
+            padding: 16px 18px 18px;
+            background: #fff;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        .main-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 8px 4px;
-            background: transparent;
-            color: #000;
-            font-size: 20px;
+        .card-desc {
+            font-size: 12px;
+            color: #aaa;
+            line-height: 1.7;
+        }
+
+        .card-type {
+            font-size: 10px;
             font-weight: 700;
-            border-bottom: 4px solid #000;
+            letter-spacing: 2px;
+            color: #ccc;
         }
 
-        .main-btn .arrow {
-            font-size: 24px;
-            font-weight: 300;
-            line-height: 1;
+        /* 하단 링크 */
+        .code-link {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding-bottom: 4px;
+            border-bottom: 1.5px solid #1a1a1a;
+            transition: gap 0.2s ease;
         }
 
-        @media (max-width: 400px) {
-            .main-title { font-size: 26px; }
-            .card-title { font-size: 17px; }
-            .main-btn { font-size: 17px; }
-        }
+        .code-link:hover { gap: 14px; }
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <span class="sub-top">헬스장 · PT샵 · 필라테스</span>
-            <span class="mid-copy">회원은 지키고, 운영자는 돕습니다</span>
-            <h1 class="main-title">
-                <span class="highlight">운영자</span>와 <span class="highlight">회원</span>,<br>
-                <span style="white-space: nowrap;">당신은 어느 쪽입니까?</span>
-            </h1>
-        </header>
+    <div class="wrap">
+        <span class="category">헬스장 · PT샵 · 필라테스</span>
+        <p class="sub">회원은 지키고, 운영자는 돕습니다</p>
+        <h1 class="title"><em>운영자</em>와 <em>회원</em>,<br>당신은 어느 쪽입니까?</h1>
 
-        <div class="card-guide">
-            <span class="guide-text">해당하는 항목을 선택하세요.</span>
-            <div class="down-arrow">↓</div>
-        </div>
+        <div class="divider"></div>
+        <p class="guide">해당하는 항목을 선택하세요.</p>
 
-        <div class="card-container">
-            <a href="operator-list.html" class="card operator">
-                <div class="dot"></div>
-                <div class="card-bottom">
-                    <div>
-                        <p class="card-title">매출 안 늘어<br>고민이세요?</p>
-                        <p class="card-sub">문의가 없다면<br>반드시 알아야 할 것들</p>
+        <div class="cards">
+            <a href="operator-list.html" class="card card-operator">
+                <div class="card-top">
+                    <div class="card-en">OPERATOR</div>
+                    <div class="card-bottom-area">
+                        <span class="card-tag">운영자 전용</span>
+                        <div class="card-title">문의가<br>없습니다</div>
                     </div>
-                    <span class="tag">운영자 전용</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-desc">문의가 없다면<br>반드시 알아야 할 것들</div>
+                    <div class="card-type">GUIDE</div>
                 </div>
             </a>
-            <a href="user-list.html" class="card user">
-                <div class="dot"></div>
-                <div class="card-bottom">
-                    <div>
-                        <p class="card-title">피해볼까<br>걱정되세요?</p>
-                        <p class="card-sub">등록 전에<br>반드시 알아야 할 것들</p>
+            <a href="user-list.html" class="card card-member">
+                <div class="card-top">
+                    <div class="card-en">MEMBER</div>
+                    <div class="card-bottom-area">
+                        <span class="card-tag">회원 전용</span>
+                        <div class="card-title">속을까봐<br>걱정됩니다</div>
                     </div>
-                    <span class="tag">회원 전용</span>
+                </div>
+                <div class="card-body">
+                    <div class="card-desc">등록 전에<br>반드시 알아야 할 것들</div>
+                    <div class="card-type">GUIDE</div>
                 </div>
             </a>
         </div>
 
-        <div class="cta-wrap">
-            <a href="https://www.instagram.com/bromarketer?igsh=MTlhbWt3dmh4Y3V6bw%3D%3D&utm_source=qr" class="main-btn">
-                <span>릴스에서 무료 코드 받기</span>
-                <span class="arrow">→</span>
-            </a>
-        </div>
+        <a href="#" class="code-link">릴스에서 무료 코드 받기 →</a>
     </div>
 </body>
 </html>
