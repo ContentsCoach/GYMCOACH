@@ -4,109 +4,305 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 인사이트</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', -apple-system, sans-serif; background: #fafafa; color: #111; padding: 0; }
-        .header { background: #fff; padding: 20px 24px; border-bottom: 1px solid #eee; }
-        .header h1 { font-size: 20px; font-weight: 700; text-align: center; }
-        .container { max-width: 720px; margin: 0 auto; padding: 20px 24px 80px; }
-        .item { background: #fff; border-bottom: 1px solid #eee; padding: 20px; display: flex; align-items: center; gap: 16px; cursor: pointer; transition: 0.2s; }
-        .item:active { background: #f8f8f8; }
-        .number { flex-shrink: 0; font-size: 36px; font-weight: 300; color: #27ae60; line-height: 1; width: 50px; text-align: center; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background: #F2F0EB;
+            color: #1a1a1a;
+            word-break: keep-all;
+            min-height: 100vh;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #F2F0EB;
+            border-bottom: 1px solid rgba(0,0,0,0.07);
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .header-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #999;
+        }
+
+        .hero {
+            background: #BFB090;
+            padding: 40px 24px 36px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.2) 0%, transparent 60%);
+        }
+
+        .hero-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.25;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-sub {
+            font-size: 13px;
+            color: rgba(255,255,255,0.55);
+            position: relative;
+            z-index: 1;
+        }
+
+        .list {
+            padding: 16px 20px 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .item {
+            background: #fff;
+            border-radius: 18px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            cursor: pointer;
+            transition: transform 0.15s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .item:active { transform: scale(0.99); }
+
+        .number {
+            flex-shrink: 0;
+            font-size: 13px;
+            font-weight: 700;
+            color: rgba(26,26,26,0.2);
+            letter-spacing: 1px;
+            width: 28px;
+            text-align: center;
+        }
+
         .content { flex: 1; min-width: 0; }
-        .title { font-size: 16px; font-weight: 700; line-height: 1.3; margin-bottom: 4px; color: #111; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .subtitle { font-size: 12px; color: #666; line-height: 1.3; margin-bottom: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .tags { display: flex; flex-wrap: wrap; gap: 4px; }
-        .tag { font-size: 10px; color: #999; background: #f5f5f5; padding: 3px 8px; border-radius: 10px; font-weight: 500; }
-        .back-btn { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #fff; color: #111; text-decoration: none; padding: 14px 28px; border-radius: 24px; font-weight: 700; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+        .item-title {
+            font-size: 15px;
+            font-weight: 800;
+            line-height: 1.35;
+            margin-bottom: 5px;
+            color: #1a1a1a;
+            letter-spacing: -0.3px;
+        }
+
+        .item-sub {
+            font-size: 12px;
+            color: #aaa;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .tag {
+            font-size: 10px;
+            font-weight: 600;
+            color: #999;
+            background: #f5f3ef;
+            padding: 3px 9px;
+            border-radius: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .arrow {
+            flex-shrink: 0;
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .back-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1a1a;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
-<div class="header">
-    <h1>현직이 폭로하는 진실</h1>
-</div>
 
-<div class="container">
-    <div class="item" onclick="openColumn('user1', '1234')">
-        <div class="number">01</div>
-        <div class="content">
-            <div class="title">무자격 트레이너 걸러내는 법</div>
-            <div class="subtitle">자격증도 없이 가르치는 트레이너, 이렇게 구별합니다</div>
-            <div class="tags"><span class="tag">트레이너</span><span class="tag">자격증</span><span class="tag">피해예방</span></div>
-        </div>
-    </div>
-    <div class="item" onclick="openColumn('user2', '2234')">
-        <div class="number">02</div>
-        <div class="content">
-            <div class="title">환불 거부하는 센터, 이렇게 대응하세요</div>
-            <div class="subtitle">환불 안 해준다고? 법적으로 받아낼 수 있습니다</div>
-            <div class="tags"><span class="tag">환불</span><span class="tag">소비자권리</span><span class="tag">대응법</span></div>
-        </div>
-    </div>
-    <div class="item" onclick="openColumn('user3', '3234')">
-        <div class="number">03</div>
-        <div class="content">
-            <div class="title">PT 등록 전 반드시 확인할 것 5가지</div>
-            <div class="subtitle">이 5가지 모르고 등록하면 수십만 원 날립니다</div>
-            <div class="tags"><span class="tag">PT등록</span><span class="tag">계약</span><span class="tag">체크리스트</span></div>
-        </div>
-    </div>
-    <div class="item" onclick="openColumn('user4', '4234')">
-        <div class="number">04</div>
-        <div class="content">
-            <div class="title">3개월 다녔는데 왜 몸이 안 바뀔까요</div>
-            <div class="subtitle">센터 문제인지, 내 문제인지 구별하는 기준</div>
-            <div class="tags"><span class="tag">효과없음</span><span class="tag">운동효과</span><span class="tag">원인분석</span></div>
-        </div>
-    </div>
-    <div class="item" onclick="openColumn('user5', '5234')">
-        <div class="number">05</div>
-        <div class="content">
-            <div class="title">양아치 센터를 알아보는 법</div>
-            <div class="subtitle">처음 방문했을 때 이것만 봐도 알 수 있습니다</div>
-            <div class="tags"><span class="tag">센터선택</span><span class="tag">주의사항</span><span class="tag">피해예방</span></div>
-        </div>
-    </div>
-    <div class="item" onclick="openColumn('user6', '6234')">
-        <div class="number">06</div>
-        <div class="content">
-            <div class="title">PT 가격, 비싸다고 좋은 게 아닙니다</div>
-            <div class="subtitle">가격이 아니라 이걸 보고 센터를 골라야 합니다</div>
-            <div class="tags"><span class="tag">가격비교</span><span class="tag">센터선택</span></div>
-        </div>
-    </div>
-    <div class="item" onclick="openColumn('user7', '7234')">
-        <div class="number">07</div>
-        <div class="content">
-            <div class="title">부상 입었을 때 센터에 책임 물을 수 있나요</div>
-            <div class="subtitle">운동 중 부상, 센터에 책임 물을 수 있는 조건이 있습니다</div>
-            <div class="tags"><span class="tag">부상</span><span class="tag">책임</span><span class="tag">대응법</span></div>
-        </div>
-    </div>
-    <div class="item" onclick="openColumn('user8', '8234')">
-        <div class="number">08</div>
-        <div class="content">
-            <div class="title">헬스장 직원이 절대 말 안 해주는 것들</div>
-            <div class="subtitle">현직이 알려주는 센터의 진짜 속사정</div>
-            <div class="tags"><span class="tag">내부폭로</span><span class="tag">현직</span><span class="tag">진실</span></div>
-        </div>
-    </div>
-</div>
+    <header>
+        <div class="logo">BROMARKETER</div>
+        <div class="header-tag">MEMBER</div>
+    </header>
 
-<a href="index.html" class="back-btn">← 뒤로 가기</a>
+    <div class="hero">
+        <div class="hero-tag">회원 전용 · GUIDE</div>
+        <h1 class="hero-title">속을까봐 걱정된다면<br>반드시 알아야 할 것들</h1>
+        <p class="hero-sub">현직이 폭로하는 진실</p>
+    </div>
 
-<script>
-function openColumn(fileName, password) {
-    const input = prompt("비공개 코드를 입력하세요.");
-    if (input === password) {
-        location.href = fileName + ".html";
-    } else if (input !== null) {
-        alert("코드가 올바르지 않습니다.");
+    <div class="list">
+        <a class="item" onclick="openColumn('user1', '1234')">
+            <div class="number">01</div>
+            <div class="content">
+                <div class="item-title">무자격 트레이너 걸러내는 법</div>
+                <div class="item-sub">자격증도 없이 가르치는 트레이너, 이렇게 구별합니다</div>
+                <div class="tags">
+                    <span class="tag">트레이너</span>
+                    <span class="tag">자격증</span>
+                    <span class="tag">피해예방</span>
+                </div>
+            </div>
+            <div class="arrow">›</div>
+        </a>
+        <a class="item" onclick="openColumn('user2', '2234')">
+            <div class="number">02</div>
+            <div class="content">
+                <div class="item-title">환불 거부하는 센터, 이렇게 대응하세요</div>
+                <div class="item-sub">환불 안 해준다고? 법적으로 받아낼 수 있습니다</div>
+                <div class="tags">
+                    <span class="tag">환불</span>
+                    <span class="tag">소비자권리</span>
+                    <span class="tag">대응법</span>
+                </div>
+            </div>
+            <div class="arrow">›</div>
+        </a>
+        <a class="item" onclick="openColumn('user3', '3234')">
+            <div class="number">03</div>
+            <div class="content">
+                <div class="item-title">PT 등록 전 반드시 확인할 것 5가지</div>
+                <div class="item-sub">이 5가지 모르고 등록하면 수십만 원 날립니다</div>
+                <div class="tags">
+                    <span class="tag">PT등록</span>
+                    <span class="tag">계약</span>
+                    <span class="tag">체크리스트</span>
+                </div>
+            </div>
+            <div class="arrow">›</div>
+        </a>
+        <a class="item" onclick="openColumn('user4', '4234')">
+            <div class="number">04</div>
+            <div class="content">
+                <div class="item-title">3개월 다녔는데 왜 몸이 안 바뀔까요</div>
+                <div class="item-sub">센터 문제인지, 내 문제인지 구별하는 기준</div>
+                <div class="tags">
+                    <span class="tag">효과없음</span>
+                    <span class="tag">운동효과</span>
+                    <span class="tag">원인분석</span>
+                </div>
+            </div>
+            <div class="arrow">›</div>
+        </a>
+        <a class="item" onclick="openColumn('user5', '5234')">
+            <div class="number">05</div>
+            <div class="content">
+                <div class="item-title">양아치 센터를 알아보는 법</div>
+                <div class="item-sub">처음 방문했을 때 이것만 봐도 알 수 있습니다</div>
+                <div class="tags">
+                    <span class="tag">센터선택</span>
+                    <span class="tag">주의사항</span>
+                    <span class="tag">피해예방</span>
+                </div>
+            </div>
+            <div class="arrow">›</div>
+        </a>
+        <a class="item" onclick="openColumn('user6', '6234')">
+            <div class="number">06</div>
+            <div class="content">
+                <div class="item-title">PT 가격, 비싸다고 좋은 게 아닙니다</div>
+                <div class="item-sub">가격이 아니라 이걸 보고 센터를 골라야 합니다</div>
+                <div class="tags">
+                    <span class="tag">가격비교</span>
+                    <span class="tag">센터선택</span>
+                </div>
+            </div>
+            <div class="arrow">›</div>
+        </a>
+        <a class="item" onclick="openColumn('user7', '7234')">
+            <div class="number">07</div>
+            <div class="content">
+                <div class="item-title">부상 입었을 때 센터에 책임 물을 수 있나요</div>
+                <div class="item-sub">운동 중 부상, 센터에 책임 물을 수 있는 조건이 있습니다</div>
+                <div class="tags">
+                    <span class="tag">부상</span>
+                    <span class="tag">책임</span>
+                    <span class="tag">대응법</span>
+                </div>
+            </div>
+            <div class="arrow">›</div>
+        </a>
+        <a class="item" onclick="openColumn('user8', '8234')">
+            <div class="number">08</div>
+            <div class="content">
+                <div class="item-title">헬스장 직원이 절대 말 안 해주는 것들</div>
+                <div class="item-sub">현직이 알려주는 센터의 진짜 속사정</div>
+                <div class="tags">
+                    <span class="tag">내부폭로</span>
+                    <span class="tag">현직</span>
+                    <span class="tag">진실</span>
+                </div>
+            </div>
+            <div class="arrow">›</div>
+        </a>
+    </div>
+
+    <a href="index.html" class="back-btn">← 처음으로</a>
+
+    <script>
+    function openColumn(fileName, password) {
+        const input = prompt("비공개 코드를 입력하세요.");
+        if (input === password) {
+            location.href = fileName + ".html";
+        } else if (input !== null) {
+            alert("코드가 올바르지 않습니다.");
+        }
     }
-}
-</script>
+    </script>
 </body>
 </html>
