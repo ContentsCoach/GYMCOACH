@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -10,191 +9,186 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: 'Pretendard', sans-serif; background: #F2F0EB; color: #1a1a1a; word-break: keep-all; min-height: 100vh; }
 
-```
-    header { padding: 22px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.07); }
-    .logo { font-size: 15px; font-weight: 900; letter-spacing: 2px; }
-    .header-sub { font-size: 11px; color: #999; font-weight: 600; letter-spacing: 1px; }
+        header { padding: 22px 24px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.07); }
+        .logo { font-size: 15px; font-weight: 900; letter-spacing: 2px; }
+        .header-sub { font-size: 11px; color: #999; font-weight: 600; letter-spacing: 1px; }
 
-    .hero { padding: 48px 24px 36px; text-align: center; }
-    .hero-label { font-size: 11px; font-weight: 700; color: #999; letter-spacing: 2px; margin-bottom: 14px; }
-    .hero-title { font-size: 30px; font-weight: 900; line-height: 1.25; letter-spacing: -1.5px; margin-bottom: 14px; }
-    .hero-title em { font-style: normal; position: relative; }
-    .hero-title em::after { content: ''; position: absolute; bottom: 2px; left: 0; width: 100%; height: 9px; background: #E2D4B8; z-index: -1; border-radius: 2px; }
-    .hero-desc { font-size: 15px; color: #666; line-height: 1.7; }
+        .hero { padding: 48px 24px 36px; text-align: center; }
+        .hero-label { font-size: 11px; font-weight: 700; color: #999; letter-spacing: 2px; margin-bottom: 14px; }
+        .hero-title { font-size: 30px; font-weight: 900; line-height: 1.25; letter-spacing: -1.5px; margin-bottom: 14px; }
+        .hero-title em { font-style: normal; position: relative; }
+        .hero-title em::after { content: ''; position: absolute; bottom: 2px; left: 0; width: 100%; height: 9px; background: #E2D4B8; z-index: -1; border-radius: 2px; }
+        .hero-desc { font-size: 15px; color: #666; line-height: 1.7; }
 
-    .section { padding: 44px 24px 0; }
-    .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; }
-    .section-title { font-size: 16px; font-weight: 900; letter-spacing: -0.3px; }
-    .section-more { font-size: 12px; color: #999; font-weight: 600; text-decoration: none; }
+        .section { padding: 44px 0 0; }
+        .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 16px; padding: 0 24px; }
+        .section-title { font-size: 16px; font-weight: 900; letter-spacing: -0.3px; }
+        .section-more { font-size: 12px; color: #999; font-weight: 600; text-decoration: none; }
 
-    .grid { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 12px; padding-bottom: 8px; }
-    .grid::-webkit-scrollbar { display: none; }
+        .grid { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 12px; padding: 4px 24px 24px; }
+        .grid::-webkit-scrollbar { display: none; }
 
-    .card { flex-shrink: 0; width: 180px; border-radius: 20px; overflow: hidden; cursor: pointer; transition: transform 0.15s; display: flex; flex-direction: column; text-decoration: none; }
-    .card:active { transform: scale(0.97); }
+        .card { flex-shrink: 0; width: 180px; border-radius: 20px; overflow: hidden; cursor: pointer; transition: transform 0.15s; display: flex; flex-direction: column; text-decoration: none; }
+        .card:active { transform: scale(0.97); }
 
-    .card-top { padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; height: 220px; }
-    .card-category { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 1.5px; margin-bottom: 10px; }
-    .card-title { font-size: 16px; font-weight: 900; color: #fff; line-height: 1.3; letter-spacing: -0.5px; }
-    .card-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 7px; line-height: 1.5; height: 36px; overflow: hidden; }
+        .card-top { padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; height: 220px; }
+        .card-category { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 1.5px; margin-bottom: 10px; }
+        .card-title { font-size: 16px; font-weight: 900; color: #fff; line-height: 1.3; letter-spacing: -0.5px; }
+        .card-sub { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 7px; line-height: 1.5; height: 36px; overflow: hidden; }
 
-    .card-foot { background: #fff; padding: 12px 14px; }
-    .card-tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
-    .card-tag { font-size: 10px; font-weight: 700; color: #888; background: #F2F0EB; padding: 4px 8px; border-radius: 20px; }
+        .card-foot { background: #fff; padding: 12px 14px; }
+        .card-tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
+        .card-tag { font-size: 10px; font-weight: 700; color: #888; background: #F2F0EB; padding: 4px 8px; border-radius: 20px; }
 
-    .c1 .card-top { background: linear-gradient(160deg, #3a3530 0%, #1a1815 100%); }
-    .c2 .card-top { background: linear-gradient(160deg, #2c3e50 0%, #1a252f 100%); }
-    .c3 .card-top { background: linear-gradient(160deg, #4a3728 0%, #2a1f18 100%); }
-    .c4 .card-top { background: linear-gradient(160deg, #1e3a2f 0%, #111f1a 100%); }
-    .c5 .card-top { background: linear-gradient(160deg, #3d2c4a 0%, #221828 100%); }
-    .c6 .card-top { background: linear-gradient(160deg, #4a2c2c 0%, #2a1818 100%); }
-    .c7 .card-top { background: linear-gradient(160deg, #2c3a4a 0%, #182028 100%); }
+        .c1 .card-top { background: linear-gradient(160deg, #3a3530 0%, #1a1815 100%); }
+        .c2 .card-top { background: linear-gradient(160deg, #2c3e50 0%, #1a252f 100%); }
+        .c3 .card-top { background: linear-gradient(160deg, #4a3728 0%, #2a1f18 100%); }
+        .c4 .card-top { background: linear-gradient(160deg, #1e3a2f 0%, #111f1a 100%); }
+        .c5 .card-top { background: linear-gradient(160deg, #3d2c4a 0%, #221828 100%); }
+        .c6 .card-top { background: linear-gradient(160deg, #4a2c2c 0%, #2a1818 100%); }
+        .c7 .card-top { background: linear-gradient(160deg, #2c3a4a 0%, #182028 100%); }
 
-    .divider { height: 1px; background: rgba(0,0,0,0.07); margin: 44px 0 0; }
+        .divider { height: 1px; background: rgba(0,0,0,0.07); margin: 44px 0 0; }
 
-    .about { padding: 40px 24px 28px; text-align: left; }
-    .about-label { font-size: 11px; font-weight: 700; color: #999; letter-spacing: 2px; margin-bottom: 16px; }
-    .about-text { font-size: 15px; color: #444; line-height: 1.85; }
+        .about { padding: 40px 24px 28px; text-align: left; }
+        .about-label { font-size: 11px; font-weight: 700; color: #999; letter-spacing: 2px; margin-bottom: 16px; }
+        .about-text { font-size: 15px; color: #444; line-height: 1.85; }
 
-    .cta-wrap { padding: 0 24px 80px; text-align: center; }
-    .cta-link { font-size: 16px; font-weight: 800; color: #1a1a1a; text-decoration: none; border-bottom: 2px solid #1a1a1a; padding-bottom: 2px; }
-</style>
-```
-
+        .cta-wrap { padding: 0 24px 80px; text-align: center; }
+        .cta-link { font-size: 16px; font-weight: 800; color: #1a1a1a; text-decoration: none; border-bottom: 2px solid #1a1a1a; padding-bottom: 2px; }
+    </style>
 </head>
 <body>
 
-```
-<header>
-    <div class="logo">GYMCOACH</div>
-    <div class="header-sub">FITNESS CONSULTING</div>
-</header>
+    <header>
+        <div class="logo">GYMCOACH</div>
+        <div class="header-sub">FITNESS CONSULTING</div>
+    </header>
 
-<div class="hero">
-    <div class="hero-label">15년차 트레이너 · 6년 PT샵 운영</div>
-    <h1 class="hero-title">문의가 없는 센터에는<br><em>반드시 이유</em>가 있습니다</h1>
-    <p class="hero-desc">헬스장·PT샵·필라테스 사장님을 위한 이야기</p>
-</div>
-
-<div class="section">
-    <div class="section-header">
-        <span class="section-title">운영자 가이드</span>
-        <a href="operator-list.html" class="section-more">전체보기 →</a>
+    <div class="hero">
+        <div class="hero-label">15년차 트레이너 · 6년 PT샵 운영 경험</div>
+        <h1 class="hero-title">문의가 없는 센터에는<br><em>반드시 이유</em>가 있습니다</h1>
+        <p class="hero-desc">헬스장·PT샵·필라테스 사장님을 위한 이야기</p>
     </div>
-    <div class="grid">
 
-        <div class="card c1" onclick="location.href='operator-list.html'">
-            <div class="card-top">
-                <div class="card-category">PLACE</div>
-                <div class="card-title">클릭률이 높아지는 플레이스 셋팅법</div>
-                <div class="card-sub">대표 이미지 하나로 클릭률 3배</div>
-            </div>
-            <div class="card-foot">
-                <div class="card-tag-row">
-                    <span class="card-tag">플레이스</span>
-                    <span class="card-tag">문의전환</span>
+    <div class="section">
+        <div class="section-header">
+            <span class="section-title">운영자 가이드</span>
+            <a href="operator-list.html" class="section-more">전체보기 →</a>
+        </div>
+        <div class="grid">
+
+            <div class="card c1" onclick="location.href='operator-list.html'">
+                <div class="card-top">
+                    <div class="card-category">PLACE</div>
+                    <div class="card-title">클릭률이 높아지는 플레이스 셋팅법</div>
+                    <div class="card-sub">대표 이미지 하나로 클릭률 3배</div>
+                </div>
+                <div class="card-foot">
+                    <div class="card-tag-row">
+                        <span class="card-tag">플레이스</span>
+                        <span class="card-tag">문의전환</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card c2" onclick="location.href='operator-list.html'">
-            <div class="card-top">
-                <div class="card-category">DIAGNOSE</div>
-                <div class="card-title">망하는 센터를 분석하는 체크리스트</div>
-                <div class="card-sub">잘 되는 센터와 망하는 센터의 차이</div>
-            </div>
-            <div class="card-foot">
-                <div class="card-tag-row">
-                    <span class="card-tag">운영분석</span>
-                    <span class="card-tag">체크리스트</span>
+            <div class="card c2" onclick="location.href='operator-list.html'">
+                <div class="card-top">
+                    <div class="card-category">DIAGNOSE</div>
+                    <div class="card-title">망하는 센터를 분석하는 체크리스트</div>
+                    <div class="card-sub">잘 되는 센터와 망하는 센터의 차이</div>
+                </div>
+                <div class="card-foot">
+                    <div class="card-tag-row">
+                        <span class="card-tag">운영분석</span>
+                        <span class="card-tag">체크리스트</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card c3" onclick="location.href='operator-list.html'">
-            <div class="card-top">
-                <div class="card-category">CONTENT</div>
-                <div class="card-title">사장님이 만들어야 하는 콘텐츠란</div>
-                <div class="card-sub">같은 업종, 완전히 다른 매출</div>
-            </div>
-            <div class="card-foot">
-                <div class="card-tag-row">
-                    <span class="card-tag">콘텐츠</span>
-                    <span class="card-tag">인스타</span>
+            <div class="card c3" onclick="location.href='operator-list.html'">
+                <div class="card-top">
+                    <div class="card-category">CONTENT</div>
+                    <div class="card-title">사장님이 만들어야 하는 콘텐츠란</div>
+                    <div class="card-sub">같은 업종, 완전히 다른 매출</div>
+                </div>
+                <div class="card-foot">
+                    <div class="card-tag-row">
+                        <span class="card-tag">콘텐츠</span>
+                        <span class="card-tag">인스타</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card c4" onclick="location.href='operator-list.html'">
-            <div class="card-top">
-                <div class="card-category">STRATEGY</div>
-                <div class="card-title">손님을 모으는 2가지 공식</div>
-                <div class="card-sub">노출과 신뢰, 핵심 전략</div>
-            </div>
-            <div class="card-foot">
-                <div class="card-tag-row">
-                    <span class="card-tag">광고비0원</span>
-                    <span class="card-tag">유입공식</span>
+            <div class="card c4" onclick="location.href='operator-list.html'">
+                <div class="card-top">
+                    <div class="card-category">STRATEGY</div>
+                    <div class="card-title">손님을 모으는 2가지 공식</div>
+                    <div class="card-sub">노출과 신뢰, 핵심 전략</div>
+                </div>
+                <div class="card-foot">
+                    <div class="card-tag-row">
+                        <span class="card-tag">광고비0원</span>
+                        <span class="card-tag">유입공식</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card c5" onclick="location.href='operator-list.html'">
-            <div class="card-top">
-                <div class="card-category">COPY</div>
-                <div class="card-title">문의 3배 만드는 소개글 작성법</div>
-                <div class="card-sub">방문자를 문의로 만드는 법</div>
-            </div>
-            <div class="card-foot">
-                <div class="card-tag-row">
-                    <span class="card-tag">소개글</span>
-                    <span class="card-tag">문의전환</span>
+            <div class="card c5" onclick="location.href='operator-list.html'">
+                <div class="card-top">
+                    <div class="card-category">COPY</div>
+                    <div class="card-title">문의 3배 만드는 소개글 작성법</div>
+                    <div class="card-sub">방문자를 문의로 만드는 법</div>
+                </div>
+                <div class="card-foot">
+                    <div class="card-tag-row">
+                        <span class="card-tag">소개글</span>
+                        <span class="card-tag">문의전환</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card c6" onclick="location.href='operator-list.html'">
-            <div class="card-top">
-                <div class="card-category">CONSULT</div>
-                <div class="card-title">"생각해볼게요" 안 듣는 상담 공식</div>
-                <div class="card-sub">상담 구조만 바꿔서 등록률 2배</div>
-            </div>
-            <div class="card-foot">
-                <div class="card-tag-row">
-                    <span class="card-tag">상담공식</span>
-                    <span class="card-tag">등록전환</span>
+            <div class="card c6" onclick="location.href='operator-list.html'">
+                <div class="card-top">
+                    <div class="card-category">CONSULT</div>
+                    <div class="card-title">"생각해볼게요" 안 듣는 상담 공식</div>
+                    <div class="card-sub">상담 구조만 바꿔서 등록률 2배</div>
+                </div>
+                <div class="card-foot">
+                    <div class="card-tag-row">
+                        <span class="card-tag">상담공식</span>
+                        <span class="card-tag">등록전환</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card c7" onclick="location.href='operator-list.html'">
-            <div class="card-top">
-                <div class="card-category">BRANDING</div>
-                <div class="card-title">비싸도 선택받는 센터의 비밀</div>
-                <div class="card-sub">비싸게 팔아도 손님이 더 오는 이유</div>
-            </div>
-            <div class="card-foot">
-                <div class="card-tag-row">
-                    <span class="card-tag">가격책정</span>
-                    <span class="card-tag">브랜딩</span>
+            <div class="card c7" onclick="location.href='operator-list.html'">
+                <div class="card-top">
+                    <div class="card-category">BRANDING</div>
+                    <div class="card-title">비싸도 선택받는 센터의 비밀</div>
+                    <div class="card-sub">비싸게 팔아도 손님이 더 오는 이유</div>
+                </div>
+                <div class="card-foot">
+                    <div class="card-tag-row">
+                        <span class="card-tag">가격책정</span>
+                        <span class="card-tag">브랜딩</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
 
-<div class="divider"></div>
+    <div class="divider"></div>
 
-<div class="about">
-    <div class="about-label">ABOUT</div>
-    <p class="about-text">광고 없이 유동인구 없는<br>월세 100만원 지하상가에서 월 순수익 3천만원을 만든 경험이 있어요.<br><br>PT샵 오픈하고 불안해서 마케팅 업체와 계약했어요.<br>관리는커녕 연락도 안 되더니 결국 잠적했어요.<br>400만원, 그냥 날렸습니다.<br><br>그때부터 직접 파고들었어요.<br>고객은 광고만 보고 오지 않아요.<br>찾아보고, 비교하고, 판단한 뒤에 움직입니다.<br>그게 브랜딩이 하는 일이에요.</p>
-</div>
+    <div class="about">
+        <div class="about-label">ABOUT</div>
+        <p class="about-text">광고 없이 유동인구 없는<br>월세 100만원 지하상가에서 월 순수익 3천만원을 만든 경험이 있어요.<br><br>PT샵 오픈하고 불안해서 마케팅 업체와 계약했어요.<br>관리는커녕 연락도 안 되더니 결국 잠적했어요.<br>400만원, 그냥 날렸습니다.<br><br>그때부터 직접 파고들었어요.<br>고객은 광고만 보고 오지 않아요.<br>찾아보고, 비교하고, 판단한 뒤에 움직입니다.<br>그게 브랜딩이 하는 일이에요.</p>
+    </div>
 
-<div class="cta-wrap">
-    <a href="#" class="cta-link">릴스에서 무료 코드 받기 →</a>
-</div>
-```
+    <div class="cta-wrap">
+        <a href="#" class="cta-link">릴스에서 무료 코드 받기 →</a>
+    </div>
 
 </body>
 </html>
