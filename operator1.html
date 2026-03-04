@@ -6,121 +6,379 @@
     <title>대표 이미지 하나로 클릭률 3배 만드는 법</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
-        body { font-family: 'Pretendard', sans-serif; line-height: 1.8; padding: 40px 20px; max-width: 500px; margin: 0 auto; color: #111; background-color: #fff; word-break: keep-all; }
-        h1 { font-size: 26px; font-weight: 900; line-height: 1.35; margin-bottom: 40px; color: #000; letter-spacing: -1px; }
-        .category { display: inline-block; font-size: 13px; font-weight: 800; color: #3e5eff; letter-spacing: 1.5px; margin-bottom: 16px; }
-        h2 { font-size: 21px; font-weight: 900; margin: 50px 0 20px; color: #000; }
-        p { margin-bottom: 25px; font-size: 17px; color: #333; }
-        .highlight { font-weight: 800; background: linear-gradient(to top, #fff382 40%, transparent 40%); padding: 0 2px; }
-        .emp { font-weight: 800; color: #000; }
-        hr { display: none; }
-        .card-container { background: #f8faff; border-radius: 25px; padding: 35px 20px; margin: 35px 0; }
-        .data-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-        .data-table thead th { padding-bottom: 20px; font-size: 16px; font-weight: 800; text-align: center; border-bottom: 1px solid #eef2f8; }
-        .bad-title { color: #999; }
-        .good-title { color: #3e5eff; }
-        .data-table th.row-label { width: 30%; color: #444; font-weight: 700; text-align: center; }
-        .data-table td { padding: 18px 5px; font-size: 15.5px; text-align: center; vertical-align: middle; border-bottom: 1px solid #eef2f8; }
-        .data-table tr:last-child td, .data-table tr:last-child th { border-bottom: none; }
-        .before-val { color: #999; }
-        .after-val { color: #3e5eff; font-weight: 800; }
-        .chk-card { border: 2.5px solid #3e5eff; border-radius: 25px; padding: 35px 25px; margin: 50px 0; }
-        .chk-title { font-weight: 900; font-size: 20px; color: #3e5eff; margin-bottom: 25px; display: block; }
-        .chk-item { display: flex; align-items: flex-start; margin-bottom: 18px; font-weight: 700; font-size: 16px; }
-        .chk-item input { width: 20px; height: 20px; margin-right: 12px; margin-top: 4px; cursor: pointer; accent-color: #3e5eff; }
-        .btn { display: block; text-align: center; background: #fff; color: #3e5eff; font-weight: 800; text-decoration: none; padding: 22px 20px; border-radius: 18px; margin-top: 60px; font-size: 18px; border: 2px solid #3e5eff; }
-        .example-block { margin: 20px 0; }
-        .example-label { font-size: 14px; font-weight: 800; margin-bottom: 8px; }
-        .example-label.bad { color: #999; }
-        .example-label.good { color: #3e5eff; }
-        .example-text { font-size: 15.5px; color: #333; background: #f8faff; border-radius: 12px; padding: 14px 18px; margin-bottom: 8px; }
-        .example-text.good { background: #eef2ff; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Pretendard', sans-serif;
+            background: #F2F0EB;
+            color: #1a1a1a;
+            word-break: keep-all;
+            line-height: 1.8;
+        }
+
+        /* 헤더 */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #F2F0EB;
+            border-bottom: 1px solid rgba(0,0,0,0.07);
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .header-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #999;
+        }
+
+        /* 히어로 */
+        .hero {
+            background: radial-gradient(ellipse at 70% 20%, #3a3530 0%, #1a1815 100%);
+            padding: 40px 24px 36px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 80% 30%, rgba(180,140,80,0.2) 0%, transparent 60%);
+        }
+
+        .hero-category {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            color: rgba(255,255,255,0.35);
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.3;
+            letter-spacing: -1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 본문 */
+        .content {
+            max-width: 520px;
+            margin: 0 auto;
+            padding: 36px 24px 100px;
+        }
+
+        h2 {
+            font-size: 20px;
+            font-weight: 900;
+            margin: 44px 0 16px;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+            line-height: 1.35;
+        }
+
+        p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 22px;
+            line-height: 1.85;
+        }
+
+        .highlight {
+            font-weight: 800;
+            background: linear-gradient(to top, #E8D5A0 40%, transparent 40%);
+            padding: 0 2px;
+        }
+
+        .emp {
+            font-weight: 800;
+            color: #1a1a1a;
+        }
+
+        /* 예시 블록 */
+        .example-wrap {
+            background: #fff;
+            border-radius: 18px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+
+        .example-label-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #1a1a1a;
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
+        }
+
+        .example-block {
+            margin-bottom: 16px;
+        }
+
+        .example-block:last-child { margin-bottom: 0; }
+
+        .example-label {
+            font-size: 11px;
+            font-weight: 800;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .example-label.bad { color: #bbb; }
+        .example-label.good { color: #1a1a1a; }
+
+        .example-text {
+            font-size: 14px;
+            color: #666;
+            background: #F2F0EB;
+            border-radius: 10px;
+            padding: 12px 16px;
+            line-height: 1.6;
+        }
+
+        .example-text.good {
+            background: #1a1815;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* 비교 테이블 */
+        .table-wrap {
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            margin: 32px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead th {
+            padding: 16px 12px;
+            font-size: 12px;
+            font-weight: 800;
+            text-align: center;
+            border-bottom: 1px solid #F2F0EB;
+            letter-spacing: 0.5px;
+        }
+
+        thead th.row-label { color: #ccc; }
+        thead th.bad-title { color: #bbb; }
+        thead th.good-title { color: #1a1a1a; }
+
+        tbody th {
+            padding: 16px 12px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #888;
+            text-align: center;
+            border-bottom: 1px solid #F2F0EB;
+            background: #fafaf8;
+        }
+
+        tbody td {
+            padding: 16px 12px;
+            font-size: 13px;
+            text-align: center;
+            border-bottom: 1px solid #F2F0EB;
+            line-height: 1.5;
+        }
+
+        tbody tr:last-child th,
+        tbody tr:last-child td { border-bottom: none; }
+
+        .before-val { color: #bbb; }
+        .after-val { color: #1a1a1a; font-weight: 800; }
+
+        /* 체크리스트 */
+        .chk-wrap {
+            background: #1a1815;
+            border-radius: 18px;
+            padding: 28px 24px;
+            margin: 32px 0;
+        }
+
+        .chk-title {
+            font-size: 16px;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: -0.3px;
+            display: block;
+        }
+
+        .chk-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.5;
+        }
+
+        .chk-item:last-child { margin-bottom: 0; }
+
+        .chk-item input {
+            width: 18px;
+            height: 18px;
+            margin-top: 2px;
+            flex-shrink: 0;
+            cursor: pointer;
+            accent-color: #C4A882;
+        }
+
+        /* 하단 버튼 */
+        .back-btn {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1a1a;
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
 
-    <span class="category">PLACE INSIGHT</span>
-    <h1>대표 이미지 하나로<br>클릭률 3배 만드는 법</h1>
+    <header>
+        <div class="logo">BROMARKETER</div>
+        <div class="header-tag">OPERATOR</div>
+    </header>
 
-    <p>플레이스 셋팅 다 해놨는데 문의가 없다는 센터들이 있어요. 사진도 올렸고, 리뷰도 있어요. 뭘 더 해야 하는지 모르겠는 상태죠.</p>
-
-    <p>근데 대부분은 문제가 어디 있는지 모릅니다. 플레이스 안으로 들어오기도 전에 이미 걸러지고 있다는 걸요.</p>
-
-    <h2>고객은 생각보다 훨씬 빨리 결정합니다</h2>
-
-    <p>사람의 뇌는 하루에도 수만 가지 정보를 처리해야 해요. 그걸 하나하나 꼼꼼히 분석하면 에너지가 남질 않아요. 그래서 뇌는 대부분의 판단을 자동으로, 순식간에 처리합니다. 검색 결과를 보는 것도 마찬가지에요. 고객은 각 센터를 비교 분석하는 게 아니에요. 눈에 꽂히면 클릭하고, 아니면 그냥 넘깁니다.</p>
-
-    <p>소개글도, 리뷰도, 가격도 — 클릭해야 보이는 것들이에요. <span class="highlight">클릭이 일어나지 않으면 그 안에 뭐가 있든 아무 의미가 없어요.</span> 그리고 그 클릭을 만드는 건 대표 이미지 단 한 장입니다.</p>
-
-    <h2>기구 사진이 클릭을 못 만드는 이유</h2>
-
-    <p>센터를 열심히 꾸몄으니까 자랑하고 싶은 마음은 당연해요. 새로 들인 기구, 깔끔한 인테리어. 그게 센터의 수준을 보여준다고 생각하니까요.</p>
-
-    <p>근데 사람은 자신과 관련 없는 정보는 무의식적으로 흘려보냅니다. 시끄러운 파티장에서도 누군가 내 이름을 부르면 들리는 것처럼, 뇌는 나와 관련된 것에만 반응하도록 설계돼 있어요. 기구 사진은 나와 관련이 없어요. <span class="emp">"이런 시설이구나"</span>로 끝나고, 거기서 감정이 생기지 않습니다.</p>
-
-    <p>감정이 없으면 행동도 없어요. 클릭은 논리가 아니라 감정에서 일어나거든요.</p>
-
-    <h2>"저기 가면 나도 저렇게 되겠다"</h2>
-
-    <p>반면 실제로 운동하고 변화하는 장면은 달라요. 사람은 타인의 행동을 볼 때 자신도 그 상황을 무의식적으로 시뮬레이션합니다. 나와 비슷한 사람이 변화하는 장면을 보는 순간, 고객의 뇌는 자동으로 그 결과를 자신에게 투영해요. <span class="highlight">"저기 가면 나도 저렇게 될 수 있겠다"</span>는 상상이 생기는 거에요. 그게 손가락을 멈추게 만듭니다.</p>
-
-    <p>대표 이미지는 센터를 소개하는 자리가 아닙니다. <span class="emp">고객이 자기 모습을 대입하게 만드는 자리</span>에요.</p>
-
-    <p><span class="emp">PT샵</span></p>
-    <div class="example-block">
-        <div class="example-label bad">❌ 클릭 안 되는 사진</div>
-        <div class="example-text">깔끔한 센터 전경, 최신 기구 클로즈업</div>
-        <div class="example-label good">✅ 클릭 되는 사진</div>
-        <div class="example-text good">트레이너가 회원 자세를 교정해주는 장면, 전후 체형 변화 사진</div>
+    <div class="hero">
+        <div class="hero-category">PLACE INSIGHT · 01</div>
+        <h1 class="hero-title">대표 이미지 하나로<br>클릭률 3배 만드는 법</h1>
     </div>
 
-    <p><span class="emp">필라테스</span></p>
-    <div class="example-block">
-        <div class="example-label bad">❌ 클릭 안 되는 사진</div>
-        <div class="example-text">리포머 기구 사진, 넓고 깔끔한 스튜디오 전경</div>
-        <div class="example-label good">✅ 클릭 되는 사진</div>
-        <div class="example-text good">회원이 동작하는 순간, 강사가 직접 교정해주는 장면</div>
+    <div class="content">
+
+        <p>플레이스 셋팅 다 해놨는데 문의가 없다는 센터들이 있어요. 사진도 올렸고, 리뷰도 있어요. 뭘 더 해야 하는지 모르겠는 상태죠.</p>
+
+        <p>근데 대부분은 문제가 어디 있는지 모릅니다. 플레이스 안으로 들어오기도 전에 이미 걸러지고 있다는 걸요.</p>
+
+        <h2>고객은 생각보다 훨씬 빨리 결정합니다</h2>
+
+        <p>사람의 뇌는 하루에도 수만 가지 정보를 처리해야 해요. 그걸 하나하나 꼼꼼히 분석하면 에너지가 남질 않아요. 그래서 뇌는 대부분의 판단을 자동으로, 순식간에 처리합니다. 검색 결과를 보는 것도 마찬가지에요. 고객은 각 센터를 비교 분석하는 게 아니에요. 눈에 꽂히면 클릭하고, 아니면 그냥 넘깁니다.</p>
+
+        <p>소개글도, 리뷰도, 가격도 — 클릭해야 보이는 것들이에요. <span class="highlight">클릭이 일어나지 않으면 그 안에 뭐가 있든 아무 의미가 없어요.</span> 그리고 그 클릭을 만드는 건 대표 이미지 단 한 장입니다.</p>
+
+        <h2>기구 사진이 클릭을 못 만드는 이유</h2>
+
+        <p>센터를 열심히 꾸몄으니까 자랑하고 싶은 마음은 당연해요. 새로 들인 기구, 깔끔한 인테리어. 그게 센터의 수준을 보여준다고 생각하니까요.</p>
+
+        <p>근데 사람은 자신과 관련 없는 정보는 무의식적으로 흘려보냅니다. 시끄러운 파티장에서도 누군가 내 이름을 부르면 들리는 것처럼, 뇌는 나와 관련된 것에만 반응하도록 설계돼 있어요. 기구 사진은 나와 관련이 없어요. <span class="emp">"이런 시설이구나"</span>로 끝나고, 거기서 감정이 생기지 않습니다.</p>
+
+        <p>감정이 없으면 행동도 없어요. 클릭은 논리가 아니라 감정에서 일어나거든요.</p>
+
+        <h2>"저기 가면 나도 저렇게 되겠다"</h2>
+
+        <p>반면 실제로 운동하고 변화하는 장면은 달라요. 사람은 타인의 행동을 볼 때 자신도 그 상황을 무의식적으로 시뮬레이션합니다. 나와 비슷한 사람이 변화하는 장면을 보는 순간, 고객의 뇌는 자동으로 그 결과를 자신에게 투영해요. <span class="highlight">"저기 가면 나도 저렇게 될 수 있겠다"</span>는 상상이 생기는 거에요. 그게 손가락을 멈추게 만듭니다.</p>
+
+        <p>대표 이미지는 센터를 소개하는 자리가 아닙니다. <span class="emp">고객이 자기 모습을 대입하게 만드는 자리</span>에요.</p>
+
+        <div class="example-wrap">
+            <div class="example-label-title">PT샵</div>
+            <div class="example-block">
+                <div class="example-label bad">❌ 클릭 안 되는 사진</div>
+                <div class="example-text">깔끔한 센터 전경, 최신 기구 클로즈업</div>
+            </div>
+            <div class="example-block">
+                <div class="example-label good">✅ 클릭 되는 사진</div>
+                <div class="example-text good">트레이너가 회원 자세를 교정해주는 장면, 전후 체형 변화 사진</div>
+            </div>
+        </div>
+
+        <div class="example-wrap">
+            <div class="example-label-title">필라테스</div>
+            <div class="example-block">
+                <div class="example-label bad">❌ 클릭 안 되는 사진</div>
+                <div class="example-text">리포머 기구 사진, 넓고 깔끔한 스튜디오 전경</div>
+            </div>
+            <div class="example-block">
+                <div class="example-label good">✅ 클릭 되는 사진</div>
+                <div class="example-text good">회원이 동작하는 순간, 강사가 직접 교정해주는 장면</div>
+            </div>
+        </div>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="row-label">항목</th>
+                        <th class="bad-title">Before</th>
+                        <th class="good-title">After</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>대표 사진</th>
+                        <td class="before-val">기구·인테리어</td>
+                        <td class="after-val">수업 장면·회원 변화</td>
+                    </tr>
+                    <tr>
+                        <th>고객 반응</th>
+                        <td class="before-val">"이런 시설이구나"</td>
+                        <td class="after-val">"나도 저렇게 되겠다"</td>
+                    </tr>
+                    <tr>
+                        <th>결과</th>
+                        <td class="before-val">스크롤</td>
+                        <td class="after-val">클릭</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="chk-wrap">
+            <span class="chk-title">지금 내 대표 이미지 점검해보세요</span>
+            <div class="chk-item"><input type="checkbox"> 대표 사진에 실제 사람이 등장하나요?</div>
+            <div class="chk-item"><input type="checkbox"> 기구·인테리어 사진이 첫 번째에 있진 않나요?</div>
+            <div class="chk-item"><input type="checkbox"> 결과나 변화가 느껴지는 장면인가요?</div>
+            <div class="chk-item"><input type="checkbox"> 보는 사람이 자기 모습을 대입할 수 있나요?</div>
+            <div class="chk-item"><input type="checkbox"> 경쟁 센터 5곳과 나란히 놓고 비교해봤나요?</div>
+        </div>
+
+        <p>체크가 3개 이하라면, 고객은 지금 이 순간에도 당신 플레이스를 <span class="emp">클릭하지 않고 있습니다.</span></p>
+
     </div>
 
-    <div class="card-container">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th class="row-label">항목</th>
-                    <th class="bad-title">Before</th>
-                    <th class="good-title">After</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><th class="row-label">대표 사진</th><td class="before-val">기구·인테리어</td><td class="after-val">수업 장면·회원 변화</td></tr>
-                <tr><th class="row-label">고객 반응</th><td class="before-val">"이런 시설이구나"</td><td class="after-val">"나도 저렇게 되겠다"</td></tr>
-                <tr><th class="row-label">결과</th><td class="before-val">스크롤</td><td class="after-val">클릭</td></tr>
-            </tbody>
-        </table>
-    </div>
+    <a href="operator-list.html" class="back-btn">← 목록으로</a>
 
-    <div class="chk-card">
-        <span class="chk-title">지금 내 대표 이미지 점검해보세요</span>
-        <div class="chk-item"><input type="checkbox"> 대표 사진에 실제 사람이 등장하나요?</div>
-        <div class="chk-item"><input type="checkbox"> 기구·인테리어 사진이 첫 번째에 있진 않나요?</div>
-        <div class="chk-item"><input type="checkbox"> 결과나 변화가 느껴지는 장면인가요?</div>
-        <div class="chk-item"><input type="checkbox"> 보는 사람이 자기 모습을 대입할 수 있나요?</div>
-        <div class="chk-item"><input type="checkbox"> 경쟁 센터 5곳과 나란히 놓고 비교해봤나요?</div>
-    </div>
-
-    <p>체크가 3개 이하라면, 고객은 지금 이 순간에도 당신 플레이스를 <span class="emp">클릭하지 않고 있습니다.</span></p>
-
-    <a href="operator-list.html" class="btn">← 다른 운영 인사이트 더보기</a>
-
-
-<script>
-(function() {
-    const params = new URLSearchParams(window.location.search);
-    const pw = params.get("pw");
-    if (pw && pw !== "1234") {
-        document.body.innerHTML = "<p style=\"text-align:center;margin-top:100px;font-size:18px;font-family:sans-serif;\">접근 권한이 없습니다.</p>";
-    }
-})();
-</script>
+    <script>
+    (function() {
+        const params = new URLSearchParams(window.location.search);
+        const pw = params.get("pw");
+        if (pw && pw !== "1234") {
+            document.body.innerHTML = "<p style='text-align:center;margin-top:100px;font-size:18px;font-family:sans-serif;'>접근 권한이 없습니다.</p>";
+        }
+    })();
+    </script>
 </body>
 </html>
