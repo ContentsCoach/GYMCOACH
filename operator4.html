@@ -6,106 +6,141 @@
     <title>손님을 모으는 2가지 공식</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
-        body { font-family: 'Pretendard', sans-serif; line-height: 1.8; padding: 40px 20px; max-width: 500px; margin: 0 auto; color: #111; background-color: #fff; word-break: keep-all; }
-        h1 { font-size: 26px; font-weight: 900; line-height: 1.35; margin-bottom: 40px; color: #000; letter-spacing: -1px; }
-        .category { display: inline-block; font-size: 13px; font-weight: 800; color: #3e5eff; letter-spacing: 1.5px; margin-bottom: 16px; }
-        h2 { font-size: 21px; font-weight: 900; margin: 50px 0 20px; color: #000; }
-        p { margin-bottom: 25px; font-size: 17px; color: #333; }
-        .highlight { font-weight: 800; background: linear-gradient(to top, #fff382 40%, transparent 40%); padding: 0 2px; }
-        .emp { font-weight: 800; color: #000; }
-        .card-container { background: #f8faff; border-radius: 25px; padding: 35px 20px; margin: 35px 0; }
-        .data-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-        .data-table thead th { padding-bottom: 20px; font-size: 16px; font-weight: 800; text-align: center; border-bottom: 1px solid #eef2f8; }
-        .bad-title { color: #999; }
-        .good-title { color: #3e5eff; }
-        .data-table th.row-label { width: 30%; color: #444; font-weight: 700; text-align: center; }
-        .data-table td { padding: 18px 5px; font-size: 15.5px; text-align: center; vertical-align: middle; border-bottom: 1px solid #eef2f8; }
-        .data-table tr:last-child td, .data-table tr:last-child th { border-bottom: none; }
-        .before-val { color: #999; }
-        .after-val { color: #3e5eff; font-weight: 800; }
-        .chk-card { border: 2.5px solid #3e5eff; border-radius: 25px; padding: 35px 25px; margin: 50px 0; }
-        .chk-title { font-weight: 900; font-size: 20px; color: #3e5eff; margin-bottom: 8px; display: block; }
-        .chk-subtitle { font-size: 14px; color: #888; font-weight: 600; margin-bottom: 25px; display: block; }
-        .chk-item { display: flex; align-items: flex-start; margin-bottom: 18px; font-weight: 700; font-size: 16px; }
-        .chk-item input { width: 20px; height: 20px; margin-right: 12px; margin-top: 4px; cursor: pointer; accent-color: #3e5eff; }
-        .btn { display: block; text-align: center; background: #fff; color: #3e5eff; font-weight: 800; text-decoration: none; padding: 22px 20px; border-radius: 18px; margin-top: 60px; font-size: 18px; border: 2px solid #3e5eff; }
-        .example-block { margin: 20px 0; }
-        .example-label { font-size: 14px; font-weight: 800; margin-bottom: 8px; }
-        .example-label.bad { color: #999; }
-        .example-label.good { color: #3e5eff; }
-        .example-text { font-size: 15.5px; color: #333; background: #f8faff; border-radius: 12px; padding: 14px 18px; margin-bottom: 8px; }
-        .example-text.good { background: #eef2ff; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Pretendard', sans-serif; background: #F2F0EB; color: #1a1a1a; word-break: keep-all; line-height: 1.8; }
+        header { position: sticky; top: 0; z-index: 100; background: #F2F0EB; border-bottom: 1px solid rgba(0,0,0,0.07); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 14px; font-weight: 900; letter-spacing: 2px; }
+        .header-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #999; }
+        .hero { background: radial-gradient(ellipse at 70% 20%, #3a3530 0%, #1a1815 100%); padding: 40px 24px 36px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 30%, rgba(180,140,80,0.2) 0%, transparent 60%); }
+        .hero-category { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; color: rgba(255,255,255,0.35); margin-bottom: 14px; position: relative; z-index: 1; }
+        .hero-title { font-size: 26px; font-weight: 900; color: #fff; line-height: 1.3; letter-spacing: -1px; position: relative; z-index: 1; }
+        .content { max-width: 520px; margin: 0 auto; padding: 36px 24px 100px; }
+        h2 { font-size: 20px; font-weight: 900; margin: 44px 0 16px; color: #1a1a1a; letter-spacing: -0.5px; line-height: 1.35; }
+        p { font-size: 16px; color: #333; margin-bottom: 22px; line-height: 1.85; }
+        .highlight { font-weight: 800; background: linear-gradient(to top, #E8D5A0 40%, transparent 40%); padding: 0 2px; }
+        .emp { font-weight: 800; color: #1a1a1a; }
+        .table-wrap { background: #fff; border-radius: 18px; overflow: hidden; margin: 32px 0; }
+        table { width: 100%; border-collapse: collapse; }
+        thead th { padding: 16px 12px; font-size: 12px; font-weight: 800; text-align: center; border-bottom: 1px solid #F2F0EB; letter-spacing: 0.5px; }
+        thead th.row-label { color: #ccc; }
+        thead th.bad-title { color: #bbb; }
+        thead th.good-title { color: #1a1a1a; }
+        tbody th { padding: 16px 12px; font-size: 13px; font-weight: 700; color: #888; text-align: center; border-bottom: 1px solid #F2F0EB; background: #fafaf8; }
+        tbody td { padding: 16px 12px; font-size: 13px; text-align: center; border-bottom: 1px solid #F2F0EB; line-height: 1.5; }
+        tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
+        .before-val { color: #bbb; }
+        .after-val { color: #1a1a1a; font-weight: 800; }
+        .chk-wrap { background: #1a1815; border-radius: 18px; padding: 28px 24px; margin: 32px 0; }
+        .chk-title { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 6px; letter-spacing: -0.3px; display: block; }
+        .chk-subtitle { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.35); margin-bottom: 20px; display: block; }
+        .chk-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.75); line-height: 1.5; }
+        .chk-item:last-child { margin-bottom: 0; }
+        .chk-item input { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; cursor: pointer; accent-color: #C4A882; }
+        .back-btn { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #1a1a1a; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 30px; font-weight: 700; font-size: 13px; letter-spacing: 0.3px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); white-space: nowrap; }
     </style>
 </head>
 <body>
 
-    <span class="category">OPERATION INSIGHT</span>
-    <h1>신규가 오게 만드는<br>2가지 공식</h1>
+    <header>
+        <div class="logo">BROMARKETER</div>
+        <div class="header-tag">OPERATOR</div>
+    </header>
 
-    <p>센터를 운영하다 보면 어떤 달은 신규가 줄줄이 들어오고, 어떤 달은 한 명도 없어요. 그 차이가 내 노력 때문인지, 운 때문인지 모르겠는 상태가 반복됩니다.</p>
-
-    <p>신규 유입을 운에 맡기지 않으려면 구조가 있어야 해요. 그 구조는 딱 두 가지에요. <span class="highlight">노출과 신뢰.</span> 이 둘이 동시에 작동해야 손님이 움직입니다.</p>
-
-    <h2>노출만 있으면 이렇게 됩니다</h2>
-
-    <p>광고를 돌려본 사장님들이 공통적으로 하는 말이 있어요. "클릭은 있는데 문의가 없어요." 클릭이 있다는 건 노출은 되고 있다는 거에요. 근데 문의가 없다는 건 신뢰가 없다는 겁니다.</p>
-
-    <p>처음 보는 센터에 바로 문의하는 사람은 거의 없어요. 클릭해서 들어왔는데 플레이스에 사진 몇 장, 리뷰 몇 개뿐이면 그냥 닫아요. <span class="emp">노출은 됐는데 신뢰가 없으면 그냥 구경만 하고 떠납니다.</span></p>
-
-    <h2>신뢰만 있으면 이렇게 됩니다</h2>
-
-    <p>반대 경우도 있어요. 기존 회원 만족도는 높고, 재등록률도 좋아요. 근데 신규가 없어요. 소개로만 한두 명씩 오는 구조죠.</p>
-
-    <p>이건 신뢰는 있는데 노출이 없는 경우에요. 신뢰는 이미 센터 안에 쌓여 있어요. 근데 그걸 모르는 사람이 너무 많아요. <span class="highlight">아무리 잘해도 모르면 오지 않아요.</span> 소문이 나려면 알려질 기회가 있어야 하는데, 그 기회를 만들지 않으면 영원히 소개에만 의존하는 구조가 됩니다.</p>
-
-    <h2>노출과 신뢰, 순서가 있습니다</h2>
-
-    <p>노출과 신뢰는 동시에 쌓이는 게 아니에요. 순서가 있어요. 노출이 먼저 일어나고, 그 안에서 신뢰가 쌓입니다.</p>
-
-    <p>릴스나 플레이스 검색으로 처음 센터를 발견해요. 그게 노출이에요. 그리고 프로필을 보고, 콘텐츠를 보고, 리뷰를 읽으면서 신뢰가 쌓여요. 신뢰가 일정 수준을 넘으면 그때 문의가 옵니다. <span class="emp">10분 상담하고 100만 원을 결제하는 게 아니에요. 오기 전에 이미 콘텐츠를 보면서 결정을 끝낸 거에요.</span></p>
-
-    <div class="card-container">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th class="row-label">상태</th>
-                    <th class="bad-title">결과</th>
-                    <th class="good-title">이유</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><th class="row-label">노출만</th><td class="before-val">클릭 후 이탈</td><td class="before-val">신뢰가 없다</td></tr>
-                <tr><th class="row-label">신뢰만</th><td class="before-val">소개에만 의존</td><td class="before-val">노출이 없다</td></tr>
-                <tr><th class="row-label">노출+신뢰</th><td class="after-val">문의 → 등록</td><td class="after-val">둘 다 있다</td></tr>
-            </tbody>
-        </table>
+    <div class="hero">
+        <div class="hero-category">OPERATION INSIGHT · 04</div>
+        <h1 class="hero-title">신규가 오게 만드는<br>2가지 공식</h1>
     </div>
 
-    <h2>노출을 만드는 방법</h2>
+    <div class="content">
 
-    <p>노출 경로는 크게 두 가지에요. 검색과 피드입니다. 검색은 네이버 플레이스에요. 누군가 "강남 PT샵"을 검색했을 때 내 센터가 나오는 것. 피드는 인스타그램 릴스에요. 탐색창을 넘기다가 내 콘텐츠를 발견하는 것.</p>
+        <p>센터를 운영하다 보면 어떤 달은 신규가 줄줄이 들어오고, 어떤 달은 한 명도 없어요. 그 차이가 내 노력 때문인지, 운 때문인지 모르겠는 상태가 반복됩니다.</p>
 
-    <p>둘 다 있으면 좋지만, 시작은 하나에 집중하는 게 나아요. 이미 운동하려는 사람이 찾아오는 플레이스부터 잡고, 그다음 피드로 확장하는 게 순서에 맞습니다.</p>
+        <p>신규 유입을 운에 맡기지 않으려면 구조가 있어야 해요. 그 구조는 딱 두 가지에요. <span class="highlight">노출과 신뢰.</span> 이 둘이 동시에 작동해야 손님이 움직입니다.</p>
 
-    <h2>신뢰를 만드는 방법</h2>
+        <h2>노출만 있으면 이렇게 됩니다</h2>
 
-    <p>신뢰는 세 가지로 쌓여요. 리뷰, 콘텐츠, 사람입니다.</p>
+        <p>광고를 돌려본 사장님들이 공통적으로 하는 말이 있어요. "클릭은 있는데 문의가 없어요." 클릭이 있다는 건 노출은 되고 있다는 거에요. 근데 문의가 없다는 건 신뢰가 없다는 겁니다.</p>
 
-    <p>리뷰는 가장 빠른 신뢰에요. 나와 비슷한 사람이 좋다고 했다는 게 설득력이 있거든요. 콘텐츠는 시간이 걸리지만 강력해요. 콘텐츠를 보고 온 사람은 이미 마음이 정해진 상태에요. 사람은 가장 본질적인 신뢰에요. <span class="highlight">누가 운영하는 센터인지가 보이면, 그 사람을 믿고 오는 손님이 생깁니다.</span></p>
+        <p>처음 보는 센터에 바로 문의하는 사람은 거의 없어요. 클릭해서 들어왔는데 플레이스에 사진 몇 장, 리뷰 몇 개뿐이면 그냥 닫아요. <span class="emp">노출은 됐는데 신뢰가 없으면 그냥 구경만 하고 떠납니다.</span></p>
 
-    <div class="chk-card">
-        <span class="chk-title">지금 내 센터 점검해보세요</span>
-        <span class="chk-subtitle">노출과 신뢰, 둘 다 있는지 확인하세요</span>
-        <div class="chk-item"><input type="checkbox"> 네이버 플레이스에서 내 센터가 상위에 노출되나요?</div>
-        <div class="chk-item"><input type="checkbox"> 플레이스 리뷰가 20개 이상 있나요?</div>
-        <div class="chk-item"><input type="checkbox"> SNS 콘텐츠를 꾸준히 올리고 있나요?</div>
-        <div class="chk-item"><input type="checkbox"> 콘텐츠에 사장님 본인이 등장하나요?</div>
-        <div class="chk-item"><input type="checkbox"> 신규 회원이 "원래 알고 있었어요"라고 말한 적 있나요?</div>
+        <h2>신뢰만 있으면 이렇게 됩니다</h2>
+
+        <p>반대 경우도 있어요. 기존 회원 만족도는 높고, 재등록률도 좋아요. 근데 신규가 없어요. 소개로만 한두 명씩 오는 구조죠.</p>
+
+        <p>이건 신뢰는 있는데 노출이 없는 경우에요. 신뢰는 이미 센터 안에 쌓여 있어요. 근데 그걸 모르는 사람이 너무 많아요. <span class="highlight">아무리 잘해도 모르면 오지 않아요.</span> 소문이 나려면 알려질 기회가 있어야 하는데, 그 기회를 만들지 않으면 영원히 소개에만 의존하는 구조가 됩니다.</p>
+
+        <h2>노출과 신뢰, 순서가 있습니다</h2>
+
+        <p>노출과 신뢰는 동시에 쌓이는 게 아니에요. 순서가 있어요. 노출이 먼저 일어나고, 그 안에서 신뢰가 쌓입니다.</p>
+
+        <p>릴스나 플레이스 검색으로 처음 센터를 발견해요. 그게 노출이에요. 그리고 프로필을 보고, 콘텐츠를 보고, 리뷰를 읽으면서 신뢰가 쌓여요. 신뢰가 일정 수준을 넘으면 그때 문의가 옵니다. <span class="emp">10분 상담하고 100만 원을 결제하는 게 아니에요. 오기 전에 이미 콘텐츠를 보면서 결정을 끝낸 거에요.</span></p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="row-label">상태</th>
+                        <th class="bad-title">결과</th>
+                        <th class="good-title">이유</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>노출만</th>
+                        <td class="before-val">클릭 후 이탈</td>
+                        <td class="before-val">신뢰가 없다</td>
+                    </tr>
+                    <tr>
+                        <th>신뢰만</th>
+                        <td class="before-val">소개에만 의존</td>
+                        <td class="before-val">노출이 없다</td>
+                    </tr>
+                    <tr>
+                        <th>노출+신뢰</th>
+                        <td class="after-val">문의 → 등록</td>
+                        <td class="after-val">둘 다 있다</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>노출을 만드는 방법</h2>
+
+        <p>노출 경로는 크게 두 가지에요. 검색과 피드입니다. 검색은 네이버 플레이스에요. 누군가 "강남 PT샵"을 검색했을 때 내 센터가 나오는 것. 피드는 인스타그램 릴스에요. 탐색창을 넘기다가 내 콘텐츠를 발견하는 것.</p>
+
+        <p>둘 다 있으면 좋지만, 시작은 하나에 집중하는 게 나아요. 이미 운동하려는 사람이 찾아오는 플레이스부터 잡고, 그다음 피드로 확장하는 게 순서에 맞습니다.</p>
+
+        <h2>신뢰를 만드는 방법</h2>
+
+        <p>신뢰는 세 가지로 쌓여요. 리뷰, 콘텐츠, 사람입니다.</p>
+
+        <p>리뷰는 가장 빠른 신뢰에요. 나와 비슷한 사람이 좋다고 했다는 게 설득력이 있거든요. 콘텐츠는 시간이 걸리지만 강력해요. 콘텐츠를 보고 온 사람은 이미 마음이 정해진 상태에요. 사람은 가장 본질적인 신뢰에요. <span class="highlight">누가 운영하는 센터인지가 보이면, 그 사람을 믿고 오는 손님이 생깁니다.</span></p>
+
+        <div class="chk-wrap">
+            <span class="chk-title">지금 내 센터 점검해보세요</span>
+            <span class="chk-subtitle">노출과 신뢰, 둘 다 있는지 확인하세요</span>
+            <div class="chk-item"><input type="checkbox"> 네이버 플레이스에서 내 센터가 상위에 노출되나요?</div>
+            <div class="chk-item"><input type="checkbox"> 플레이스 리뷰가 20개 이상 있나요?</div>
+            <div class="chk-item"><input type="checkbox"> SNS 콘텐츠를 꾸준히 올리고 있나요?</div>
+            <div class="chk-item"><input type="checkbox"> 콘텐츠에 사장님 본인이 등장하나요?</div>
+            <div class="chk-item"><input type="checkbox"> 신규 회원이 "원래 알고 있었어요"라고 말한 적 있나요?</div>
+        </div>
+
+        <p>노출과 신뢰 중 하나만 없어도 손님은 안 와요. 노출이 없으면 발견되지 않고, 신뢰가 없으면 발견돼도 오지 않습니다. <span class="emp">둘 다 있어야 비로소 손님이 움직여요.</span></p>
+
     </div>
 
-    <p>노출과 신뢰 중 하나만 없어도 손님은 안 와요. 노출이 없으면 발견되지 않고, 신뢰가 없으면 발견돼도 오지 않습니다. <span class="emp">둘 다 있어야 비로소 손님이 움직여요.</span></p>
+    <a href="operator-list.html" class="back-btn">← 목록으로</a>
 
-    <a href="operator-list.html" class="btn">← 다른 운영 인사이트 더보기</a>
-
+    <script>
+    (function() {
+        const params = new URLSearchParams(window.location.search);
+        const pw = params.get("pw");
+        if (pw && pw !== "4234") {
+            document.body.innerHTML = "<p style='text-align:center;margin-top:100px;font-size:18px;font-family:sans-serif;'>접근 권한이 없습니다.</p>";
+        }
+    })();
+    </script>
 </body>
 </html>
