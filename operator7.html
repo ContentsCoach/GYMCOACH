@@ -6,94 +6,135 @@
     <title>비싸도 선택받는 센터의 비밀</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
-        body { font-family: 'Pretendard', sans-serif; line-height: 1.8; padding: 40px 20px; max-width: 500px; margin: 0 auto; color: #111; background-color: #fff; word-break: keep-all; }
-        h1 { font-size: 26px; font-weight: 900; line-height: 1.35; margin-bottom: 40px; color: #000; letter-spacing: -1px; }
-        .category { display: inline-block; font-size: 13px; font-weight: 800; color: #3e5eff; letter-spacing: 1.5px; margin-bottom: 16px; }
-        h2 { font-size: 21px; font-weight: 900; margin: 50px 0 20px; color: #000; }
-        p { margin-bottom: 25px; font-size: 17px; color: #333; }
-        .highlight { font-weight: 800; background: linear-gradient(to top, #fff382 40%, transparent 40%); padding: 0 2px; }
-        .emp { font-weight: 800; color: #000; }
-        .card-container { background: #f8faff; border-radius: 25px; padding: 35px 20px; margin: 35px 0; }
-        .data-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-        .data-table thead th { padding-bottom: 20px; font-size: 16px; font-weight: 800; text-align: center; border-bottom: 1px solid #eef2f8; }
-        .bad-title { color: #999; }
-        .good-title { color: #3e5eff; }
-        .data-table th.row-label { width: 30%; color: #444; font-weight: 700; text-align: center; }
-        .data-table td { padding: 18px 5px; font-size: 15.5px; text-align: center; vertical-align: middle; border-bottom: 1px solid #eef2f8; }
-        .data-table tr:last-child td, .data-table tr:last-child th { border-bottom: none; }
-        .before-val { color: #999; }
-        .after-val { color: #3e5eff; font-weight: 800; }
-        .chk-card { border: 2.5px solid #3e5eff; border-radius: 25px; padding: 35px 25px; margin: 50px 0; }
-        .chk-title { font-weight: 900; font-size: 20px; color: #3e5eff; margin-bottom: 8px; display: block; }
-        .chk-subtitle { font-size: 14px; color: #888; font-weight: 600; margin-bottom: 25px; display: block; }
-        .chk-item { display: flex; align-items: flex-start; margin-bottom: 18px; font-weight: 700; font-size: 16px; }
-        .chk-item input { width: 20px; height: 20px; margin-right: 12px; margin-top: 4px; cursor: pointer; accent-color: #3e5eff; }
-        .btn { display: block; text-align: center; background: #fff; color: #3e5eff; font-weight: 800; text-decoration: none; padding: 22px 20px; border-radius: 18px; margin-top: 60px; font-size: 18px; border: 2px solid #3e5eff; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Pretendard', sans-serif; background: #F2F0EB; color: #1a1a1a; word-break: keep-all; line-height: 1.8; }
+        header { position: sticky; top: 0; z-index: 100; background: #F2F0EB; border-bottom: 1px solid rgba(0,0,0,0.07); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 14px; font-weight: 900; letter-spacing: 2px; }
+        .header-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #999; }
+        .hero { background: radial-gradient(ellipse at 70% 20%, #3a3530 0%, #1a1815 100%); padding: 40px 24px 36px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 30%, rgba(180,140,80,0.2) 0%, transparent 60%); }
+        .hero-category { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; color: rgba(255,255,255,0.35); margin-bottom: 14px; position: relative; z-index: 1; }
+        .hero-title { font-size: 26px; font-weight: 900; color: #fff; line-height: 1.3; letter-spacing: -1px; position: relative; z-index: 1; }
+        .content { max-width: 520px; margin: 0 auto; padding: 36px 24px 100px; }
+        h2 { font-size: 20px; font-weight: 900; margin: 44px 0 16px; color: #1a1a1a; letter-spacing: -0.5px; line-height: 1.35; }
+        p { font-size: 16px; color: #333; margin-bottom: 22px; line-height: 1.85; }
+        .highlight { font-weight: 800; background: linear-gradient(to top, #E8D5A0 40%, transparent 40%); padding: 0 2px; }
+        .emp { font-weight: 800; color: #1a1a1a; }
+        .table-wrap { background: #fff; border-radius: 18px; overflow: hidden; margin: 32px 0; }
+        table { width: 100%; border-collapse: collapse; }
+        thead th { padding: 16px 12px; font-size: 12px; font-weight: 800; text-align: center; border-bottom: 1px solid #F2F0EB; letter-spacing: 0.5px; }
+        thead th.row-label { color: #ccc; }
+        thead th.bad-title { color: #bbb; }
+        thead th.good-title { color: #1a1a1a; }
+        tbody th { padding: 16px 12px; font-size: 13px; font-weight: 700; color: #888; text-align: center; border-bottom: 1px solid #F2F0EB; background: #fafaf8; }
+        tbody td { padding: 16px 12px; font-size: 13px; text-align: center; border-bottom: 1px solid #F2F0EB; line-height: 1.5; }
+        tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
+        .before-val { color: #bbb; }
+        .after-val { color: #1a1a1a; font-weight: 800; }
+        .chk-wrap { background: #1a1815; border-radius: 18px; padding: 28px 24px; margin: 32px 0; }
+        .chk-title { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 6px; letter-spacing: -0.3px; display: block; }
+        .chk-subtitle { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.35); margin-bottom: 20px; display: block; }
+        .chk-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.75); line-height: 1.5; }
+        .chk-item:last-child { margin-bottom: 0; }
+        .chk-item input { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; cursor: pointer; accent-color: #C4A882; }
+        .back-btn { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #1a1a1a; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 30px; font-weight: 700; font-size: 13px; letter-spacing: 0.3px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); white-space: nowrap; }
     </style>
 </head>
 <body>
 
-    <span class="category">BRANDING INSIGHT</span>
-    <h1>회당 5만 원과<br>회당 10만 원의 차이</h1>
+    <header>
+        <div class="logo">BROMARKETER</div>
+        <div class="header-tag">OPERATOR</div>
+    </header>
 
-    <p>가격을 올리고 싶어도 못 올리는 사장님들이 있어요. 올렸다가 회원이 떨어져 나갈까봐요. 그래서 주변 센터를 보고 맞춥니다. 다들 회당 4~6만 원이니까 나도 거기 맞추는 거죠.</p>
-
-    <p>근데 이 판단 안에 함정이 있어요. 잃는 게 두려워서 시도를 못 하는 거에요. 가격을 올렸다가 잃을 회원을 생각하면서, <span class="highlight">지금 가격을 유지하면서 매달 잃고 있는 시간과 수익은 계산하지 않습니다.</span> 안 올리는 것도 선택이고, 그 선택에도 비용이 있어요.</p>
-
-    <h2>주변 가격에 맞추는 순간 비교 대상이 됩니다</h2>
-
-    <p>처음 PT를 알아보는 사람은 어느 센터가 좋은지 판단할 기준이 없어요. 트레이너 실력도 모르고, 프로그램 차이도 모릅니다. 비교할 수 있는 게 가격밖에 없으니까 싼 데로 가요.</p>
-
-    <p>여기서 문제가 생겨요. 주변 가격에 맞추면 같은 가격대 안에서 비교가 시작돼요. 비교가 되면 더 싸거나 더 가까운 데로 가요. <span class="emp">같은 가격대에 있다는 건 같은 급으로 인식된다는 거에요.</span> 주변 눈치를 보며 가격을 맞추는 순간, 스스로 비교 대상이 되는 구조 안으로 들어가는 거에요.</p>
-
-    <h2>사람은 비쌀수록 더 좋다고 느낍니다</h2>
-
-    <p>정보가 부족할 때 사람은 가격으로 품질을 판단해요. 와인을 잘 모르는 사람한테 같은 와인을 비싼 가격과 싼 가격으로 마시게 하면, 비싼 쪽을 더 맛있다고 느껴요. 실제로 뇌에서 만족감을 담당하는 부위가 더 활성화된다는 게 실험으로 확인됐을 정도에요.</p>
-
-    <p>PT도 마찬가지에요. 처음 알아보는 사람한테 회당 10만 원짜리 센터는 의심의 대상이 아니에요. <span class="highlight">"여기는 뭔가 다른가 보다"라는 기대가 먼저 생겨요.</span> 가격 자체가 신뢰의 신호가 되는 거에요. 단, 그 가격을 뒷받침하는 포지션이 명확해야 해요.</p>
-
-    <h2>포지션이 명확하면 비교가 사라집니다</h2>
-
-    <p>회당 10만 원을 받는 트레이너는 실력이 두 배인 게 아니에요. <span class="emp">비교할 수 있는 센터가 없는 포지션을 잡은 거에요.</span> "허리 디스크 수술 후 재활 전문", "선수 출신 퍼포먼스 PT" — 같은 가격대로 비교할 센터 자체가 없어요. 비교가 안 되면 가격 협상도 일어나지 않아요.</p>
-
-    <p>반대로 "다이어트, 재활, 체형 교정, 시니어 — 다 합니다"라고 하면 포지션이 없는 거에요. 모두를 위한 센터는 특정한 누군가에게 딱 맞는 센터가 아니거든요. 아무도 "내 얘기다"라고 느끼지 못해요. 포지션이 없으면 가격 경쟁밖에 남지 않아요. <span class="highlight">그리고 가격 경쟁은 언제나 더 싼 곳이 이깁니다.</span></p>
-
-    <h2>포지션이 잡히면 수익 구조가 달라집니다</h2>
-
-    <p>회당 5만 원으로 하루 6회 수업을 하면 하루 30만 원이에요. 회당 10만 원으로 하루 4회만 해도 40만 원이에요. 수업은 더 적게 하고 수익은 더 많아요. 몸도 덜 쓰고, 회원 한 명 한 명에게 더 집중할 수 있어요.</p>
-
-    <div class="card-container">
-        <table class="data-table">
-            <thead>
-                <tr>
-                    <th class="row-label"></th>
-                    <th class="bad-title">회당 5만 원</th>
-                    <th class="good-title">회당 10만 원</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr><th class="row-label">하루 6회</th><td class="before-val">30만 원</td><td class="after-val">60만 원</td></tr>
-                <tr><th class="row-label">하루 4회</th><td class="before-val">20만 원</td><td class="after-val">40만 원</td></tr>
-                <tr><th class="row-label">포지션</th><td class="before-val">비교 대상</td><td class="after-val">비교 불가</td></tr>
-            </tbody>
-        </table>
+    <div class="hero">
+        <div class="hero-category">BRANDING INSIGHT · 07</div>
+        <h1 class="hero-title">회당 5만 원과<br>회당 10만 원의 차이</h1>
     </div>
 
-    <p>포지션이 명확하지 않은 상태에서 가격만 올리면 회원이 떠날 수 있어요. 근데 포지션이 먼저 잡히면 그 포지션에 맞는 사람이 처음부터 그 가격으로 찾아와요. <span class="emp">기존 회원 눈치 볼 필요가 없어요. 새로 오는 사람부터 바뀐 가격으로 받으면 되니까요.</span></p>
+    <div class="content">
 
-    <div class="chk-card">
-        <span class="chk-title">가격을 올릴 수 있는 구조인가요?</span>
-        <span class="chk-subtitle">순서대로 점검해보세요</span>
-        <div class="chk-item"><input type="checkbox"> 지금 가격이 주변 센터를 보고 정해진 건 아닌가요?</div>
-        <div class="chk-item"><input type="checkbox"> 내가 누구를 위한 트레이너인지 한 문장으로 말할 수 있나요?</div>
-        <div class="chk-item"><input type="checkbox"> 주변 센터와 나란히 놓았을 때 비교가 안 되는 점이 있나요?</div>
-        <div class="chk-item"><input type="checkbox"> 가격 말고 다른 이유로 선택받은 적 있나요?</div>
-        <div class="chk-item"><input type="checkbox"> 지금 가격을 유지하면서 매달 얼마를 기회비용으로 잃고 있는지 계산해봤나요?</div>
+        <p>가격을 올리고 싶어도 못 올리는 사장님들이 있어요. 올렸다가 회원이 떨어져 나갈까봐요. 그래서 주변 센터를 보고 맞춥니다. 다들 회당 4~6만 원이니까 나도 거기 맞추는 거죠.</p>
+
+        <p>근데 이 판단 안에 함정이 있어요. 잃는 게 두려워서 시도를 못 하는 거에요. 가격을 올렸다가 잃을 회원을 생각하면서, <span class="highlight">지금 가격을 유지하면서 매달 잃고 있는 시간과 수익은 계산하지 않습니다.</span> 안 올리는 것도 선택이고, 그 선택에도 비용이 있어요.</p>
+
+        <h2>주변 가격에 맞추는 순간 비교 대상이 됩니다</h2>
+
+        <p>처음 PT를 알아보는 사람은 어느 센터가 좋은지 판단할 기준이 없어요. 트레이너 실력도 모르고, 프로그램 차이도 모릅니다. 비교할 수 있는 게 가격밖에 없으니까 싼 데로 가요.</p>
+
+        <p>여기서 문제가 생겨요. 주변 가격에 맞추면 같은 가격대 안에서 비교가 시작돼요. 비교가 되면 더 싸거나 더 가까운 데로 가요. <span class="emp">같은 가격대에 있다는 건 같은 급으로 인식된다는 거에요.</span> 주변 눈치를 보며 가격을 맞추는 순간, 스스로 비교 대상이 되는 구조 안으로 들어가는 거에요.</p>
+
+        <h2>사람은 비쌀수록 더 좋다고 느낍니다</h2>
+
+        <p>정보가 부족할 때 사람은 가격으로 품질을 판단해요. 와인을 잘 모르는 사람한테 같은 와인을 비싼 가격과 싼 가격으로 마시게 하면, 비싼 쪽을 더 맛있다고 느껴요. 실제로 뇌에서 만족감을 담당하는 부위가 더 활성화된다는 게 실험으로 확인됐을 정도에요.</p>
+
+        <p>PT도 마찬가지에요. 처음 알아보는 사람한테 회당 10만 원짜리 센터는 의심의 대상이 아니에요. <span class="highlight">"여기는 뭔가 다른가 보다"라는 기대가 먼저 생겨요.</span> 가격 자체가 신뢰의 신호가 되는 거에요. 단, 그 가격을 뒷받침하는 포지션이 명확해야 해요.</p>
+
+        <h2>포지션이 명확하면 비교가 사라집니다</h2>
+
+        <p>회당 10만 원을 받는 트레이너는 실력이 두 배인 게 아니에요. <span class="emp">비교할 수 있는 센터가 없는 포지션을 잡은 거에요.</span> "허리 디스크 수술 후 재활 전문", "선수 출신 퍼포먼스 PT" — 같은 가격대로 비교할 센터 자체가 없어요. 비교가 안 되면 가격 협상도 일어나지 않아요.</p>
+
+        <p>반대로 "다이어트, 재활, 체형 교정, 시니어 — 다 합니다"라고 하면 포지션이 없는 거에요. 모두를 위한 센터는 특정한 누군가에게 딱 맞는 센터가 아니거든요. 아무도 "내 얘기다"라고 느끼지 못해요. 포지션이 없으면 가격 경쟁밖에 남지 않아요. <span class="highlight">그리고 가격 경쟁은 언제나 더 싼 곳이 이깁니다.</span></p>
+
+        <h2>포지션이 잡히면 수익 구조가 달라집니다</h2>
+
+        <p>회당 5만 원으로 하루 6회 수업을 하면 하루 30만 원이에요. 회당 10만 원으로 하루 4회만 해도 40만 원이에요. 수업은 더 적게 하고 수익은 더 많아요. 몸도 덜 쓰고, 회원 한 명 한 명에게 더 집중할 수 있어요.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="row-label"></th>
+                        <th class="bad-title">회당 5만 원</th>
+                        <th class="good-title">회당 10만 원</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>하루 6회</th>
+                        <td class="before-val">30만 원</td>
+                        <td class="after-val">60만 원</td>
+                    </tr>
+                    <tr>
+                        <th>하루 4회</th>
+                        <td class="before-val">20만 원</td>
+                        <td class="after-val">40만 원</td>
+                    </tr>
+                    <tr>
+                        <th>포지션</th>
+                        <td class="before-val">비교 대상</td>
+                        <td class="after-val">비교 불가</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p>포지션이 명확하지 않은 상태에서 가격만 올리면 회원이 떠날 수 있어요. 근데 포지션이 먼저 잡히면 그 포지션에 맞는 사람이 처음부터 그 가격으로 찾아와요. <span class="emp">기존 회원 눈치 볼 필요가 없어요. 새로 오는 사람부터 바뀐 가격으로 받으면 되니까요.</span></p>
+
+        <div class="chk-wrap">
+            <span class="chk-title">가격을 올릴 수 있는 구조인가요?</span>
+            <span class="chk-subtitle">순서대로 점검해보세요</span>
+            <div class="chk-item"><input type="checkbox"> 지금 가격이 주변 센터를 보고 정해진 건 아닌가요?</div>
+            <div class="chk-item"><input type="checkbox"> 내가 누구를 위한 트레이너인지 한 문장으로 말할 수 있나요?</div>
+            <div class="chk-item"><input type="checkbox"> 주변 센터와 나란히 놓았을 때 비교가 안 되는 점이 있나요?</div>
+            <div class="chk-item"><input type="checkbox"> 가격 말고 다른 이유로 선택받은 적 있나요?</div>
+            <div class="chk-item"><input type="checkbox"> 지금 가격을 유지하면서 매달 얼마를 기회비용으로 잃고 있는지 계산해봤나요?</div>
+        </div>
+
+        <p>주변 가격에 맞추는 건 안전해 보이지만, 그 안에 갇히면 빠져나오기가 점점 어려워져요. <span class="emp">가격은 포지션의 결과에요. 포지션이 바뀌면 가격도 바뀝니다.</span></p>
+
     </div>
 
-    <p>주변 가격에 맞추는 건 안전해 보이지만, 그 안에 갇히면 빠져나오기가 점점 어려워져요. <span class="emp">가격은 포지션의 결과에요. 포지션이 바뀌면 가격도 바뀝니다.</span></p>
+    <a href="operator-list.html" class="back-btn">← 목록으로</a>
 
-    <a href="operator-list.html" class="btn">← 다른 운영 인사이트 더보기</a>
-
+    <script>
+    (function() {
+        const params = new URLSearchParams(window.location.search);
+        const pw = params.get("pw");
+        if (pw && pw !== "7234") {
+            document.body.innerHTML = "<p style='text-align:center;margin-top:100px;font-size:18px;font-family:sans-serif;'>접근 권한이 없습니다.</p>";
+        }
+    })();
+    </script>
 </body>
 </html>
