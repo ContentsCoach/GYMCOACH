@@ -6,87 +6,111 @@
     <title>문의 3배 만드는 소개글 작성법</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
     <style>
-        body { font-family: 'Pretendard', sans-serif; line-height: 1.8; padding: 40px 20px; max-width: 500px; margin: 0 auto; color: #111; background-color: #fff; word-break: keep-all; }
-        h1 { font-size: 26px; font-weight: 900; line-height: 1.35; margin-bottom: 40px; color: #000; letter-spacing: -1px; }
-        .category { display: inline-block; font-size: 13px; font-weight: 800; color: #3e5eff; letter-spacing: 1.5px; margin-bottom: 16px; }
-        h2 { font-size: 21px; font-weight: 900; margin: 50px 0 20px; color: #000; }
-        p { margin-bottom: 25px; font-size: 17px; color: #333; }
-        .highlight { font-weight: 800; background: linear-gradient(to top, #fff382 40%, transparent 40%); padding: 0 2px; }
-        .emp { font-weight: 800; color: #000; }
-        .card-container { background: #f8faff; border-radius: 25px; padding: 35px 20px; margin: 35px 0; }
-        .data-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-        .data-table thead th { padding-bottom: 20px; font-size: 16px; font-weight: 800; text-align: center; border-bottom: 1px solid #eef2f8; }
-        .bad-title { color: #999; }
-        .good-title { color: #3e5eff; }
-        .data-table th.row-label { width: 30%; color: #444; font-weight: 700; text-align: center; }
-        .data-table td { padding: 18px 5px; font-size: 15.5px; text-align: center; vertical-align: middle; border-bottom: 1px solid #eef2f8; }
-        .data-table tr:last-child td, .data-table tr:last-child th { border-bottom: none; }
-        .before-val { color: #999; }
-        .after-val { color: #3e5eff; font-weight: 800; }
-        .chk-card { border: 2.5px solid #3e5eff; border-radius: 25px; padding: 35px 25px; margin: 50px 0; }
-        .chk-title { font-weight: 900; font-size: 20px; color: #3e5eff; margin-bottom: 8px; display: block; }
-        .chk-subtitle { font-size: 14px; color: #888; font-weight: 600; margin-bottom: 25px; display: block; }
-        .chk-item { display: flex; align-items: flex-start; margin-bottom: 18px; font-weight: 700; font-size: 16px; }
-        .chk-item input { width: 20px; height: 20px; margin-right: 12px; margin-top: 4px; cursor: pointer; accent-color: #3e5eff; }
-        .btn { display: block; text-align: center; background: #fff; color: #3e5eff; font-weight: 800; text-decoration: none; padding: 22px 20px; border-radius: 18px; margin-top: 60px; font-size: 18px; border: 2px solid #3e5eff; }
-        .example-block { margin: 20px 0; }
-        .example-label { font-size: 14px; font-weight: 800; margin-bottom: 8px; }
-        .example-label.bad { color: #999; }
-        .example-label.good { color: #3e5eff; }
-        .example-text { font-size: 15.5px; color: #333; background: #f8faff; border-radius: 12px; padding: 14px 18px; margin-bottom: 8px; line-height: 1.8; }
-        .example-text.good { background: #eef2ff; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Pretendard', sans-serif; background: #F2F0EB; color: #1a1a1a; word-break: keep-all; line-height: 1.8; }
+        header { position: sticky; top: 0; z-index: 100; background: #F2F0EB; border-bottom: 1px solid rgba(0,0,0,0.07); padding: 18px 24px; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 14px; font-weight: 900; letter-spacing: 2px; }
+        .header-tag { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #999; }
+        .hero { background: radial-gradient(ellipse at 70% 20%, #3a3530 0%, #1a1815 100%); padding: 40px 24px 36px; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 80% 30%, rgba(180,140,80,0.2) 0%, transparent 60%); }
+        .hero-category { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; color: rgba(255,255,255,0.35); margin-bottom: 14px; position: relative; z-index: 1; }
+        .hero-title { font-size: 26px; font-weight: 900; color: #fff; line-height: 1.3; letter-spacing: -1px; position: relative; z-index: 1; }
+        .content { max-width: 520px; margin: 0 auto; padding: 36px 24px 100px; }
+        h2 { font-size: 20px; font-weight: 900; margin: 44px 0 16px; color: #1a1a1a; letter-spacing: -0.5px; line-height: 1.35; }
+        p { font-size: 16px; color: #333; margin-bottom: 22px; line-height: 1.85; }
+        .highlight { font-weight: 800; background: linear-gradient(to top, #E8D5A0 40%, transparent 40%); padding: 0 2px; }
+        .emp { font-weight: 800; color: #1a1a1a; }
+        .example-wrap { background: #fff; border-radius: 18px; padding: 24px; margin: 24px 0; }
+        .example-block { margin-bottom: 16px; }
+        .example-block:last-child { margin-bottom: 0; }
+        .example-label { font-size: 11px; font-weight: 800; margin-bottom: 6px; letter-spacing: 0.5px; }
+        .example-label.bad { color: #bbb; }
+        .example-label.good { color: #1a1a1a; }
+        .example-text { font-size: 14px; color: #666; background: #F2F0EB; border-radius: 10px; padding: 12px 16px; line-height: 1.7; }
+        .example-text.good { background: #1a1815; color: rgba(255,255,255,0.8); }
+        .chk-wrap { background: #1a1815; border-radius: 18px; padding: 28px 24px; margin: 32px 0; }
+        .chk-title { font-size: 16px; font-weight: 900; color: #fff; margin-bottom: 6px; letter-spacing: -0.3px; display: block; }
+        .chk-subtitle { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.35); margin-bottom: 20px; display: block; }
+        .chk-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.75); line-height: 1.5; }
+        .chk-item:last-child { margin-bottom: 0; }
+        .chk-item input { width: 18px; height: 18px; margin-top: 2px; flex-shrink: 0; cursor: pointer; accent-color: #C4A882; }
+        .back-btn { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #1a1a1a; color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 30px; font-weight: 700; font-size: 13px; letter-spacing: 0.3px; box-shadow: 0 8px 24px rgba(0,0,0,0.15); white-space: nowrap; }
     </style>
 </head>
 <body>
 
-    <span class="category">PLACE INSIGHT</span>
-    <h1>방문자를 문의로 만드는<br>소개글 작성법</h1>
+    <header>
+        <div class="logo">BROMARKETER</div>
+        <div class="header-tag">OPERATOR</div>
+    </header>
 
-    <p>플레이스에 들어온 사람이 문의를 안 하고 나가요. 사진도 있고, 리뷰도 있는데 왜 그럴까요. 대부분은 소개글에서 이탈합니다.</p>
-
-    <p>소개글을 보는 사람은 이미 센터에 관심이 생긴 사람이에요. 클릭까지 했으니까요. 근데 소개글을 읽고 나서 "여기다"가 안 나오면 그냥 닫아요. <span class="highlight">소개글은 관심을 문의로 바꾸는 마지막 관문입니다.</span></p>
-
-    <h2>대부분의 소개글이 틀린 이유</h2>
-
-    <p>센터 소개글을 보면 비슷해요. 자격증, 경력, 시설 소개, 운영시간. 사장님 입장에선 다 중요한 정보인데, 읽는 사람 입장에선 다릅니다.</p>
-
-    <p>소개글을 읽는 사람이 원하는 건 하나에요. <span class="emp">"여기 가면 내 문제가 해결되나?"</span> 근데 대부분의 소개글은 그 답을 주지 않아요. 내 자격증이 얼마나 좋은지, 시설이 얼마나 넓은지만 말합니다. 고객은 자격증을 사러 오는 게 아니에요. 문제를 해결하러 오는 거에요.</p>
-
-    <div class="example-block">
-        <div class="example-label bad">❌ 문의가 없는 소개글</div>
-        <div class="example-text">생활스포츠지도사 2급 / NSCA-CPT 취득 / 10년 경력 / 쾌적한 시설 / 1:1 맞춤 PT / 주차 가능</div>
-        <div class="example-label good">✅ 문의로 이어지는 소개글</div>
-        <div class="example-text good">출산 후 체형 변화, 다이어트 실패 반복 — 이런 분들이 주로 찾아오세요. 10년간 600명 이상의 변화를 함께했고, 재등록률 91%입니다. 첫 상담은 무료에요.</div>
+    <div class="hero">
+        <div class="hero-category">PLACE INSIGHT · 05</div>
+        <h1 class="hero-title">방문자를 문의로 만드는<br>소개글 작성법</h1>
     </div>
 
-    <h2>소개글에 반드시 들어가야 할 3가지</h2>
+    <div class="content">
 
-    <p>잘 되는 센터의 소개글엔 공통점이 있어요. 누구를 위한 센터인지, 왜 믿을 수 있는지, 다음에 뭘 하면 되는지. 이 세 가지가 다 있습니다.</p>
+        <p>플레이스에 들어온 사람이 문의를 안 하고 나가요. 사진도 있고, 리뷰도 있는데 왜 그럴까요. 대부분은 소개글에서 이탈합니다.</p>
 
-    <p><span class="emp">첫째, 누구를 위한 센터인지.</span> "다이어트, 체형 교정, 재활"이라고 쓰면 아무도 자기 얘기라고 생각하지 않아요. "출산 후 체형이 걱정되는 분", "오래 앉아 있어서 등이 굽은 직장인"처럼 구체적으로 찍어야 해요. 읽는 사람이 "어? 내 얘기네"라고 느껴야 멈춥니다.</p>
+        <p>소개글을 보는 사람은 이미 센터에 관심이 생긴 사람이에요. 클릭까지 했으니까요. 근데 소개글을 읽고 나서 "여기다"가 안 나오면 그냥 닫아요. <span class="highlight">소개글은 관심을 문의로 바꾸는 마지막 관문입니다.</span></p>
 
-    <p><span class="emp">둘째, 왜 믿을 수 있는지.</span> 자격증 나열보다 숫자가 훨씬 강력해요. "10년 경력"보다 "누적 회원 600명, 재등록률 91%"가 더 와닿아요. 직접 경험이 있으면 그것도 써요. "저도 출산 후 18kg를 뺐어요"는 어떤 자격증보다 신뢰가 됩니다.</p>
+        <h2>대부분의 소개글이 문의를 못 만드는 이유</h2>
 
-    <p><span class="emp">셋째, 다음에 뭘 하면 되는지.</span> 소개글을 읽고 나서 뭘 해야 하는지 모르면 그냥 닫아요. "카카오톡으로 문의주세요", "첫 상담 무료에요" — 행동을 유도하는 문장이 있어야 합니다.</p>
+        <p>센터 소개글을 보면 비슷해요. 자격증, 경력, 시설 소개, 운영시간. 사장님 입장에선 다 중요한 정보인데, 읽는 사람 입장에선 다릅니다.</p>
 
-    <h2>길게 쓰면 안 읽습니다</h2>
+        <p>소개글을 읽는 사람이 원하는 건 하나에요. <span class="emp">"여기 가면 내 문제가 해결되나?"</span> 근데 대부분의 소개글은 그 답을 주지 않아요. 내 자격증이 얼마나 좋은지, 시설이 얼마나 넓은지만 말합니다. 고객은 자격증을 사러 오는 게 아니에요. 문제를 해결하러 오는 거에요.</p>
 
-    <p>소개글을 길게 쓰는 사장님들이 많아요. 하고 싶은 말이 많으니까요. 근데 읽는 사람은 달라요. 플레이스 소개글을 처음부터 끝까지 읽는 사람은 거의 없어요. <span class="highlight">더 보기를 누르기 전에 핵심이 보이지 않으면 이탈합니다.</span></p>
+        <div class="example-wrap">
+            <div class="example-block">
+                <div class="example-label bad">❌ 문의가 없는 소개글</div>
+                <div class="example-text">생활스포츠지도사 2급 / NSCA-CPT 취득 / 10년 경력 / 쾌적한 시설 / 1:1 맞춤 PT / 주차 가능</div>
+            </div>
+            <div class="example-block">
+                <div class="example-label good">✅ 문의로 이어지는 소개글</div>
+                <div class="example-text good">출산 후 체형 변화, 다이어트 실패 반복 — 이런 분들이 주로 찾아오세요. 10년간 600명 이상의 변화를 함께했고, 재등록률 91%입니다. 첫 상담은 무료에요.</div>
+            </div>
+        </div>
 
-    <p>빼고 빼야 해요. 자격증은 나열하지 말고, 경력은 숫자로, 타겟은 한 줄로. 남기고 싶은 게 있으면 딱 하나만 고르세요. 가장 중요한 게 뭔지 모르겠으면, 처음 온 회원이 가장 많이 하는 말을 쓰면 됩니다.</p>
+        <h2>소개글에 반드시 들어가야 할 3가지</h2>
 
-    <div class="chk-card">
-        <span class="chk-title">소개글 점검해보세요</span>
-        <span class="chk-subtitle">지금 소개글에서 문의가 끊기고 있을 수 있어요</span>
-        <div class="chk-item"><input type="checkbox"> 첫 두 줄에 누구를 위한 센터인지 나와 있나요?</div>
-        <div class="chk-item"><input type="checkbox"> 자격증 나열 대신 숫자로 된 증거가 있나요?</div>
-        <div class="chk-item"><input type="checkbox"> 소개글 마지막에 행동 유도 문장이 있나요?</div>
-        <div class="chk-item"><input type="checkbox"> 읽고 나서 "여기 가야겠다"가 나오나요?</div>
+        <p>잘 되는 센터의 소개글엔 공통점이 있어요. 누구를 위한 센터인지, 왜 믿을 수 있는지, 다음에 뭘 하면 되는지. 이 세 가지가 다 있습니다.</p>
+
+        <p><span class="emp">첫째, 누구를 위한 센터인지.</span> "다이어트, 체형 교정, 재활"이라고 쓰면 아무도 자기 얘기라고 생각하지 않아요. "출산 후 체형이 걱정되는 분", "오래 앉아 있어서 등이 굽은 직장인"처럼 구체적으로 찍어야 해요. 읽는 사람이 "어? 내 얘기네"라고 느껴야 멈춥니다.</p>
+
+        <p><span class="emp">둘째, 왜 믿을 수 있는지.</span> 자격증 나열보다 숫자가 훨씬 강력해요. "10년 경력"보다 "누적 회원 600명, 재등록률 91%"가 더 와닿아요. 직접 경험이 있으면 그것도 써요. "저도 출산 후 18kg를 뺐어요"는 어떤 자격증보다 신뢰가 됩니다.</p>
+
+        <p><span class="emp">셋째, 다음에 뭘 하면 되는지.</span> 소개글을 읽고 나서 뭘 해야 하는지 모르면 그냥 닫아요. "카카오톡으로 문의주세요", "첫 상담 무료에요" — 행동을 유도하는 문장이 있어야 합니다.</p>
+
+        <h2>길게 쓰면 안 읽습니다</h2>
+
+        <p>소개글을 길게 쓰는 사장님들이 많아요. 하고 싶은 말이 많으니까요. 근데 읽는 사람은 달라요. 플레이스 소개글을 처음부터 끝까지 읽는 사람은 거의 없어요. <span class="highlight">더 보기를 누르기 전에 핵심이 보이지 않으면 이탈합니다.</span></p>
+
+        <p>빼고 빼야 해요. 자격증은 나열하지 말고, 경력은 숫자로, 타겟은 한 줄로. 남기고 싶은 게 있으면 딱 하나만 고르세요. 가장 중요한 게 뭔지 모르겠으면, 처음 온 회원이 가장 많이 하는 말을 쓰면 됩니다.</p>
+
+        <div class="chk-wrap">
+            <span class="chk-title">소개글 점검해보세요</span>
+            <span class="chk-subtitle">지금 소개글에서 문의가 끊기고 있을 수 있어요</span>
+            <div class="chk-item"><input type="checkbox"> 첫 두 줄에 누구를 위한 센터인지 나와 있나요?</div>
+            <div class="chk-item"><input type="checkbox"> 자격증 나열 대신 숫자로 된 증거가 있나요?</div>
+            <div class="chk-item"><input type="checkbox"> 소개글 마지막에 행동 유도 문장이 있나요?</div>
+            <div class="chk-item"><input type="checkbox"> 읽고 나서 "여기 가야겠다"가 나오나요?</div>
+        </div>
+
+        <p><span class="emp">방문자는 이미 오고 있어요. 문제는 그 사람들을 문의로 만들지 못하는 소개글입니다.</span></p>
+
     </div>
 
-    <p><span class="emp">방문자는 이미 오고 있어요. 문제는 그 사람들을 문의로 만들지 못하는 소개글입니다.</span></p>
+    <a href="operator-list.html" class="back-btn">← 목록으로</a>
 
-    <a href="operator-list.html" class="btn">← 다른 운영 인사이트 더보기</a>
-
+    <script>
+    (function() {
+        const params = new URLSearchParams(window.location.search);
+        const pw = params.get("pw");
+        if (pw && pw !== "5234") {
+            document.body.innerHTML = "<p style='text-align:center;margin-top:100px;font-size:18px;font-family:sans-serif;'>접근 권한이 없습니다.</p>";
+        }
+    })();
+    </script>
 </body>
 </html>
